@@ -1,4 +1,6 @@
 @extends('templates.template_pink')
 @section('main-content')
- @include('modules.mod_trang_gio_hang')
+    <div class="container">
+        @include('modules.mod_trang_gio_hang')
+    </div>
 @stop

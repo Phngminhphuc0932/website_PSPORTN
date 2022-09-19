@@ -98,13 +98,13 @@ class NormalPageController extends Controller
             $tong_tien += $sp->so_luong * $sp->don_gia;
         }
 
-        return view('trang_gio_hang')
-        ->with('gio_hang', $gio_hang)
-        ->with('tong_tien', $tong_tien);
+        return view('trang_gio_hang')->with('allow_update_cart', true);
+        // ->with('gio_hang', $gio_hang)
+        // ->with('tong_tien', $tong_tien);
     }
 
     function thanh_toan(){
-        return view('trang_thanh_toan');
+        return view('trang_thanh_toan')->with('allow_update_cart', false);
     }
 
     function thanh_toan_store(){
