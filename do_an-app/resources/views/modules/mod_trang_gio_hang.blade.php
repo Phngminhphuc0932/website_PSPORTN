@@ -67,9 +67,9 @@
         <div class="shopping-cart-footer">
             <div class="column"><a class="btn btn-outline-secondary" href="#"><i
                         class="icon-arrow-left"></i>&nbsp;Quay lại trang chủ</a></div>
-            <div class="column"><a class="btn btn-primary" href="#" data-toast="" data-toast-type="success"
+            <div class="column"><a class="btn btn-primary" href="/thanh-toan" data-toast="" data-toast-type="success"
                     data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Your cart"
-                    {{-- data-toast-message="is updated successfully!">Cập nhật giỏ hàng</a><a class="btn btn-success" --}} href="#">Thanh toán</a></div>
+                    {{-- data-toast-message="is updated successfully!">Cập nhật giỏ hàng</a><a class="btn btn-success" --}} href="/thanh-toan">Thanh toán</a></div>
         </div>
     @else
         <div class="container">

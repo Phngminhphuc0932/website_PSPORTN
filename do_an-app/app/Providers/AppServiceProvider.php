@@ -37,5 +37,14 @@ class AppServiceProvider extends ServiceProvider
         // }
 
         // View::share('tong_so_luong', $tong_so_luong);
+        $gio_hang = [];
+        if(Session::has('gio_hang')){
+            $gio_hang = Session::get('gio_hang');
+
+        }
+
+        View::share('gio_hang', $gio_hang);
     }
+
+
 }

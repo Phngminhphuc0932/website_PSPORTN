@@ -57,3 +57,10 @@ Route::get('/xoa-gio-hang', "App\Http\Controllers\SanPhamController@xoa_gio_hang
 
 Route::get('/gio-hang', "App\Http\Controllers\NormalPageController@gio_hang");
 
+Route::get('/thanh-toan', "App\Http\Controllers\NormalPageController@thanh_toan");
+
+Route::post('/thanh-toan', [
+    "as" => "save_thanh_toan",
+    "uses" => "App\Http\Controllers\NormalPageController@thanh_toan_store"
+]);
+

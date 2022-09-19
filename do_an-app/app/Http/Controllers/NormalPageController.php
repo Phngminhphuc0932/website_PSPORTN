@@ -102,4 +102,12 @@ class NormalPageController extends Controller
         ->with('gio_hang', $gio_hang)
         ->with('tong_tien', $tong_tien);
     }
+
+    function thanh_toan(){
+        return view('trang_thanh_toan');
+    }
+
+    function thanh_toan_store(){
+
+    }
 }
