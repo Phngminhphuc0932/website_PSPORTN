@@ -1,2 +1,3 @@
-# website_PSPORTN
-- t dang sửa thanh toán, :V cứ bình tỏm hôm nay là xong thanh toán nhen fen!!
+# website_PSPORT
+vẫn đang lõi thanh toán k biết chỗ nào, push giao diện thanh toán lên trước nghen
+
