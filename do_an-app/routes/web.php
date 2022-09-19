@@ -1,0 +1,59 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get(
+    '/login',
+    'App\Http\Controllers\UserController@createNewAccount'
+);
+Route::post('/save-register', [
+    'as' => 'savecreatenewaccount',
+    'uses' => 'App\Http\Controllers\UserController@store'
+]);
+Route::get('/', 'App\Http\Controllers\SanPhamController@index');
+// Route::get('/', 'App\Http\Controllers\SanPhamController@mau_ao_moi');
+//     return view('trang_chu');
+// });
+Route::get('/index', 'App\Http\Controllers\SanPhamController@index');
+// Route::get('/index', 'App\Http\Controllers\SanPhamController@mau_ao_moi');
+
+Route::get('/contact', function () {
+    return view('contact');
+});
+Route::get('/product', function () {
+    return view('production');
+});
+Route::get('/product-nike', 'App\Http\Controllers\SP_NikeController@index');
+Route::get('/product-jordan', 'App\Http\Controllers\SP_JordanController@index');
+
+
+
+Route::get('/single', function () {
+    return view('single');
+});
+Route::get('/register', function () {
+    return view('register_acc');
+});
+
+Route::get('/add-gio-hang/{id_sp}', "App\Http\Controllers\SanPhamController@add_gio_hang");
+
+
+Route::get('/update-gio-hang/{id_sp}', "App\Http\Controllers\SanPhamController@update_gio_hang");
+
+Route::get('/xoa-item-gio-hang/{id_sp}', "App\Http\Controllers\SanPhamController@xoa_item_gio_hang");
+
+Route::get('/xoa-gio-hang', "App\Http\Controllers\SanPhamController@xoa_gio_hang");
+
+Route::get('/gio-hang', "App\Http\Controllers\NormalPageController@gio_hang");
+
