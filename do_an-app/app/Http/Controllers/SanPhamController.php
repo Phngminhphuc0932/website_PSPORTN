@@ -21,8 +21,10 @@ class SanPhamController extends Controller
     {
         //
         // $list_sp_noi_bat = DB::select('SELECT s.*, ten_tac_gia
-        $list_sp_noi_bat = DB::table('sb_san_pham')->where('noi_bat', 1)->limit(3)->get();
-        $list_mau_ao_moi = DB::table('sb_san_pham')->where('trang_thai', 1)->limit(2)->get();
+        // $list_sp_noi_bat = DB::table('sb_san_pham')->where('noi_bat', 1)->limit(3)->get();
+        // $list_mau_ao_moi = DB::table('sb_san_pham')->where('trang_thai', 1)->limit(2)->get();
+        $list_sp_noi_bat = DB::table('sb_san_pham')->where('noi_bat', 1)->get();
+        $list_mau_ao_moi = DB::table('sb_san_pham')->where('trang_thai', 1)->get();
         $list_mau_giay_moi = DB::table('sb_san_pham')->where('id_loai_sp', '2')->where('noi_bat', 1)->get();
 
 

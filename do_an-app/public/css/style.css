@@ -437,6 +437,8 @@ a.view-all {
 a.all-product {
     float: left;
 }
+
+
 h5.latest-product {
     margin: 6px 0 0;
     font-size: 1.3em;
@@ -444,11 +446,19 @@ h5.latest-product {
     font-weight: 700;
 }
 .grid-chain-bottom h6 {
-    margin: 0;
-    font-size: 1.3em;
+    margin-bottom: 6px;
+    font-size: 18px;
     color: #000;
-    font-weight: 700;
+    font-weight: bold;
     padding: 0.8em 0.5em 0;
+    clear: both;
+    line-height: 1.5em;
+    height: 3em;
+    /* overflow: hidden; */
+    /* white-space: nowrap;
+    text-overflow: ellipsis; */
+    width: 100%;
+    
 }
 .grid-chain-bottom h6 a:hover {
     text-decoration: none;
@@ -457,10 +467,12 @@ h5.latest-product {
 .chain-grid {
     border: 1px solid #ddd;
     position: relative;
-    width: 30.7%;
-    margin: 0 3% 0 0;
+    height: 56.2%;
+    width: 30.2%;
+    margin: 0 3% 2% 0;
     padding: 0;
 }
+
 .menu-chain {
     width: 100%;
     margin: 2em 0;
