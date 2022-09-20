@@ -135,7 +135,7 @@ class SanPhamController extends Controller
         $tong_tien = 0;
         for ($i = 0; $i < count($gio_hang); $i++) {
             $tong_so_luong += $gio_hang[$i]->so_luong;
-            $tong_tien += $gio_hang[$i]->so_luong * $gio_hang->don_gia;
+            $tong_tien += $gio_hang[$i]->so_luong * $gio_hang[$i]->don_gia;
         }
 
 
