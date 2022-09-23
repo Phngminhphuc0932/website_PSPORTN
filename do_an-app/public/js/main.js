@@ -17,6 +17,7 @@ $(() => {
                     tong_so_luong += gio_hang[i].so_luong;
                 }
 
+                $('.number_item_cart').removeClass('hidden');
                 $('.number_item_cart').html(tong_so_luong);
 
             })
