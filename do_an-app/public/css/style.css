@@ -458,7 +458,7 @@ h5.latest-product {
     /* white-space: nowrap;
     text-overflow: ellipsis; */
     width: 100%;
-    
+
 }
 .grid-chain-bottom h6 a:hover {
     text-decoration: none;
@@ -467,7 +467,6 @@ h5.latest-product {
 .chain-grid {
     border: 1px solid #ddd;
     position: relative;
-    height: 56.2%;
     width: 30.2%;
     margin: 0 3% 2% 0;
     padding: 0;
