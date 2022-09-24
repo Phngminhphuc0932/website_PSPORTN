@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,13 +39,11 @@ Route::get('/product-nike', 'App\Http\Controllers\SP_NikeController@index');
 Route::get('/product-jordan', 'App\Http\Controllers\SP_JordanController@index');
 
 
-
-Route::get('/single', function () {
-    return view('single');
-});
 Route::get('/register', function () {
     return view('register_acc');
 });
+
+
 
 Route::get('/add-gio-hang/{id_sp}', "App\Http\Controllers\SanPhamController@add_gio_hang");
 
@@ -65,3 +64,4 @@ Route::post('/thanh-toan', [
 ]);
 
 Route::get('/single', "App\Http\Controllers\SanPhamController@san_pham_moi");
+

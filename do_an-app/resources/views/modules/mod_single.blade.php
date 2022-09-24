@@ -1,49 +1,33 @@
 <div class="container">
-<<<<<<< HEAD
-=======
-
     <div class=" single_top">
         <div class="single_grid">
-
             <div class="grid images_3_of_2">
                 <ul id="etalage">
-                    <li>
-                        <a href="optionallink.html">
-                            <img class="etalage_thumb_image" src="images/{{ $thong_tin_san_pham->->hinh }}" class="img-responsive" />
-                            <img class="etalage_source_image" src="images/{{ $thong_tin_san_pham->->hinh }}" class="img-responsive"
-                                title="" />
-                        </a>
-                    </li>
-                    <li>
-                        <img class="etalage_thumb_image" src="images/{{ $thong_tin_san_pham->->hinh }}" class="img-responsive" />
-                        <img class="etalage_source_image" src="images/{{ $thong_tin_san_pham->->hinh }}" class="img-responsive"
-                            title="" />
-                    </li>
-                    <li>
-                        <img class="etalage_thumb_image" src="images/{{ $thong_tin_san_pham->->hinh }}" class="img-responsive" />
-                        <img class="etalage_source_image" src="images/{{ $thong_tin_san_pham->->hinh }}"class="img-responsive" />
-                    </li>
-                    <li>
-                        <img class="etalage_thumb_image" src="images/{{ $thong_tin_san_pham->->hinh }}" class="img-responsive" />
-                        <img class="etalage_source_image" src="images/{{ $thong_tin_san_pham->->hinh }}"class="img-responsive" />
-                    </li>
+                    @if (isset($sp_single))
+                        @foreach ($sp_single as $sp_s)
+                            <li>
+                                <a href="optionallink.html">
+                                    <img class="etalage_thumb_image" src="images/{{$sp_s->hinh}}" class="img-responsive" />
+                                    <img class="etalage_source_image" src="images/{{$sp_s->hinh}}" class="img-responsive"
+                                        title="" />
+                                </a>
+                            </li>
+                        @endforeach
+                    @endif
                 </ul>
                 <div class="clearfix"> </div>
             </div>
             <div class="desc1 span_3_of_2">
 
-                {{-- name product --}}
-                <h4>{{ $thong_tin_san_pham->ten_san_pham }}</h4>
+
+                <h4>{{$sp_s->ten_san_pham}}</h4>
                 <div class="cart-b">
-                    {{-- price --}}
-                    <div class="left-n ">{{ $thong_tin_san_pham->don_gia }} VND</div>
+                    <div class="left-n ">{{$sp_s->don_gia}}</div>
                     <a class="now-get get-cart-in" href="#">ADD TO CART</a>
                     <div class="clearfix"></div>
                 </div>
-                {{-- amount --}}
                 <h6>100 items in stock</h6>
-                <p>{{ $thong_tin_san_pham->gioi_thieu }}</p>
-                {{-- @endforeach --}}
+                <p>{{$sp_s->gioi_thieu}}</p>
                 <div class="share">
                     <h5>Share Product :</h5>
                     <ul class="share_nav">
@@ -58,58 +42,22 @@
             </div>
             <div class="clearfix"> </div>
         </div>
-        <ul id="flexiselDemo1">
-            @foreach ($list_sp as $sp)
-                <li><img src="images/{{ $sp->hinh }}" />
-                    <div class="grid-flex"><a href="#">Bloch</a>
-                        <p>Rs 850</p>
-                    </div>
-                </li>
-            @endforeach
-        </ul>
-        <script type="text/javascript">
-            $(window).load(function() {
-                $("#flexiselDemo1").flexisel({
-                    visibleItems: 5,
-                    animationSpeed: 1000,
-                    autoPlay: true,
-                    autoPlaySpeed: 3000,
-                    pauseOnHover: true,
-                    enableResponsiveBreakpoints: true,
-                    responsiveBreakpoints: {
-                        portrait: {
-                            changePoint: 480,
-                            visibleItems: 1
-                        },
-                        landscape: {
-                            changePoint: 640,
-                            visibleItems: 2
-                        },
-                        tablet: {
-                            changePoint: 768,
-                            visibleItems: 3
-                        }
-                    }
-                });
-
-            });
-        </script>
-        <script type="text/javascript" src="js/jquery.flexisel.js"></script>
-
         <div class="toogle">
-            <h3 class="m_3">Product Details</h3>
-            {{-- ghi mô tả sản phẩm --}}
-            <p class="m_text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
-                nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis
-                autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore
-                eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent
-                luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta
-                nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.</p>
+            <h3 class="m_3">Các sản phẩm khác</h3>
         </div>
+        <ul id="flexiselDemo1">
+            @if (isset($list_mau_ao_moi))
+                @foreach ($list_mau_ao_moi as $sp)
+                    <li><img src="images/{{ $sp->hinh }}" alt="" />
+                        <div class="grid-flex"><a href="#">{{ $sp->ten_san_pham }}</a>
+                            <p>{{ $sp->don_gia }}</p>
+                        </div>
+                    </li>
+                @endforeach
+        </ul>
+        @endif
     </div>
 
->>>>>>> 27e975f6894337f2e87fe183bf788827f90d76cc
     <!---->
     <div class="sub-cate">
         <div class=" top-nav rsidebar span_1_of_left">
@@ -118,9 +66,9 @@
                 <li class="item1"><a href="#">NỔI BẬT<img class="arrow-img" src="images/arrow1.png"
                             alt="" /> </a>
                     <ul class="cute">
-                        <li class="subitem1"><a href="/product"> NIKE </a></li>
-                        <li class="subitem2"><a href="/product"> JORDAN </a></li>
-                        <li class="subitem3"><a href="/product"> PEAK SPORT </a></li>
+                        <li class="subitem1"><a href="/product">NIKE </a></li>
+                        <li class="subitem2"><a href="/product">JORDAN </a></li>
+                        <li class="subitem3"><a href="/product">PEAK SPORT </a></li>
                     </ul>
                 </li>
                 <li class="item2"><a href="#">GIÀY DÉP<img class="arrow-img " src="images/arrow1.png"
@@ -165,26 +113,6 @@
                 </ul>
             </ul>
         </div>
-        <!--initiate accordion-->
-        <script type="text/javascript">
-            $(function() {
-                var menu_ul = $('.menu > li > ul'),
-                    menu_a = $('.menu > li > a');
-                menu_ul.hide();
-                menu_a.click(function(e) {
-                    e.preventDefault();
-                    if (!$(this).hasClass('active')) {
-                        menu_a.removeClass('active');
-                        menu_ul.filter(':visible').slideUp('normal');
-                        $(this).addClass('active').next().stop(true, true).slideDown('normal');
-                    } else {
-                        $(this).removeClass('active');
-                        $(this).next().stop(true, true).slideUp('normal');
-                    }
-                });
-
-            });
-        </script>
         <div class=" chain-grid menu-chain">
             <a href="/single"><img class="img-responsive chain" src="images/sneaker_bag.jpg" alt=" " /></a>
             <div class="grid-chain-bottom chain-watch">
@@ -195,5 +123,7 @@
         </div>
         <a class="view-all all-product" href="/product">VIEW ALL PRODUCTS<span> </span></a>
     </div>
-    <div class="clearfix"> </div>
 </div>
+<div class="clearfix"> </div>
+</div>
+<!---->

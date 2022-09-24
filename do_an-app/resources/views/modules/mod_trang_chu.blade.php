@@ -1,6 +1,5 @@
 <div class="container">
     <div class="shoes-grid">
-        <a href="/single">
             <div class="wrap-in">
                 <div class="wmuSlider example1 slide-grid">
                     @if (isset($list_sp_noi_bat))
@@ -21,7 +20,10 @@
                                             <p>Thanh toán trực tiếp tại cửa hàng bằng tiền mặt / thẻ tín dụng / chuyển
                                                 khoản (*)
                                                 / Cổng thanh toán VNPay hoặc Ví điện tử Momo (**). </p>
-                                            <span class="on-get">MUA NGAY</span>
+                                            <a href="/single?id_sp={{$sp_noi_bat->ID}}">
+                                                <span class="on-get">Mua Ngay</span>
+                                            </a>
+
                                         </div>
 
                                         <div class="clearfix"> </div>
@@ -33,7 +35,6 @@
                             </div>
                         @endforeach
                     @endif
-        </a>
         <ul class="wmuSliderPagination">
             <li><a href="#" class="">0</a></li>
             <li><a href="#" class="">1</a></li>
@@ -49,7 +50,7 @@
 <!---->
 <div class="shoes-grid-left">
 
-    <a href="/single">
+    <a href="#">
         <div class="col-md-6 con-sed-grid">
 
             <div class=" elit-grid">
@@ -64,7 +65,7 @@
         </div>
     </a>
 
-    <a href="/single">
+    <a href="#">
         <div class="col-md-6 con-sed-grid sed-left-top">
             <div class=" elit-grid">
                 <label>ÁO THUN NIKE FTWR DSTRD BM</label>
@@ -83,16 +84,15 @@
 </div>
 
 <div class="product-left">
-    
         @if (isset($list_mau_ao_moi))
             @foreach ($list_mau_ao_moi as $mau_ao_moi)
                 <div class="col-md-4 chain-grid">
-                    <a href="/single"><img class="img-responsive chain" src="images/{{ $mau_ao_moi->hinh }}"
+                    <a href="/single?id_sp={{$mau_ao_moi->ID}}"><img class="img-responsive chain" src="images/{{ $mau_ao_moi->hinh }}"
                             alt=" " /></a>
                     <span class="star"></span>
                     <div class="grid-chain-bottom">
                         <h6>
-                                <a href="/single">{{ $mau_ao_moi->ten_san_pham }}</a>                                   
+                                <a href="/single?id_sp={{$mau_ao_moi->ID}}">{{ $mau_ao_moi->ten_san_pham }}</a>
                         </h6>
                         <div class="star-price">
                             <div class="dolor-grid">
@@ -125,7 +125,7 @@
                 </div>
             @endforeach
         @endif
-    
+
 
     <div class="clearfix"> </div>
 
@@ -139,11 +139,11 @@
     @if (isset($list_mau_giay_moi))
         @foreach ($list_mau_giay_moi as $mau_giay_moi)
             <div class="col-md-4 chain-grid">
-                <a href="/single"><img class="img-responsive chain" src="images/{{ $mau_giay_moi->hinh }}"
+                <a href="/single?id_sp={{$mau_giay_moi->ID}}"><img class="img-responsive chain" src="images/{{ $mau_giay_moi->hinh }}"
                         alt=" " /></a>
                 <span class="star"> </span>
                 <div class="grid-chain-bottom">
-                    <h6><a href="/single">{{ $mau_giay_moi->ten_san_pham }}</a></h6>
+                    <h6><a href="/single?id_sp={{$mau_giay_moi->ID}}">{{ $mau_giay_moi->ten_san_pham }}</a></h6>
                     <div class="star-price">
                         <div class="dolor-grid">
                             <span class="actual">{{ $mau_giay_moi->gia_giam }}₫</span>
@@ -166,7 +166,7 @@
                                 <label for="rating-input-1-1" class="rating-star"> </label>
                             </span>
                         </div>
-                        <a class="now-get get-cart" href="them_vao_gio_hang.php?id_sp={{ $mau_giay_moi->ID }}"
+                        <a class="now-get get-cart" href="gio-hang?id_sp={{ $mau_giay_moi->ID }}"
                             data-id-sp="{{ $mau_giay_moi->ID }}">THÊM
                             VÀO GIỎ HÀNG</a>
                         <div class="clearfix"> </div>
@@ -235,11 +235,11 @@
     </div>
     <!--initiate accordion-->
     <div class=" chain-grid menu-chain">
-        <a href="/single"><img class="img-responsive chain" src="images/sneaker_bag.jpg" alt=" " /></a>
+        <a href="/single?id_sp={{$mau_giay_moi->ID}}"><img class="img-responsive chain" src="images/sneaker_bag.jpg" alt=" " /></a>
         <div class="grid-chain-bottom chain-watch">
             <span class="actual dolor-left-grid"> 299,000 VND</span>
             <span class="reducedfrom">500,000 VND</span>
-            <h6><a href="/single">Tee Nike Full Logo - Black</a></h6>
+            <h6><a href="/single?id_sp={{$mau_giay_moi->ID}}">Tee Nike Full Logo - Black</a></h6>
         </div>
     </div>
     <a class="view-all all-product" href="/product">VIEW ALL PRODUCTS<span> </span></a>

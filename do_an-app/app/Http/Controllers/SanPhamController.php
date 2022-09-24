@@ -63,14 +63,7 @@ class SanPhamController extends Controller
      */
     public function show($id)
     {
-        $thong_san_pham = DB::table('sb_san_pham')
-            ->select(DB::raw('sb_san_pham.*, ten_loai_sach, ten_tac_gia, ten_nha_xuat_ban'))
-            ->join('sb_nha_san_xuat', 'sb_san_pham.id_tac_gia', '=', 'sb_nha_san_xuat.id')
-            ->join('sb_loai_san_pham', 'sb_san_pham.id_loai_sach', '=', 'sb_loai_san_pham.id')
-            ->join('sb_nha_cung_cap', 'sb_san_pham.id_nha_xuat_ban', '=', 'sb_nha_cung_cap.id')
-            ->where('sb_san_pham.id')
-            ->first();
-        return view('single');
+
     }
 
     /**
@@ -225,10 +218,12 @@ class SanPhamController extends Controller
         }
         echo 1;
     }
-    function san_pham_moi()
+    function san_pham_moi(Request $request)
     {
-        $list_sp = DB::table('sb_san_pham')->where('noi_bat', 1)->limit(4)->get();
+        $id_sp = $request->get('id_sp');
+        $sp_single = DB::table('sb_san_pham')->where('ID', $id_sp)->get();
+        $list_mau_ao_moi = DB::table('sb_san_pham')->where('trang_thai', 1)->get();
 
-        return view('single')->with('list_sp', $list_sp);
+        return view('single')->with('list_mau_ao_moi', $list_mau_ao_moi)->with('sp_single', $sp_single);
     }
 }
