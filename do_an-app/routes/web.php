@@ -64,3 +64,4 @@ Route::post('/thanh-toan', [
     "uses" => "App\Http\Controllers\NormalPageController@thanh_toan_store"
 ]);
 
+Route::get('/single', "App\Http\Controllers\SanPhamController@san_pham_moi");

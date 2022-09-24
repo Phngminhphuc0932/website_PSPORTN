@@ -61,7 +61,14 @@ class SanPhamController extends Controller
      */
     public function show($id)
     {
-        //
+        $thong_san_pham = DB::table('sb_san_pham')
+            ->select(DB::raw('sb_san_pham.*, ten_loai_sach, ten_tac_gia, ten_nha_xuat_ban'))
+            ->join('sb_nha_san_xuat', 'sb_san_pham.id_tac_gia', '=', 'sb_nha_san_xuat.id')
+            ->join('sb_loai_san_pham', 'sb_san_pham.id_loai_sach', '=', 'sb_loai_san_pham.id')
+            ->join('sb_nha_cung_cap', 'sb_san_pham.id_nha_xuat_ban', '=', 'sb_nha_cung_cap.id')
+            ->where('sb_san_pham.id')
+            ->first();
+        return view('single');
     }
 
     /**
@@ -197,7 +204,6 @@ class SanPhamController extends Controller
             foreach ($gio_hang as $sp) {
                 $tong_so_luong += $sp->so_luong;
                 $tong_tien += $sp->so_luong * $sp->don_gia;
-
             }
 
             Session::put('gio_hang', $gio_hang);
@@ -208,12 +214,19 @@ class SanPhamController extends Controller
         }
     }
 
-    function xoa_gio_hang() {
+    function xoa_gio_hang()
+    {
         if (Session::has('gio_hang')) {
             Session::forget('gio_hang');
             Session::forget('tong_so_luong');
             Session::forget('tong_tien');
         }
         echo 1;
+    }
+    function san_pham_moi()
+    {
+        $list_sp = DB::table('sb_san_pham')->where('noi_bat', 1)->limit(4)->get();
+
+        return view('single')->with('list_sp', $list_sp);
     }
 }
