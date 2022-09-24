@@ -57,9 +57,13 @@
                     <li><a href={{ url('register') }}>ĐĂNG KÝ</a></li>
                 </ul>
                 <div class="cart">
-                    @if(session()->has('tong_so_luong'))
-                    <div class="number_item_cart">{{session('tong_so_luong')?:'0'}}</div>
-                    @endif
+
+                    <div class="number_item_cart  @if (!session()->has('tong_so_luong')) hidden @endif">
+                        @if (session()->has('tong_so_luong'))
+                            {{ session('tong_so_luong') ?: '0' }}
+                        @endif
+                    </div>
+
                     <a href="/gio-hang"><span></span>GIỎ HÀNG</a>
                 </div>
                 <div class="clearfix"> </div>

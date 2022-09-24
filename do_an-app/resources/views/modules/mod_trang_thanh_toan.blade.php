@@ -1,5 +1,6 @@
 <div class="container">
     <form action="" method="POST" class="form-horizontal" role="form" enctype="multipart/form-data">
+        @csrf
         <div class="col-md-5 col-lg-5 form_thanh_toan">
             <div class="form-group">
                 <legend>Thông tin người mua hàng</legend>

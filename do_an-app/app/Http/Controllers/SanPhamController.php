@@ -21,8 +21,10 @@ class SanPhamController extends Controller
     {
         //
         // $list_sp_noi_bat = DB::select('SELECT s.*, ten_tac_gia
-        $list_sp_noi_bat = DB::table('sb_san_pham')->where('noi_bat', 1)->limit(3)->get();
-        $list_mau_ao_moi = DB::table('sb_san_pham')->where('trang_thai', 1)->limit(2)->get();
+        // $list_sp_noi_bat = DB::table('sb_san_pham')->where('noi_bat', 1)->limit(3)->get();
+        // $list_mau_ao_moi = DB::table('sb_san_pham')->where('trang_thai', 1)->limit(2)->get();
+        $list_sp_noi_bat = DB::table('sb_san_pham')->where('noi_bat', 1)->get();
+        $list_mau_ao_moi = DB::table('sb_san_pham')->where('trang_thai', 1)->get();
         $list_mau_giay_moi = DB::table('sb_san_pham')->where('id_loai_sp', '2')->where('noi_bat', 1)->get();
 
 
@@ -142,7 +144,7 @@ class SanPhamController extends Controller
         $tong_tien = 0;
         for ($i = 0; $i < count($gio_hang); $i++) {
             $tong_so_luong += $gio_hang[$i]->so_luong;
-            $tong_tien += $gio_hang[$i]->so_luong * $gio_hang->don_gia;
+            $tong_tien += $gio_hang[$i]->so_luong * $gio_hang[$i]->don_gia;
         }
 
 

@@ -83,41 +83,50 @@
 </div>
 
 <div class="product-left">
-    @if (isset($list_mau_ao_moi))
-        @foreach ($list_mau_ao_moi as $mau_ao_moi)
-            <div class="col-md-4 chain-grid">
-
-                <a href="/single"><img class="img-responsive chain" src="images/{{ $mau_ao_moi->hinh }}"
-                        alt=" " /></a>
-                <span class="star"> </span>
-                <div class="grid-chain-bottom">
-                    <h6><a href="/single">{{ $mau_ao_moi->ten_san_pham }}</a></h6>
-                    <div class="star-price">
-                        <div class="dolor-grid">
-                            <span class="actual">{{ $mau_ao_moi->gia_giam }}₫</span>
-                            <span class="reducedfrom">{{ $mau_ao_moi->don_gia }}₫</span>
-                            <span class="rating">
-                                <input type="radio" class="rating-input" id="rating-input-1-5" name="rating-input-1">
-                                <label for="rating-input-1-5" class="rating-star1"> </label>
-                                <input type="radio" class="rating-input" id="rating-input-1-4" name="rating-input-1">
-                                <label for="rating-input-1-4" class="rating-star1"> </label>
-                                <input type="radio" class="rating-input" id="rating-input-1-3" name="rating-input-1">
-                                <label for="rating-input-1-3" class="rating-star"> </label>
-                                <input type="radio" class="rating-input" id="rating-input-1-2" name="rating-input-1">
-                                <label for="rating-input-1-2" class="rating-star"> </label>
-                                <input type="radio" class="rating-input" id="rating-input-1-1" name="rating-input-1">
-                                <label for="rating-input-1-1" class="rating-star"> </label>
-                            </span>
+    
+        @if (isset($list_mau_ao_moi))
+            @foreach ($list_mau_ao_moi as $mau_ao_moi)
+                <div class="col-md-4 chain-grid">
+                    <a href="/single"><img class="img-responsive chain" src="images/{{ $mau_ao_moi->hinh }}"
+                            alt=" " /></a>
+                    <span class="star"></span>
+                    <div class="grid-chain-bottom">
+                        <h6>
+                                <a href="/single">{{ $mau_ao_moi->ten_san_pham }}</a>                                   
+                        </h6>
+                        <div class="star-price">
+                            <div class="dolor-grid">
+                                <span class="actual">{{ $mau_ao_moi->gia_giam }}₫</span><br>
+                                <span class="reducedfrom">{{ $mau_ao_moi->don_gia }}₫</span>
+                                <span class="rating">
+                                    <input type="radio" class="rating-input" id="rating-input-1-5"
+                                        name="rating-input-1">
+                                    <label for="rating-input-1-5" class="rating-star1"> </label>
+                                    <input type="radio" class="rating-input" id="rating-input-1-4"
+                                        name="rating-input-1">
+                                    <label for="rating-input-1-4" class="rating-star1"> </label>
+                                    <input type="radio" class="rating-input" id="rating-input-1-3"
+                                        name="rating-input-1">
+                                    <label for="rating-input-1-3" class="rating-star"> </label>
+                                    <input type="radio" class="rating-input" id="rating-input-1-2"
+                                        name="rating-input-1">
+                                    <label for="rating-input-1-2" class="rating-star"> </label>
+                                    <input type="radio" class="rating-input" id="rating-input-1-1"
+                                        name="rating-input-1">
+                                    <label for="rating-input-1-1" class="rating-star"> </label>
+                                </span>
+                            </div>
+                            <a class="now-get get-cart" href="#">THÊM VÀO GIỎ HÀNG</a>
+                            <div class="clearfix"> </div>
                         </div>
-                        <a class="now-get get-cart" href="#">THÊM VÀO GIỎ HÀNG</a>
-                        <div class="clearfix"> </div>
+
                     </div>
 
                 </div>
+            @endforeach
+        @endif
+    
 
-            </div>
-        @endforeach
-    @endif
     <div class="clearfix"> </div>
 
 </div>
