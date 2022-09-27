@@ -50,14 +50,14 @@
                                 </td>
                                 @if ($allow_update_cart)
                                     <td id="don_gia_{{ $sp_gio_hang->ID }}" class="text-center text-lg text-medium">
-                                        {{ $sp_gio_hang->don_gia }} </td>
+                                        @VND_monney($sp_gio_hang->don_gia) đ </td>
                                     <td
                                         id="gia_duoc_giam_{{ $sp_gio_hang->ID }}"class="text-center text-lg text-medium">
-                                        {{ $sp_gio_hang->gia_giam }}</td>
+                                        @VND_monney($sp_gio_hang->gia_giam) đ</td>
                                 @endif
                                 <td class="thanh_tien" id="thanh_tien_{{ $sp_gio_hang->ID }}"
                                     class="text-center text-lg text-medium">
-                                    {{ $sp_gio_hang->gia_giam * $sp_gio_hang->so_luong }}</td>
+                                    @VND_monney($sp_gio_hang->gia_giam * $sp_gio_hang->so_luong) đ</td>
                                 @if ($allow_update_cart)
                                     <td class="text-center"><a class="remove-from-cart"
                                             onclick="nut_thung_rac(event, {{ $sp_gio_hang->ID }})" href="#"
@@ -82,7 +82,7 @@
                     </div>
             @endif
             <div class="column text-lg text-right" id="tong_tien">Tổng tiền: <span
-                    class="text-medium">{{ session('tong_tien') }}</span>
+                    class="text-medium">@VND_monney(session('tong_tien')) đ</span>
             </div>
 </div>
 @if ($allow_update_cart)
@@ -132,8 +132,7 @@
 
 
     function process_gio_hang_client(id_sp, so_luong) {
-        $('#thanh_tien_' + id_sp).html(($('#gia_duoc_giam_' + id_sp).html() * 1 * so_luong) +
-            ' vnd')
+        $('#thanh_tien_' + id_sp).html((parseInt($('#gia_duoc_giam_' + id_sp).html().replace(/,/gi , "")) * so_luong).toLocaleString('vi', {style : 'currency', currency : 'VND'}))
         var ds_thanh_tien = $('.thanh_tien');
         var ds_so_luong = $('.so_luong_input');
 
@@ -141,11 +140,11 @@
         var tong_so_luong = 0;
 
         for (var i = 0; i < ds_thanh_tien.length; i++) {
-            tong_tien += parseInt($(ds_thanh_tien[i]).html());
+            tong_tien += parseInt($(ds_thanh_tien[i]).html().replace(/\./gi , ""));
             tong_so_luong += parseInt($(ds_so_luong[i]).val());
         }
 
-        $('#tong_tien').html('Tổng tiền: ' + tong_tien + ' vnd');
+        $('#tong_tien').html('Tổng tiền: ' + tong_tien.toLocaleString('vi', {style : 'currency', currency : 'VND'}) + '');
         $('.number_item_cart').html(tong_so_luong);
     }
 

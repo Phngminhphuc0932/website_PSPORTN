@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
@@ -44,6 +45,10 @@ class AppServiceProvider extends ServiceProvider
         // }
 
         // View::share('gio_hang', $gio_hang);
+
+        Blade::directive('VND_monney', function ($money) {
+            return "<?php echo number_format($money); ?>";
+        });
     }
 
 
