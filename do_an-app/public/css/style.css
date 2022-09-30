@@ -1016,7 +1016,7 @@ a.forgot {
 .register-but {
     margin-top: 1em;
 }
-.register-but form input[type="submit"] {
+.register-but input[type="submit"] {
     background: #f97e76;
     color: #fff;
     font-size: 1em;

@@ -51,10 +51,15 @@
                 <div class="clearfix"> </div>
             </div>
             <div class="header-bottom-right">
-                <div class="account"><a href={{ url('login') }}><span> </span>TÀI KHOẢN CỦA BẠN</a></div>
+                <div class="account"><a href=#><span> </span>TÀI KHOẢN CỦA BẠN</a></div>
                 <ul class="login">
-                    <li><a href={{ url('login') }}><span> </span>ĐĂNG NHẬP</a></li> |
-                    <li><a href={{ url('register') }}>ĐĂNG KÝ</a></li>
+                    @if (isset($user_info))
+                        <li><a href=#></a>{{$user_info->ten}}</li> |
+                        <li><a href='/logout'>ĐĂNG XUẤT</a></li> |
+                    @else
+                        <li><a href='/login'><span> </span>ĐĂNG NHẬP</a></li> |
+                        <li><a href={{ url('register') }}>ĐĂNG KÝ</a></li>
+                    @endif
                 </ul>
                 <div class="cart">
 

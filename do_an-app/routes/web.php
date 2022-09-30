@@ -14,14 +14,6 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
-Route::get(
-    '/login',
-    'App\Http\Controllers\UserController@createNewAccount'
-);
-Route::post('/save-register', [
-    'as' => 'savecreatenewaccount',
-    'uses' => 'App\Http\Controllers\UserController@store'
-]);
 Route::get('/', 'App\Http\Controllers\SanPhamController@index');
 // Route::get('/', 'App\Http\Controllers\SanPhamController@mau_ao_moi');
 //     return view('trang_chu');
@@ -38,15 +30,23 @@ Route::get('/product', function () {
 Route::get('/product-nike', 'App\Http\Controllers\SP_NikeController@index');
 Route::get('/product-jordan', 'App\Http\Controllers\SP_JordanController@index');
 
+Route::post('/register', [
+    "as" => "saveCreateNewAccount",
+    "uses" => "App\Http\Controllers\UserController@store"
+]);
 
-Route::get('/register', function () {
-    return view('register_acc');
-});
+Route::get('/register','App\Http\Controllers\UserController@createNewAccount');
 
+Route::get('/login','App\Http\Controllers\UserController@login');
 
+Route::post('/login', [
+    "as" => "loginAccount",
+    "uses" => "App\Http\Controllers\UserController@login_Account"
+]);
+
+Route::get('/logout', 'App\Http\Controllers\UserController@logout');
 
 Route::get('/add-gio-hang/{id_sp}', "App\Http\Controllers\SanPhamController@add_gio_hang");
-
 
 Route::get('/update-gio-hang/{id_sp}', "App\Http\Controllers\SanPhamController@update_gio_hang");
 

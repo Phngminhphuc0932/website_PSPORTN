@@ -28,9 +28,11 @@ class SanPhamController extends Controller
         $list_mau_giay_moi = DB::table('sb_san_pham')->where('id_loai_sp', '2')->where('noi_bat', 1)->get();
 
 
+        $user_info = Session::get('user_info');
+
 
         return view('trang_chu')
-
+            ->with('user_info', $user_info)
             ->with('list_sp_noi_bat', $list_sp_noi_bat)->with('list_mau_ao_moi', $list_mau_ao_moi)->with('list_mau_giay_moi', $list_mau_giay_moi);
     }
 

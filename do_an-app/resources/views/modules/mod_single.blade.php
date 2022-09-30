@@ -24,7 +24,8 @@
                 <h4>{{ $sp_s->ten_san_pham }}</h4>
                 <div class="cart-b">
                     <div class="left-n ">@VND_monney($sp_s->don_gia) đ</div>
-                    <a class="now-get get-cart-in" href="#">ADD TO CART</a>
+                    <a class="now-get get-cart-in"  href="gio-hang?id_sp={{ $sp_s->ID }}"
+                        data-id-sp="{{ $sp_s->ID }}">ADD TO CART</a>
                     <div class="clearfix"></div>
                 </div>
                 <h6>100 items in stock</h6>
