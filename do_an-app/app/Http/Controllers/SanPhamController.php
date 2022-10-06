@@ -226,10 +226,12 @@ class SanPhamController extends Controller
     {
         $id_sp = $request->get('id_sp');
         $sp_single = DB::table('sb_san_pham')->where('ID', $id_sp)->get();
+        $img_more = DB::table('sb_hinh_san_pham')->where('id_sp', $id_sp)->get();
         $list_mau_ao_moi = DB::table('sb_san_pham')->where('trang_thai', 1)->get();
 
         return view('single')
         // ->with('list_mau_ao_moi', $list_mau_ao_moi)
-        ->with('sp_single', $sp_single);
+        ->with('sp_single', $sp_single)
+        ->with('img_more', $img_more);
     }
 }

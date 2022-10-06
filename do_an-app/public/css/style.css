@@ -8,6 +8,7 @@ body {
     background: #fff;
     font-family: "Open Sans", sans-serif;
 }
+
 body a {
     transition: 0.5s all;
     -webkit-transition: 0.5s all;
@@ -372,7 +373,7 @@ a.banner-matter {
 .con-sed-grid {
     border: 1px solid #ddd;
     padding: 1.5em 1em 2em;
-    margin: 0em 3% 0 0;
+    margin: 0em 2% 0 0;
     width: 48%;
 }
 .elit-grid {

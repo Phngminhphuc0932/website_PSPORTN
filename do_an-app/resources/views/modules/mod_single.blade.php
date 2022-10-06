@@ -6,25 +6,31 @@
                     @if (isset($sp_single))
                         @foreach ($sp_single as $sp_s)
                             <li>
-                                <a href="optionallink.html">
-                                    <img class="etalage_thumb_image" src="images/{{ $sp_s->hinh }}"
-                                        class="img-responsive" />
-                                    <img class="etalage_source_image" src="images/{{ $sp_s->hinh }}"
-                                        class="img-responsive" title="" />
-                                </a>
+                                <img class="etalage_thumb_image" src="images/hinh_sp/{{ $sp_s->hinh }}"
+                                    class="img-responsive" />
+                                <img class="etalage_source_image" src="images/hinh_sp/{{ $sp_s->hinh }}"
+                                    class="img-responsive" title="" />
                             </li>
                         @endforeach
+                        @if (isset($img_more))
+                            @foreach ($img_more as $img)
+                                <li>
+                                    <img class="etalage_thumb_image" src="images/hinh_sp/{{ $img->ten_hinh }}"
+                                        class="img-responsive" />
+                                    <img class="etalage_source_image" src="images/hinh_sp/{{ $img->ten_hinh }}"
+                                        class="img-responsive" title="" />
+                                </li>
+                            @endforeach
+                        @endif
                     @endif
                 </ul>
                 <div class="clearfix"> </div>
             </div>
             <div class="desc1 span_3_of_2">
-
-
                 <h4>{{ $sp_s->ten_san_pham }}</h4>
                 <div class="cart-b">
                     <div class="left-n ">@VND_monney($sp_s->don_gia) đ</div>
-                    <a class="now-get get-cart-in"  href="gio-hang?id_sp={{ $sp_s->ID }}"
+                    <a class="now-get get-cart-in" href="gio-hang?id_sp={{ $sp_s->ID }}"
                         data-id-sp="{{ $sp_s->ID }}">ADD TO CART</a>
                     <div class="clearfix"></div>
                 </div>
