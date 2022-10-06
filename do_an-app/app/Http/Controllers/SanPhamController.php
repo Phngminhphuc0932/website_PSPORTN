@@ -24,8 +24,8 @@ class SanPhamController extends Controller
         // $list_sp_noi_bat = DB::table('sb_san_pham')->where('noi_bat', 1)->limit(3)->get();
         // $list_mau_ao_moi = DB::table('sb_san_pham')->where('trang_thai', 1)->limit(2)->get();
         $list_sp_noi_bat = DB::table('sb_san_pham')->where('noi_bat', 1)->get();
-        $list_mau_ao_moi = DB::table('sb_san_pham')->where('trang_thai', 1)->get();
-        $list_mau_giay_moi = DB::table('sb_san_pham')->where('id_loai_sp', '2')->where('noi_bat', 1)->get();
+        // $list_mau_ao_moi = DB::table('sb_san_pham')->where('trang_thai', 1)->get();
+        // $list_mau_giay_moi = DB::table('sb_san_pham')->where('id_loai_sp', '2')->where('noi_bat', 1)->get();
 
 
         $user_info = Session::get('user_info');
@@ -33,7 +33,9 @@ class SanPhamController extends Controller
 
         return view('trang_chu')
             ->with('user_info', $user_info)
-            ->with('list_sp_noi_bat', $list_sp_noi_bat)->with('list_mau_ao_moi', $list_mau_ao_moi)->with('list_mau_giay_moi', $list_mau_giay_moi);
+            ->with('list_sp_noi_bat', $list_sp_noi_bat);
+            // ->with('list_mau_ao_moi', $list_mau_ao_moi)
+            // ->with('list_mau_giay_moi', $list_mau_giay_moi);
     }
 
     /**
@@ -226,6 +228,8 @@ class SanPhamController extends Controller
         $sp_single = DB::table('sb_san_pham')->where('ID', $id_sp)->get();
         $list_mau_ao_moi = DB::table('sb_san_pham')->where('trang_thai', 1)->get();
 
-        return view('single')->with('list_mau_ao_moi', $list_mau_ao_moi)->with('sp_single', $sp_single);
+        return view('single')
+        // ->with('list_mau_ao_moi', $list_mau_ao_moi)
+        ->with('sp_single', $sp_single);
     }
 }

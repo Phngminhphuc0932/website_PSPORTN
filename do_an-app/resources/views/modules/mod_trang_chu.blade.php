@@ -10,9 +10,10 @@
                                     <div class="banner-matter">
 
                                         <div class="col-md-5 banner-bag">
-                                            <img class="img-responsive " src="images/{{ $sp_noi_bat->hinh }}"
+                                            <img class="img-responsive " src="images/hinh_sp/{{ $sp_noi_bat->hinh }}"
                                                 alt=" " />
                                         </div>
+
 
                                         <div class="col-md-7 banner-off">
                                             <h2>FLASH SALE 50% 0FF</h2>

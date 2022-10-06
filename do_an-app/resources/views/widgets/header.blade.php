@@ -54,7 +54,7 @@
                 <div class="account"><a href=#><span> </span>TÀI KHOẢN CỦA BẠN</a></div>
                 <ul class="login">
                     @if (isset($user_info))
-                        <li><a href=#></a>{{$user_info->ten}}</li> |
+                        <li><a href=#></a>{{$user_info->ten}}</li> | <br>
                         <li><a href='/logout'>ĐĂNG XUẤT</a></li> |
                     @else
                         <li><a href='/login'><span> </span>ĐĂNG NHẬP</a></li> |
