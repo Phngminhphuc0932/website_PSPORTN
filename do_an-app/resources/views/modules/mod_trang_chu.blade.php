@@ -75,7 +75,7 @@
                 @foreach ($list_mau_ao_moi as $mau_ao_moi)
                     <div class="col-md-4 chain-grid">
                         <a href="/single?id_sp={{ $mau_ao_moi->ID }}"><img class="img-responsive chain"
-                                src="images/{{ $mau_ao_moi->hinh }}" alt=" " /></a>
+                                src="images/hinh_sp/{{ $mau_ao_moi->hinh }}" alt=" " /></a>
                         <span class="star"></span>
                         <div class="grid-chain-bottom">
                             <h6>
@@ -83,8 +83,8 @@
                             </h6>
                             <div class="star-price">
                                 <div class="dolor-grid">
-                                    <span class="actual">@VND_monney($mau_ao_moi->don_gia) ₫</span><br>
-                                    <span class="reducedfrom">@VND_monney($mau_ao_moi->gia_giam) ₫</span>
+                                    <span class="actual">@VND_monney($mau_ao_moi->gia_giam) ₫</span><br>
+                                    <span class="reducedfrom">@VND_monney($mau_ao_moi->don_gia) ₫</span>
                                     <span class="rating">
                                         <input type="radio" class="rating-input" id="rating-input-1-5"
                                             name="rating-input-1">
@@ -128,7 +128,7 @@
                 @foreach ($list_mau_giay_moi as $mau_giay_moi)
                     <div class="col-md-4 chain-grid">
                         <a href="/single?id_sp={{ $mau_giay_moi->ID }}"><img class="img-responsive chain"
-                                src="images/{{ $mau_giay_moi->hinh }}" alt=" " /></a>
+                                src="images/hinh_sp/{{ $mau_giay_moi->hinh }}" alt=" " /></a>
                         <span class="star"> </span>
                         <div class="grid-chain-bottom">
                             <h6><a href="/single?id_sp={{ $mau_giay_moi->ID }}">{{ $mau_giay_moi->ten_san_pham }}</a>
