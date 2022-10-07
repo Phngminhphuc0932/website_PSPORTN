@@ -17,6 +17,7 @@ body a {
     -moz-transition: 0.5s all;
 }
 .top-header {
+    margin-top: -20px;
     background: #6ebfea;
     padding: 0.7em 0;
 }

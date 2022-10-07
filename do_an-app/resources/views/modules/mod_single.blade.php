@@ -29,7 +29,9 @@
             <div class="desc1 span_3_of_2">
                 <h4>{{ $sp_s->ten_san_pham }}</h4>
                 <div class="cart-b">
-                    <div class="left-n ">@VND_monney($sp_s->don_gia) đ</div>
+                    <div class="left-n">@VND_monney($sp_s->gia_giam) đ
+                    <span class="left-n reducedfrom">@VND_monney($sp_s->don_gia) ₫</span>
+                    </div>
                     <a class="now-get get-cart-in" href="gio-hang?id_sp={{ $sp_s->ID }}"
                         data-id-sp="{{ $sp_s->ID }}">ADD TO CART</a>
                     <div class="clearfix"></div>

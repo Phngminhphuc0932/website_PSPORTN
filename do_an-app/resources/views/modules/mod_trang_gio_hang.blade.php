@@ -26,13 +26,13 @@
                                 <td>
                                     <div class="product-item">
                                         <a class="product-thumb" href="#"><img
-                                                src="/images/{{ $sp_gio_hang->hinh }}" alt="Product"></a>
+                                                src="/images/hinh_sp/{{ $sp_gio_hang->hinh }}" alt="Product"></a>
                                         <div class="product-info">
                                             <h4 class="product-title"><a
                                                     href="#">{{ $sp_gio_hang->ten_san_pham }}</a>
                                             </h4>
                                             <span><em>Size:</em>
-                                                {{ $sp_gio_hang->Size }}</span><span><em>Color:</em> Dark Blue</span>
+                                                </span><span><em>Color:</em> Dark Blue</span>
                                         </div>
                                     </div>
                                 </td>

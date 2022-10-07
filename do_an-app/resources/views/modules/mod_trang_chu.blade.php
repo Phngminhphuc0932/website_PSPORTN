@@ -6,15 +6,11 @@
                     @foreach ($list_sp_noi_bat as $sp_noi_bat)
                         <div class="wmuSliderWrapper">
                             <article style="position: absolute; width: 100%; opacity: 0;">
-
                                 <div class="banner-matter">
-
                                     <div class="col-md-5 banner-bag">
                                         <img class="img-responsive " src="images/hinh_sp/{{ $sp_noi_bat->hinh }}"
                                             alt=" " />
                                     </div>
-
-
                                     <div class="col-md-7 banner-off">
                                         <h2>FLASH SALE 50% 0FF</h2>
                                         <label><b>VỚI TẤT CẢ HÓA ĐƠN</b> MUA HÀNG</label>
@@ -24,15 +20,10 @@
                                         <a href="/single?id_sp={{ $sp_noi_bat->ID }}">
                                             <span class="on-get">Mua Ngay</span>
                                         </a>
-
                                     </div>
-
                                     <div class="clearfix"> </div>
-
                                 </div>
-
                             </article>
-
                         </div>
                     @endforeach
                 @endif
@@ -52,15 +43,16 @@
         <div class="shoes-grid-left">
             @if (isset($list_sp_noi_bat))
                 @foreach ($list_sp_noi_bat->splice(0, 2) as $sp_noi_bat)
-                        <div class="col-md-6 con-sed-grid">
-                            <div class=" elit-grid">
-                                <label>{{$sp_noi_bat->ten_san_pham}}</label>
-                                <p class="in_par">Trải nghiệm ngay những đôi giày tốt nhất tại cửa hàng chúng tôi!</p>
-                                <span class="on-get">MUA NGAY</span>
-                            </div>
-                            <img class="img-responsive shoe-left" src="images/hinh_sp/{{$sp_noi_bat->hinh}}" alt=" " />
-                            <div class="clearfix"> </div>
+                    <div class="col-md-6 con-sed-grid">
+                        <div class=" elit-grid">
+                            <label>{{ $sp_noi_bat->ten_san_pham }}</label>
+                            <p class="in_par">Trải nghiệm ngay những đôi giày tốt nhất tại cửa hàng chúng tôi!</p>
+                            <span class="on-get">MUA NGAY</span>
                         </div>
+                        <img class="img-responsive shoe-left" src="images/hinh_sp/{{ $sp_noi_bat->hinh }}"
+                            alt=" " />
+                        <div class="clearfix"> </div>
+                    </div>
                 @endforeach
             @endif
 
