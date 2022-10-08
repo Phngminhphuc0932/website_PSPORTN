@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Middleware\EnsureAdminRole;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 
@@ -27,7 +27,7 @@ Route::get('/contact', function () {
 Route::get('/product', function () {
     return view('production');
 });
-Route::get('/product-nike', 'App\Http\Controllers\SP_NikeController@index');
+Route::get('/product-nike', 'App\Http\Controllers\NIKEController@index');
 Route::get('/product-jordan', 'App\Http\Controllers\SP_JordanController@index');
 
 Route::post('/register', [
@@ -42,6 +42,10 @@ Route::get('/login','App\Http\Controllers\UserController@login');
 Route::post('/login', [
     "as" => "loginAccount",
     "uses" => "App\Http\Controllers\UserController@login_Account"
+]);
+Route::post('/dang-nhap', [
+    "as" => "loginAccount",
+    "uses" => "App\Http\Controllers\UserController@login_admin"
 ]);
 
 Route::get('/logout', 'App\Http\Controllers\UserController@logout');
@@ -65,3 +69,8 @@ Route::post('/thanh-toan', [
 
 Route::get('/single', "App\Http\Controllers\SanPhamController@san_pham_moi");
 
+
+/*ADMIN*/
+Route::get('/admin', 'App\Http\Controllers\AdminController@index')->middleware(EnsureAdminRole::class); 
+Route::get('/login-admin', 'App\Http\Controllers\AdminController@login_admin');
+Route::get('/admin/ql-san-pham', 'App\Http\Controllers\SPAdminController@index');

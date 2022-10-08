@@ -5,7 +5,7 @@
             <li class="item1"><a href="#">NỔI BẬT<img class="arrow-img" src="images/arrow1.png"
                         alt="" /> </a>
                 <ul class="cute">
-                    <li class="subitem1"><a href="/product">NIKE </a></li>
+                    <li class="subitem1"><a href="/product-nike">NIKE </a></li>
                     <li class="subitem2"><a href="/product">JORDAN </a></li>
                     <li class="subitem3"><a href="/product">PEAK SPORT </a></li>
                 </ul>

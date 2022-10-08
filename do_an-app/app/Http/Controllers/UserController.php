@@ -8,6 +8,8 @@ use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
+
 use stdClass;
 
 class UserController extends Controller
@@ -56,7 +58,7 @@ class UserController extends Controller
         $data_string_user = file_get_contents(resource_path('data_temp/users.json'));
         $list_user = json_decode($data_string_user);
         $list_user[] = $user_new;
-        file_put_contents(resource_path('data_temp/users.json'),json_encode($list_user));
+        file_put_contents(resource_path('data_temp/users.json'), json_encode($list_user));
 
         Session::put('user_info', $user_new);
 
@@ -64,8 +66,6 @@ class UserController extends Controller
             ->with('message_notice', "Đăng ký thành công!!")
             ->with('type_notice', 'success')
             ->with('url_redirect', '/');
-
-
     }
 
     /**
@@ -118,17 +118,20 @@ class UserController extends Controller
         return view('register_acc');
     }
 
-    function login(){
+    function login()
+    {
         return view('login_page');
     }
 
-    function logout(Request $request){
+    function logout(Request $request)
+    {
         Session::forget('user_info');
 
         return redirect($request->server('HTTP_REFERER'), 302);
     }
 
-    function login_Account(LoginRequest $request){
+    function login_Account(LoginRequest $request)
+    {
         $email = $request->input('email');
         $password = $request->input('password');
 
@@ -137,16 +140,64 @@ class UserController extends Controller
             ->where('mat_khau', md5($password))
             ->first();
 
-        if(isset($user->email)){
+        if (isset($user->email)) {
             $user->mat_khau = '';
             Session::put('user_info', $user);
             return redirect('/');
-        }
-        else {
+        } else {
             return redirect($_SERVER['HTTP_REFERER'])->withErrors(['Tài khoản hoặc mật khẩu không chính xác'], 'loginErrors');
         }
 
-        echo '<pre>',print_r($user),'</pre>';
+        echo '<pre>', print_r($user), '</pre>';
+
+        return redirect($_SERVER['HTTP_REFERER'])->withErrors(['Server Internal Error'], 'loginErrors');
+    }
+    function login_admin(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'ten_dang_nhap' => 'required',
+            'mat_khau' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect($_SERVER['HTTP_REFERER'])->withErrors($validator, 'loginErrors');
+        }
+
+
+
+        $username = $request->input('ten_dang_nhap');
+        $password = $request->input('mat_khau');
+
+        // $data_string_user = file_get_contents(resource_path('data_temp/users.json'));
+        // $list_user = json_decode($data_string_user);
+
+        // $login_flag = 0;
+        // for($i = 0; $i < count($list_user); $i++){
+        //     if($list_user[$i]->username == $username && $list_user[$i]->password == $password){
+        //         $login_flag = 1;
+        //         Session::put('user_info', $list_user[$i]);
+        //         return redirect('/');
+        //     }
+        // }
+
+        // if($login_flag === 0){
+        //     return redirect($_SERVER['HTTP_REFERER'])->withErrors(['Tài khoản hoặc mật khẩu không chính xác'], 'loginErrors');
+        // }
+
+        $user = DB::table('sb_user')
+            ->where('tai_khoan', $username)
+            ->where('mat_khau', md5($password))
+            ->first();
+
+        if (isset($user->tai_khoan)) {
+            $user->mat_khau = '';
+            Session::put('user_info', $user);
+            return redirect($_SERVER['HTTP_REFERER']);
+        } else {
+            return redirect($_SERVER['HTTP_REFERER'])->withErrors(['Tài khoản hoặc mật khẩu không chính xác'], 'loginErrors');
+        }
+
+        //echo '<pre>',print_r($user),'</pre>';
 
         return redirect($_SERVER['HTTP_REFERER'])->withErrors(['Server Internal Error'], 'loginErrors');
     }
