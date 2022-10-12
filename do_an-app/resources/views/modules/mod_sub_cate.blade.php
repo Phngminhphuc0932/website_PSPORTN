@@ -2,7 +2,6 @@
     <div class=" top-nav rsidebar span_1_of_left">
         <h3 class="cate">DANH MỤC </h3>
         <ul class="menu">
-<<<<<<< HEAD
             <li class="item1"><a href="#">NỔI BẬT<img class="arrow-img" src="images/arrow1.png"
                         alt="" /> </a>
                 <ul class="cute">
@@ -47,7 +46,6 @@
                     <li class="subitem3"><a href="/product">ACESSORIES SALES </a></li>
                 </ul>
             </li>
-=======
             @for ($i = 0; $i < count($ds_loai_sp); $i++)
                 <li @if (count($ds_loai_sp[$i]->ds_loai_con) > 0) class="item1" @endif><a
                         href="#">{{ $ds_loai_sp[$i]->ten_loai_sp }}<img class="arrow-img" src="images/arrow1.png"
@@ -62,7 +60,6 @@
                     @endif
                 </li>
             @endfor
->>>>>>> 8aba977538443b1c8b5aa7a69e1913e5f2c39c62
             <ul class="kid-menu ">
                 <li class="menu-kid-left"><a href={{ url('contact') }}>CONTACT US</a></li>
             </ul>

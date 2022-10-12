@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Middleware\EnsureAdminRole;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
@@ -35,9 +36,9 @@ Route::post('/register', [
     "uses" => "App\Http\Controllers\UserController@store"
 ]);
 
-Route::get('/register','App\Http\Controllers\UserController@createNewAccount');
+Route::get('/register', 'App\Http\Controllers\UserController@createNewAccount');
 
-Route::get('/login','App\Http\Controllers\UserController@login');
+Route::get('/login', 'App\Http\Controllers\UserController@login');
 
 Route::post('/login', [
     "as" => "loginAccount",
@@ -71,6 +72,21 @@ Route::get('/single', "App\Http\Controllers\SanPhamController@san_pham_moi");
 
 
 /*ADMIN*/
-Route::get('/admin', 'App\Http\Controllers\AdminController@index')->middleware(EnsureAdminRole::class); 
+Route::get('/admin', 'App\Http\Controllers\AdminController@index')->middleware(EnsureAdminRole::class);
 Route::get('/login-admin', 'App\Http\Controllers\AdminController@login_admin');
-Route::get('/admin/ql-san-pham', 'App\Http\Controllers\SPAdminController@index');
+
+Route::get('/admin/ql-san-pham', 'App\Http\Controllers\SPAdminController@index')->middleware(EnsureAdminRole::class);
+Route::get('/admin/ql-san-pham/edit/{id_sp}', 'App\Http\Controllers\SPAdminController@edit')->middleware(EnsureAdminRole::class);
+Route::post('/admin/ql-san-pham/edit/{id_sp}', 'App\Http\Controllers\SPAdminController@update')->middleware(EnsureAdminRole::class);
+Route::get('/admin/ql-san-pham/delete/{id_sp}', 'App\Http\Controllers\SPAdminController@destroy')->middleware(EnsureAdminRole::class);
+
+Route::get('/admin/ql-khach-hang', 'App\Http\Controllers\UserAdminController@index')->middleware(EnsureAdminRole::class);
+Route::get('/admin/ql-khach-hang/edit/{id_user}', 'App\Http\Controllers\UserAdminController@edit')->middleware(EnsureAdminRole::class);
+Route::post('/admin/ql-khach-hang/edit/{id_user}', 'App\Http\Controllers\UserAdminController@update')->middleware(EnsureAdminRole::class);
+Route::get('/admin/ql-khach-hang/delete/{id_user}', 'App\Http\Controllers\UserAdminController@destroy')->middleware(EnsureAdminRole::class);
+
+Route::get('/admin/ql-don-hang', 'App\Http\Controllers\DHangAdminController@index')->middleware(EnsureAdminRole::class);
+Route::get('/admin/ql-don-hang/pagination/{current_page}', 'App\Http\Controllers\DHangAdminController@pagination');
+Route::get('/admin/ql-don-hang/edit/{id_don_hang}', 'App\Http\Controllers\DHangAdminController@edit')->middleware(EnsureAdminRole::class);
+Route::post('/admin/ql-don-hang/edit/{id_don_hang}', 'App\Http\Controllers\DHangAdminController@update')->middleware(EnsureAdminRole::class);
+Route::get('/admin/ql-don-hang/delete/{id_don_hang}', 'App\Http\Controllers\DHangAdminController@destroy')->middleware(EnsureAdminRole::class);

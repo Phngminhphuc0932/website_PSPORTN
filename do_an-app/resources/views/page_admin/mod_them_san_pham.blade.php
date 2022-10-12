@@ -22,17 +22,17 @@
                     </div>
                     <label class="col-sm-2 control-label" class="form-control">Loại sách</label>
                     <div class="col-sm-4">
-                        <select name="id_loai_sach" id="" class="form-control">
-                            @foreach ($ds_loai_sach as $loai_sach)
-                                <option value="{{ $loai_sach->id }}"
-                                    @if ($thong_tin_san_pham->id_loai_sach == $loai_sach->id) selected="selected" @endif>
-                                    {{ $loai_sach->ten_loai_sach }}
+                        <select name="id_san_pham" id="" class="form-control">
+                            @foreach ($ds_san_pham as $san_pham)
+                                <option value="{{ $san_pham->id }}"
+                                    @if ($thong_tin_san_pham->id_san_pham == $san_pham->id) selected="selected" @endif>
+                                    {{ $san_pham->ten_san_pham }}
                                 </option>
-                                @if (count($loai_sach->ds_loai_con) > 0)
-                                    @foreach ($loai_sach->ds_loai_con as $loai_con)
+                                @if (count($san_pham->ds_loai_con) > 0)
+                                    @foreach ($san_pham->ds_loai_con as $loai_con)
                                         <option value="{{ $loai_con->id }}"
-                                            @if ($thong_tin_san_pham->id_loai_sach == $loai_con->id) selected="selected" @endif>
-                                            |== {{ $loai_con->ten_loai_sach }}
+                                            @if ($thong_tin_san_pham->id_san_pham == $loai_con->id) selected="selected" @endif>
+                                            |== {{ $loai_con->ten_san_pham }}
                                         </option>
                                     @endforeach
                                 @endif
@@ -65,9 +65,9 @@
                     <label class="col-sm-2 control-label">Tác giả:</label>
                     <div class="col-sm-4">
                         <select name="id_tac_gia" id="" class="form-control">
-                            @foreach ($ds_tac_gia as $tac_gia)
+                            @foreach ($ds_ncc as $ncc)
                                 <option value="{{ $tac_gia->id }}"
-                                    @if ($thong_tin_san_pham->id_tac_gia == $tac_gia->id) selected="selected" @endif>
+                                    @if ($thong_tin_san_pham->id_nha_cung_cap == $ncc->id) selected="selected" @endif>
                                     {{ $tac_gia->ten_tac_gia }}
                                 </option>
                             @endforeach
@@ -309,15 +309,15 @@
                     </div>
                     <label class="col-sm-2 control-label" class="form-control">Loại sách</label>
                     <div class="col-sm-4">
-                        <select name="id_loai_sach" id="" class="form-control">
-                            @foreach ($ds_loai_sach as $loai_sach)
-                                <option value="{{ $loai_sach->id }}">
-                                    {{ $loai_sach->ten_loai_sach }}
+                        <select name="id_san_pham" id="" class="form-control">
+                            @foreach ($ds_san_pham as $san_pham)
+                                <option value="{{ $san_pham->id }}">
+                                    {{ $san_pham->ten_san_pham }}
                                 </option>
-                                @if (count($loai_sach->ds_loai_con) > 0)
-                                    @foreach ($loai_sach->ds_loai_con as $loai_con)
+                                @if (count($san_pham->ds_loai_con) > 0)
+                                    @foreach ($san_pham->ds_loai_con as $loai_con)
                                         <option value="{{ $loai_con->id }}">
-                                            |== {{ $loai_con->ten_loai_sach }}
+                                            |== {{ $loai_con->ten_san_pham }}
                                         </option>
                                     @endforeach
                                 @endif
@@ -347,9 +347,9 @@
                     <label class="col-sm-2 control-label">Tác giả:</label>
                     <div class="col-sm-4">
                         <select name="id_tac_gia" id="" class="form-control">
-                            @foreach ($ds_tac_gia as $tac_gia)
-                                <option value="{{ $tac_gia->id }}">
-                                    {{ $tac_gia->ten_tac_gia }}
+                            @foreach ($ds_ncc as $ncc)
+                                <option value="{{ $ncc->id }}">
+                                    {{ $ncc->ten_ncc }}
                                 </option>
                             @endforeach
                         </select>
@@ -360,9 +360,9 @@
                     <label class="col-sm-2 control-label">Nhà xuất bản:</label>
                     <div class="col-sm-4">
                         <select name="id_nha_xuat_ban" id="" class="form-control">
-                            @foreach ($ds_nxb as $nxb)
-                                <option value="{{ $nxb->id }}">
-                                    {{ $nxb->ten_nha_xuat_ban }}
+                            @foreach ($ds_nsx as $nsx)
+                                <option value="{{ $nsx->id }}">
+                                    {{ $nsx->ten_nha_san_xuat }}
                                 </option>
                             @endforeach
                         </select>

@@ -34,35 +34,35 @@
                 <div class="col-lg-12">
                     <section class="panel">
                         <header class="panel-heading">
-                            Bảng sản phẩm
+                            Bảng Khách hàng
                         </header>
 
                         <table id="ds_san_pham" class="table table-striped table-advance table-hover">
                             <thead>
                                 <tr>
-                                    <th><i class="icon_profile"></i> Tên sản phẩm</th>
-                                    <th><i class="icon_calendar"></i> Loại sản phẩm</th>
-                                    <th><i class="icon_mail_alt"></i> nhà cung cấp</th>
-                                    <th><i class="icon_pin_alt"></i> nhà sản xuất</th>
-                                    <th><i class="icon_mobile"></i> Nổi bật</th>
+                                    <th><i class="icon_profile"></i> Tên khách hàng</th>
+                                    <th><i class="icon_calendar"></i> Email</th>
+                                    <th><i class="icon_mail_alt"></i> Điểm tích lũy</th>
+                                    <th><i class="icon_pin_alt"></i> Điện thoại</th>
+                                    <th><i class="icon_mobile"></i> Loại tài khoản</th>
                                     <th><i class="icon_cogs"></i> Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($ds_san_pham as $san_pham)
+                                @foreach ($ds_khach_hang as $khach_hang)
                                     <tr>
-                                        <td>{{ $san_pham->ten_san_pham }}</td>
-                                        <td>{{ $san_pham->id_loai_sp }}</td>
-                                        <td>{{ $san_pham->ten_nha_cung_cap }}</td>
-                                        <td>{{ $san_pham->ten_nha_san_xuat }}</td>
-                                        <td>{{ $san_pham->noi_bat ? 1 : 0 }}</td>
+                                        <td>{{ $khach_hang->ten }}</td>
+                                        <td>{{ $khach_hang->email }}</td>
+                                        <td>{{ $khach_hang->diem_tich_luy }}</td>
+                                        <td>{{ $khach_hang->dien_thoai }}</td>
+                                        <td>{{ $khach_hang->ten_loai_user }}</td>
                                         <td>
                                             <div class="btn-group">
                                                 <a class="btn btn-primary"
-                                                    href="/admin/ql-san-pham/edit/{{ $san_pham->id }}"><i
+                                                    href="/admin/ql-khach-hang/edit/{{ $khach_hang->id }}"><i
                                                         class="icon_pencil"></i></a>
                                                 <a class="btn btn-danger" onclick="return confirm_delete();"
-                                                    href="/admin/ql-san-pham/delete/{{ $san_pham->id }}"><i
+                                                    href="/admin/ql-khach-hang/delete/{{ $khach_hang->id }}"><i
                                                         class="icon_trash"></i></a>
                                             </div>
                                         </td>
