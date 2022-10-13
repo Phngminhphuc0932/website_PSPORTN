@@ -56,7 +56,7 @@
                                     </td>
                                 </tr>
                                 @endforeach
-                                
+
                             </tbody> --}}
                         </table>
                     </section>
@@ -109,13 +109,13 @@
                             for (var i = 0; i < data.ds_don_hang.length; i++) {
                                 html_ds_don_hang += `
                                 <tr>
-                                    <td>${data.ds_don_hang[i].id}</td>
+                                    <td>${data.ds_don_hang[i].ID}</td>
                                     <td>${data.ds_don_hang[i].ho_ten_nguoi_nhan}</td>
                                     <td>${data.ds_don_hang[i].tong_tien}</td>
                                     <td>
                                         <div class="btn-group">
-                                            <a class="btn btn-primary" href="/admin/ql-don-hang/edit/${data.ds_don_hang[i].id}"><i class="icon_pencil"></i></a>
-                                            <a class="btn btn-danger" onclick="return confirm_delete();" href="/admin/ql-don-hang/delete/${data.ds_don_hang[i].id}"><i class="icon_trash"></i></a>
+                                            <a class="btn btn-primary" href="/admin/ql-don-hang/edit/${data.ds_don_hang[i].ID}"><i class="icon_pencil"></i></a>
+                                            <a class="btn btn-danger" onclick="return confirm_delete();" href="/admin/ql-don-hang/delete/${data.ds_don_hang[i].ID}"><i class="icon_trash"></i></a>
                                         </div>
                                     </td>
                                 </tr>

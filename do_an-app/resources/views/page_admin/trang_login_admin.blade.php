@@ -10,7 +10,7 @@
 
     <title>P-SPORT-N Quản Trị</title>
 
-    <!-- Bootstrap CSS -->    
+    <!-- Bootstrap CSS -->
     <link href="admin_page/css/bootstrap.min.css" rel="stylesheet">
     <!-- bootstrap theme -->
     <link href="admin_page/css/bootstrap-theme.css" rel="stylesheet">
@@ -33,7 +33,7 @@
 
     <div class="container">
 
-      <form class="login-form" action="/dang-nhap" method="POST">  
+      <form class="login-form" action="/dang-nhap" method="POST">
         @if($errors->loginErrors->first())
           <div class="error_message panel panel-danger">
               <div class="panel-heading">Vui lòng kiểm tra lỗi</div>
@@ -41,8 +41,8 @@
                   <div class="panel-body item_message text-danger">{{$error}}</div>
               @endforeach
           </div>
-          @endif 
-        @csrf     
+          @endif
+        @csrf
         <div class="login-wrap">
             <p class="login-img"><i class="icon_lock_alt"></i></p>
             <div class="input-group">

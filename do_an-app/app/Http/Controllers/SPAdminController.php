@@ -104,7 +104,7 @@ class SPAdminController extends Controller
         $ds_nsx = DB::table('sb_nha_san_xuat')->get();
         $ds_ncc = DB::table('sb_nha_cung_cap')->get();
 
-        $thong_tin_san_pham = DB::table('sb_san_pham')->where('id', $id)->first();
+        $thong_tin_san_pham = DB::table('sb_san_pham')->where('ID', $id)->first();
 
         return view('page_admin.trang_them_san_pham')
             ->with('ds_nsx', $ds_nsx)
@@ -148,7 +148,7 @@ class SPAdminController extends Controller
         }
 
         $result = DB::table('sb_san_pham')
-            ->where('id', $id)
+            ->where('ID', $id)
             ->update([
                 'id_loai_san_pham' => $id_loai_san_pham,
                 'gioi_thieu' => $gioi_thieu,
@@ -173,7 +173,7 @@ class SPAdminController extends Controller
     public function destroy($id)
     {
         try {
-            DB::table('sb_san_pham')->where('id', $id)->delete();
+            DB::table('sb_san_pham')->where('ID', $id)->delete();
             return redirect($_SERVER['HTTP_REFERER'])->withErrors('Xoá thành công ', 'NoticeDelete');
         } catch (Exception $e) {
             return redirect($_SERVER['HTTP_REFERER'])->withErrors('Bị lỗi trong quá trình xóa vui lòng thử lại: ' . $e, 'NoticeDelete');
