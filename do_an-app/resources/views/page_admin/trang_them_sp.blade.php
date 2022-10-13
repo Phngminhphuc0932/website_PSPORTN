@@ -13,7 +13,7 @@
                 </ol> --}}
             </div>
         </div>
-        @include('page_admin.mod_them_san_pham')
+        @include('page_admin.modules.mod_them_sp')
     </section>
 </section>
 @endsection
