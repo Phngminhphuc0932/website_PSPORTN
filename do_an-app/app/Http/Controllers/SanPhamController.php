@@ -234,4 +234,16 @@ class SanPhamController extends Controller
         ->with('sp_single', $sp_single)
         ->with('img_more', $img_more);
     }
+
+    function product_type(Request $request){
+        $id_loai_sp = $request->get('id_loai_sp');
+        $list_sp = DB::table('sb_san_pham')->where('id_loai_sp', $id_loai_sp)->get();
+        $name_loai_sp = DB::table('sb_loai_san_pham')->where('id_loai_sp', $id_loai_sp)->get();
+        //  echo '<pre>',print_r($list_sp) ,'</pre>';
+
+        return view('product')
+        ->with('name_loai_sp', $name_loai_sp)
+        ->with('list_sp', $list_sp)
+        ->with('id_loai_sp',$id_loai_sp);
+    }
 }

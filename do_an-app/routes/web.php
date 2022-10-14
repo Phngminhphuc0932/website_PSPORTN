@@ -70,6 +70,7 @@ Route::post('/thanh-toan', [
 
 Route::get('/single', "App\Http\Controllers\SanPhamController@san_pham_moi");
 
+Route::get('/product-type', "App\Http\Controllers\SanPhamController@product_type");
 
 /*ADMIN*/
 Route::get('/admin', 'App\Http\Controllers\AdminController@index')->middleware(EnsureAdminRole::class);
