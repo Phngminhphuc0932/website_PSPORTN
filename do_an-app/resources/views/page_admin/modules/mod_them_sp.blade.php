@@ -19,11 +19,13 @@
                     Loại sản phẩm
                 </div>
                 <div class="col-md-9">
-                    <select  name="id_loai_sp" id="id_loai_sp" class="form-control" value=""
-                    required="required" name="" id="">
-                        @if(isset($list_loai_sp))
+                    <select name="id_loai_sp" id="id_loai_sp" class="form-control" value="" required="required"
+                        name="" id="">
+                        @if (isset($list_loai_sp))
                             @foreach ($list_loai_sp as $l_sp)
-                                <option value="{{$l_sp->ID_loai_sp}}" >{{$l_sp->ID_loai_sp}} -  <span>{{$l_sp->ten_loai_sp}}</span></span></option>
+                                <option value="{{ $l_sp->ID_loai_sp }}">{{ $l_sp->ID_loai_sp }} -
+                                    <span>{{ $l_sp->ten_loai_sp }}</span></span>
+                                </option>
                             @endforeach
                         @endif
                     </select>

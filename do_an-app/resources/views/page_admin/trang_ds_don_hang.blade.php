@@ -109,7 +109,7 @@
                             for (var i = 0; i < data.ds_don_hang.length; i++) {
                                 html_ds_don_hang += `
                                 <tr>
-                                    <td>${data.ds_don_hang[i].ID}</td>
+                                    <td>${data.ds_don_hang[i].ma_don_hang}</td>
                                     <td>${data.ds_don_hang[i].ho_ten_nguoi_nhan}</td>
                                     <td>${data.ds_don_hang[i].tong_tien}</td>
                                     <td>

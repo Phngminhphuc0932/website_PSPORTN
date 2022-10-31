@@ -101,13 +101,15 @@ class SPAdminController extends Controller
     public function edit($id)
     {
         $ds_nsx = DB::table('sb_nha_san_xuat')->get();
-        $ds_ncc = DB::table('sb_nha_cung_cap')->get();
 
         $thong_tin_san_pham = DB::table('sb_san_pham')->where('ID', $id)->first();
+        $info_product = DB::table('sb_san_pham')->where('ID', $id)->get();
+        $list_loai_sp = DB::table('sb_loai_san_pham')->get();
 
-        return view('page_admin.trang_them_san_pham')
+        return view('page_admin.trang_edit_san_pham')
             ->with('ds_nsx', $ds_nsx)
-            ->with('ds_ncc', $ds_ncc)
+            ->with('info_product', $info_product)
+            ->with('list_loai_sp', $list_loai_sp)
             ->with('thong_tin_san_pham', $thong_tin_san_pham);
     }
 
@@ -179,7 +181,8 @@ class SPAdminController extends Controller
         }
     }
 
-    function create_sp(){
+    function create_sp()
+    {
         $list_loai_sp = DB::table('sb_loai_san_pham')->get();
         return view('page_admin.trang_them_sp')->with('list_loai_sp', $list_loai_sp);
     }

@@ -19,11 +19,13 @@
                     Loại sản phẩm
                 </div>
                 <div class="col-md-9">
-                    <select  name="id_loai_sp" id="id_loai_sp" class="form-control" value=""
-                    required="required" name="" id="">
+                    <select name="id_loai_sp" id="id_loai_sp" class="form-control" value="" required="required"
+                        name="" id="">
                         <?php if(isset($list_loai_sp)): ?>
                             <?php $__currentLoopData = $list_loai_sp; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $l_sp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <option value="<?php echo e($l_sp->ID_loai_sp); ?>" ><?php echo e($l_sp->ID_loai_sp); ?> -  <span><?php echo e($l_sp->ten_loai_sp); ?></span></span></option>
+                                <option value="<?php echo e($l_sp->ID_loai_sp); ?>"><?php echo e($l_sp->ID_loai_sp); ?> -
+                                    <span><?php echo e($l_sp->ten_loai_sp); ?></span></span>
+                                </option>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         <?php endif; ?>
                     </select>

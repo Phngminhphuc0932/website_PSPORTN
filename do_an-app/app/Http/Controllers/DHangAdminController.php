@@ -90,7 +90,6 @@ class DHangAdminController extends Controller
             2 => 'Đang chờ duyệt',
             3 => 'Đã duyệt'
         ];
-
         $thong_tin_don_hang = DB::table('sb_don_hang')->where('id', $id)->first();
         return view('page_admin.trang_cap_nhat_don_hang')
             ->with('array_trang_thai', $array_trang_thai)

@@ -1,10 +1,10 @@
 <!--sidebar start-->
 <aside>
-    <div id="sidebar"  class="nav-collapse ">
+    <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
-        <ul class="sidebar-menu">                
+        <ul class="sidebar-menu">
             <li class="active">
-                <a class="" href="index.html">
+                <a class="" href="/admin/ql-san-pham">
                     <i class="icon_house_alt"></i>
                     <span>Dashboard</span>
                 </a>
@@ -16,10 +16,10 @@
                     <span class="menu-arrow arrow_carrot-right"></span>
                 </a>
                 <ul class="sub">
-                    <li><a class="" href="/admin/ql-san-pham">Danh sách sản phẩm</a></li>                          
+                    <li><a class="" href="/admin/ql-san-pham">Danh sách sản phẩm</a></li>
                     <li><a class="" href="/admin/ql-san-pham/create">Thêm sản phẩm mới</a></li>
                 </ul>
-            </li>    
+            </li>
             <li class="sub-menu">
                 <a href="javascript:;" class="">
                     <i class="icon_document_alt"></i>
@@ -27,9 +27,9 @@
                     <span class="menu-arrow arrow_carrot-right"></span>
                 </a>
                 <ul class="sub">
-                    <li><a class="" href="/admin/ql-don-hang">Danh sách đơn hàng</a></li>                          
+                    <li><a class="" href="/admin/ql-don-hang">Danh sách đơn hàng</a></li>
                 </ul>
-            </li>    
+            </li>
             <li class="sub-menu">
                 <a href="javascript:;" class="">
                     <i class="icon_document_alt"></i>
@@ -37,9 +37,9 @@
                     <span class="menu-arrow arrow_carrot-right"></span>
                 </a>
                 <ul class="sub">
-                    <li><a class="" href="/admin/ql-khach-hang">Danh sách Khách hàng</a></li>                          
+                    <li><a class="" href="/admin/ql-khach-hang">Danh sách Khách hàng</a></li>
                 </ul>
-            </li>    
+            </li>
             <li class="sub-menu">
                 <a href="javascript:;" class="">
                     <i class="icon_document_alt"></i>
@@ -47,12 +47,12 @@
                     <span class="menu-arrow arrow_carrot-right"></span>
                 </a>
                 <ul class="sub">
-                    <li><a class="" href="/admin/ql-tin-tuc">Danh sách Tin</a></li>                          
+                    <li><a class="" href="/admin/ql-tin-tuc">Danh sách Tin</a></li>
                 </ul>
-            </li>    
-             
-       
-            
+            </li>
+
+
+
         </ul>
         <!-- sidebar menu end-->
     </div>
