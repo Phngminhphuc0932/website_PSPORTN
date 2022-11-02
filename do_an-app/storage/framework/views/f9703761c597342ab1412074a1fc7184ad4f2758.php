@@ -43,10 +43,10 @@
                     <a href="/index"><img src="images/logo.png" alt=" " /></a>
                 </div>
                 <div class="search">
-                    <input type="text" value="" onfocus="this.value = '';"
+                    <input type="text" name="search" id="search" value="" onfocus="this.value = '';"
                         onblur="if (this.value == '') {this.value = '';}">
                     <input type="submit" value="SEARCH">
-
+                    <p href="#" id="search_product"></p>
                 </div>
                 <div class="clearfix"> </div>
             </div>
@@ -78,4 +78,32 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+
+        fetch_product_data();
+
+        function fetch_product_data(query = '') {
+            // alert('data_load' + query);
+            $.ajax({
+                url:"<?php echo e(route('action')); ?>",
+                method: 'GET',
+                data: {
+                    query: query
+                },
+                dataType: 'json',
+                success: function(data) {
+                    $('#search_product').html(data.table_data);
+                    $('#total_records').text(data.total_data);
+                }
+            })
+        }
+
+        $(document).on('keyup', '#search', function() {
+            var query = $(this).val();
+            fetch_product_data(query);
+        });
+    });
+</script>
 <?php /**PATH C:\wamp64\www\website_PSPORTN\do_an-app\resources\views/widgets/header.blade.php ENDPATH**/ ?>

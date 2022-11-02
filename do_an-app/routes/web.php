@@ -72,6 +72,8 @@ Route::get('/single', "App\Http\Controllers\SanPhamController@san_pham_moi");
 
 Route::get('/product-type', "App\Http\Controllers\SanPhamController@product_type");
 
+Route::get('/action', "App\Http\Controllers\SanPhamController@action")->name('action');
+
 /*ADMIN*/
 Route::get('/admin', 'App\Http\Controllers\AdminController@index')->middleware(EnsureAdminRole::class);
 Route::get('/login-admin', 'App\Http\Controllers\AdminController@login_admin');

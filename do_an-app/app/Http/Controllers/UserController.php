@@ -148,7 +148,7 @@ class UserController extends Controller
             return redirect($_SERVER['HTTP_REFERER'])->withErrors(['Tài khoản hoặc mật khẩu không chính xác'], 'loginErrors');
         }
 
-        echo '<pre>', print_r($user), '</pre>';
+        // echo '<pre>', print_r($user), '</pre>';
 
         return redirect($_SERVER['HTTP_REFERER'])->withErrors(['Server Internal Error'], 'loginErrors');
     }
@@ -162,8 +162,6 @@ class UserController extends Controller
         if ($validator->fails()) {
             return redirect($_SERVER['HTTP_REFERER'])->withErrors($validator, 'loginErrors');
         }
-
-
 
         $username = $request->input('ten_dang_nhap');
         $password = $request->input('mat_khau');

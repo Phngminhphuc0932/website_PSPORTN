@@ -43,10 +43,10 @@
                     <a href="/index"><img src="images/logo.png" alt=" " /></a>
                 </div>
                 <div class="search">
-                    <input type="text" value="" onfocus="this.value = '';"
+                    <input type="text" name="search" id="search" value="" onfocus="this.value = '';"
                         onblur="if (this.value == '') {this.value = '';}">
                     <input type="submit" value="SEARCH">
-
+                    <p href="#" id="search_product"></p>
                 </div>
                 <div class="clearfix"> </div>
             </div>
@@ -54,7 +54,7 @@
                 <div class="account"><a href=#><span> </span>TÀI KHOẢN CỦA BẠN</a></div>
                 <ul class="login">
                     @if (isset($user_info))
-                        <li><a href=#></a>{{$user_info->ten}}</li> | <br>
+                        <li><a href=#></a>{{ $user_info->ten }}</li> | <br>
                         <li><a href='/logout'>ĐĂNG XUẤT</a></li> |
                     @else
                         <li><a href='/login'><span> </span>ĐĂNG NHẬP</a></li> |
@@ -77,3 +77,31 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+
+        fetch_product_data();
+
+        function fetch_product_data(query = '') {
+            // alert('data_load' + query);
+            $.ajax({
+                url:"{{ route('action') }}",
+                method: 'GET',
+                data: {
+                    query: query
+                },
+                dataType: 'json',
+                success: function(data) {
+                    $('#search_product').html(data.table_data);
+                    $('#total_records').text(data.total_data);
+                }
+            })
+        }
+
+        $(document).on('keyup', '#search', function() {
+            var query = $(this).val();
+            fetch_product_data(query);
+        });
+    });
+</script>

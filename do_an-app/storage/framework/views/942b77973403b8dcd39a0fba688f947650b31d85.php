@@ -6,8 +6,9 @@
     <link href="css/cart.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/etalage.css" rel="stylesheet" type="text/css" media="all" />
     <!--//theme-style-->
-
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="_token" content="<?php echo e(csrf_token()); ?>">
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!--fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>

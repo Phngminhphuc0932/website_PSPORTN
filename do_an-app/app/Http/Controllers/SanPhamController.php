@@ -26,6 +26,7 @@ class SanPhamController extends Controller
         $list_sp_noi_bat = DB::table('sb_san_pham')->where('noi_bat', 1)->get();
         $list_mau_ao_moi = DB::table('sb_san_pham')->where('ID_loai_sp', 27)->get();
         $list_mau_giay_moi = DB::table('sb_san_pham')->where('ID_loai_sp', 24)->get();
+        $products = DB::table('sb_san_pham')->get();
 
 
         $user_info = Session::get('user_info');
@@ -35,7 +36,8 @@ class SanPhamController extends Controller
             ->with('user_info', $user_info)
             ->with('list_sp_noi_bat', $list_sp_noi_bat)
             ->with('list_mau_ao_moi', $list_mau_ao_moi)
-            ->with('list_mau_giay_moi', $list_mau_giay_moi);
+            ->with('list_mau_giay_moi', $list_mau_giay_moi)
+            ->with('products', $products);
     }
 
     /**
@@ -245,5 +247,41 @@ class SanPhamController extends Controller
         ->with('name_loai_sp', $name_loai_sp)
         ->with('list_sp', $list_sp)
         ->with('id_loai_sp',$id_loai_sp);
+    }
+
+    function action(Request $request)
+    {
+        if($request->ajax())
+        {
+            $output = '';
+            $query = $request->get('query');
+            if($query != '') {
+                $data = DB::table('sb_san_pham')
+                    ->where('ten_san_pham', 'like', '%'.$query.'%')
+                    ->get();
+
+            } else {
+                $data = "";
+            }
+
+            $total_row = $data->count();
+            if($total_row > 0){
+                foreach($data as $row)
+                {
+                    $output .= '
+                    <p>'.$row->ten_san_pham.'</p>
+                    ';
+                }
+            } else {
+                $output = '
+                    <p align="center" colspan="5">No Data Found</p>
+                ';
+            }
+            $data = array(
+                'table_data'  => $output,
+                'total_data'  => $total_row
+            );
+            echo json_encode($data);
+        }
     }
 }
