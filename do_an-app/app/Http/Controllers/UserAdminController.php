@@ -62,13 +62,13 @@ class UserAdminController extends Controller
      */
     public function edit($id)
     {
-        $ds_user = DB::table('sb_user')->get();
+        $ds_user = DB::table('sb_user')->where("ID", $id)->get();
+        $loai_tv = DB::table('sb_loai_user')->get();
 
-        // $thong_tin_san_pham = DB::table('sb_san_pham')->where('ID', $id)->first();
 
-        return view('page_admin.trang_them_san_pham')
-            ->with('ds_user', $ds_user);
-            // ->with('thong_tin_san_pham', $thong_tin_san_pham);
+        return view('page_admin.trang_edit_user')
+            ->with('ds_user', $ds_user)
+            ->with('loai_tv', $loai_tv);
     }
 
     /**
@@ -80,7 +80,19 @@ class UserAdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $mat_khau = $request->get('mat_khau');
+        $email = $request->get('email');
+        $dien_thoai = $request->get('dien_thoai');
+
+        $result = DB::table('sb_user')
+            ->where('ID', $id)
+            ->update([
+                'mat_khau' => md5($mat_khau),
+                'email' => $email,
+                'dien_thoai' => $dien_thoai,
+            ]);
+
+        return redirect('/admin/ql-khach-hang/edit/' . $id)->with('NoticeSuccess', 'Cập nhật thông tin thành công');
     }
 
     /**

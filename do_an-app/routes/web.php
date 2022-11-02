@@ -88,12 +88,6 @@ Route::get('/admin/ql-khach-hang/edit/{id_user}', 'App\Http\Controllers\UserAdmi
 Route::post('/admin/ql-khach-hang/edit/{id_user}', 'App\Http\Controllers\UserAdminController@update')->middleware(EnsureAdminRole::class);
 Route::get('/admin/ql-khach-hang/delete/{id_user}', 'App\Http\Controllers\UserAdminController@destroy')->middleware(EnsureAdminRole::class);
 
-Route::get('/admin/ql-tin-tuc', 'App\Http\Controllers\TinTucAdminController@index')->middleware(EnsureAdminRole::class);
-Route::get('/admin/ql-tin-tuc/edit/{id}', 'App\Http\Controllers\TinTucAdminController@edit')->middleware(EnsureAdminRole::class);
-Route::post('/admin/ql-tin-tuc/edit/{id}', 'App\Http\Controllers\TinTucAdminController@update')->middleware(EnsureAdminRole::class);
-Route::get('/admin/ql-tin-tuc/delete/{id}', 'App\Http\Controllers\TinTucAdminController@destroy')->middleware(EnsureAdminRole::class);
-
-
 
 Route::get('/admin/ql-don-hang', 'App\Http\Controllers\DHangAdminController@index')->middleware(EnsureAdminRole::class);
 Route::get('/admin/ql-don-hang/pagination/{current_page}', 'App\Http\Controllers\DHangAdminController@pagination');
