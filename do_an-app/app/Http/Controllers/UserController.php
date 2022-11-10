@@ -47,13 +47,29 @@ class UserController extends Controller
         $username = $request->input('username');
         $password = $request->input('password');
         $email = $request->input('email');
+        $name = $request->input('name');
         $date_of_birth = $request->input('date_of_birth');
 
         $user_new = (object)[];
         $user_new->username = $username;
         $user_new->password = $password;
         $user_new->email = $email;
+        $user_new->ten = $name;
         $user_new->date_of_birth = $date_of_birth;
+
+        DB::transaction(function () use ($username, $password, $email, $date_of_birth, $name) {
+            DB::table('sb_user')
+                ->insert(
+                    [
+                        "ten" => $name,
+                        "tai_khoan" => $username,
+                        "mat_khau" => md5($password),
+                        "email" => $email,
+                        "ngay_dang_ky" => $date_of_birth,
+                    ]
+                );
+            usleep(10000);
+        });
 
         $data_string_user = file_get_contents(resource_path('data_temp/users.json'));
         $list_user = json_decode($data_string_user);

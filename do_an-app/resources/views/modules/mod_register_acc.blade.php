@@ -26,6 +26,10 @@
             <div class="mation">
                 {!! Form::open(['route' => 'saveCreateNewAccount', 'class' => 'register_form', 'files' => true]) !!}
 
+                <!-- name -->
+                {!! Form::label('name', 'Name') !!}
+                {!! Form::text('name', null, ['class' => 'form-control']) !!}
+
                 <!-- username -->
                 {!! Form::label('username', 'Username') !!}
                 {!! Form::text('username', null, ['class' => 'form-control']) !!}
