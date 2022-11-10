@@ -261,7 +261,8 @@ class SanPhamController extends Controller
                     ->get();
 
             } else {
-                $data = "";
+                $data = DB::table('users')
+                    ->get();
             }
 
             $total_row = $data->count();
@@ -273,9 +274,9 @@ class SanPhamController extends Controller
                     ';
                 }
             } else {
-                $output = '
-                    <p align="center" colspan="5">No Data Found</p>
-                ';
+                // $output = '
+                //     <p align="center" colspan="5">No Data Found</p>
+                // ';
             }
             $data = array(
                 'table_data'  => $output,
