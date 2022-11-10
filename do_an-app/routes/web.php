@@ -78,6 +78,13 @@ Route::get('/action', "App\Http\Controllers\SanPhamController@action")->name('ac
 Route::get('/admin', 'App\Http\Controllers\AdminController@index')->middleware(EnsureAdminRole::class);
 Route::get('/login-admin', 'App\Http\Controllers\AdminController@login_admin');
 
+Route::post('/dang-nhap-admin', [
+    "as" => "loginAccount",
+    "uses" => "App\Http\Controllers\UserController@login_admin"
+]);
+
+
+
 
 Route::get('/admin/ql-san-pham', 'App\Http\Controllers\SPAdminController@index')->middleware(EnsureAdminRole::class);
 Route::get('/admin/ql-san-pham/edit/{id_sp}', 'App\Http\Controllers\SPAdminController@edit')->middleware(EnsureAdminRole::class);

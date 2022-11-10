@@ -33,7 +33,7 @@
 
     <div class="container">
 
-      <form class="login-form" action="/dang-nhap" method="POST">
+      <form class="login-form" action="/dang-nhap-admin" method="POST">
         <?php if($errors->loginErrors->first()): ?>
           <div class="error_message panel panel-danger">
               <div class="panel-heading">Vui lòng kiểm tra lỗi</div>

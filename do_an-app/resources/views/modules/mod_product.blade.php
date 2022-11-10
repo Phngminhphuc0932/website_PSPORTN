@@ -5,11 +5,11 @@
                 <a href="#">
                     @if (isset($name_loai_sp))
                         @foreach ($name_loai_sp as $name)
-                            <h4>{{$name->ten_loai_sp}} - <span>4449 itemms</span> </h4>
+                            <h4>{{$name->ten_loai_sp}}</h4>
                         @endforeach
                     @endif
                 </a>
-                <ul class="w_nav">
+                {{-- <ul class="w_nav">
                     <li>Sort : </li>
                     <li><a class="active" href="#">popular</a></li>
                     |
@@ -19,7 +19,7 @@
                     |
                     <li><a href="#">price: Low High </a></li>
                     <div class="clearfix"> </div>
-                </ul>
+                </ul> --}}
                 <div class="clearfix"> </div>
             </div>
         </div>
