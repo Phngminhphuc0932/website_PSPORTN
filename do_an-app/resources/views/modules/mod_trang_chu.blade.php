@@ -64,7 +64,7 @@
 
         <div class="product-left">
             @if (isset($list_mau_ao_moi))
-                @foreach ($list_mau_ao_moi as $mau_ao_moi)
+                @foreach ($list_mau_ao_moi->splice(0, 6) as $mau_ao_moi)
                     <div class="col-md-4 chain-grid">
                         <a href="/single?id_sp={{ $mau_ao_moi->ID }}"><img class="img-responsive chain"
                                 src="images/hinh_sp/{{ $mau_ao_moi->hinh }}" alt=" " /></a>
@@ -117,7 +117,7 @@
         </div>
         <div class="product-left">
             @if (isset($list_mau_giay_moi))
-                @foreach ($list_mau_giay_moi as $mau_giay_moi)
+                @foreach ($list_mau_giay_moi->splice(0, 6) as $mau_giay_moi)
                     <div class="col-md-4 chain-grid">
                         <a href="/single?id_sp={{ $mau_giay_moi->ID }}"><img class="img-responsive chain"
                                 src="images/hinh_sp/{{ $mau_giay_moi->hinh }}" alt=" " /></a>

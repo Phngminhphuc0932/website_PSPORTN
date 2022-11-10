@@ -64,7 +64,7 @@
 
         <div class="product-left">
             <?php if(isset($list_mau_ao_moi)): ?>
-                <?php $__currentLoopData = $list_mau_ao_moi; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $mau_ao_moi): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <?php $__currentLoopData = $list_mau_ao_moi->splice(0, 6); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $mau_ao_moi): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="col-md-4 chain-grid">
                         <a href="/single?id_sp=<?php echo e($mau_ao_moi->ID); ?>"><img class="img-responsive chain"
                                 src="images/hinh_sp/<?php echo e($mau_ao_moi->hinh); ?>" alt=" " /></a>
@@ -117,7 +117,7 @@
         </div>
         <div class="product-left">
             <?php if(isset($list_mau_giay_moi)): ?>
-                <?php $__currentLoopData = $list_mau_giay_moi; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $mau_giay_moi): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <?php $__currentLoopData = $list_mau_giay_moi->splice(0, 6); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $mau_giay_moi): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="col-md-4 chain-grid">
                         <a href="/single?id_sp=<?php echo e($mau_giay_moi->ID); ?>"><img class="img-responsive chain"
                                 src="images/hinh_sp/<?php echo e($mau_giay_moi->hinh); ?>" alt=" " /></a>

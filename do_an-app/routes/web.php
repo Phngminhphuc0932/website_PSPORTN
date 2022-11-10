@@ -46,7 +46,7 @@ Route::post('/login', [
 ]);
 Route::post('/dang-nhap', [
     "as" => "loginAccount",
-    "uses" => "App\Http\Controllers\UserController@login_admin"
+    "uses" => "App\Http\Controllers\UserController@login_Account"
 ]);
 
 Route::get('/logout', 'App\Http\Controllers\UserController@logout');

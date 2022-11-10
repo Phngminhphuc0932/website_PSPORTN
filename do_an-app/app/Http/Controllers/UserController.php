@@ -130,7 +130,7 @@ class UserController extends Controller
         return redirect($request->server('HTTP_REFERER'), 302);
     }
 
-    function login_Account(LoginRequest $request)
+    function login_Account(Request $request)
     {
         $email = $request->input('email');
         $password = $request->input('password');

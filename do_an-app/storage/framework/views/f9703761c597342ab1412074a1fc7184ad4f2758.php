@@ -13,26 +13,7 @@
                 </ul>
                 <div class="clearfix"> </div>
             </div>
-            <div class="top-header-right">
-                <div class="down-top">
-                    <select class="in-drop">
-                        <option value="VietNamese" class="in-of">VIETNAMESE</option>
-                        <option value="Japanese" class="in-of">Japanese</option>
-                        <option value="French" class="in-of">French</option>
-                        <option value="German" class="in-of">English</option>
-                    </select>
-                </div>
-                <div class="down-top top-down">
-                    <select class="in-drop">
-
-                        <option value="VND" class="in-of">VND</option>
-                        <option value="Dollar" class="in-of">Dollar</option>
-                        <option value="Euro" class="in-of">Euro</option>
-                    </select>
-                </div>
-                <!---->
-                <div class="clearfix"> </div>
-            </div>
+            
             <div class="clearfix"> </div>
         </div>
     </div>
@@ -51,7 +32,7 @@
                 <div class="clearfix"> </div>
             </div>
             <div class="header-bottom-right">
-                <div class="account"><a href=#><span> </span>TÀI KHOẢN CỦA BẠN</a></div>
+                
                 <ul class="login">
                     <?php if(isset($user_info)): ?>
                         <li><a href=#></a><?php echo e($user_info->ten); ?></li> | <br>

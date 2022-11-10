@@ -13,7 +13,7 @@
                 </ul>
                 <div class="clearfix"> </div>
             </div>
-            <div class="top-header-right">
+            {{-- <div class="top-header-right">
                 <div class="down-top">
                     <select class="in-drop">
                         <option value="VietNamese" class="in-of">VIETNAMESE</option>
@@ -32,7 +32,7 @@
                 </div>
                 <!---->
                 <div class="clearfix"> </div>
-            </div>
+            </div> --}}
             <div class="clearfix"> </div>
         </div>
     </div>
@@ -51,7 +51,7 @@
                 <div class="clearfix"> </div>
             </div>
             <div class="header-bottom-right">
-                <div class="account"><a href=#><span> </span>TÀI KHOẢN CỦA BẠN</a></div>
+                {{-- <div class="account"><a href=#><span> </span>TÀI KHOẢN CỦA BẠN</a></div> --}}
                 <ul class="login">
                     @if (isset($user_info))
                         <li><a href=#></a>{{ $user_info->ten }}</li> | <br>
