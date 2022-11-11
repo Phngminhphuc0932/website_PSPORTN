@@ -1,3 +1,5 @@
+
+
 <?php $__env->startSection('main-content'); ?>
     <!--main content start-->
     <link rel="stylesheet" href="css/data_table.min.css">
@@ -45,7 +47,7 @@
                                 <?php $__currentLoopData = $ds_san_pham; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $san_pham): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr>
                                         <td><?php echo e($san_pham->ten_san_pham); ?></td>
-                                        <td><?php echo e($san_pham->id_loai_sp); ?></td>
+                                        <td><?php echo e($san_pham->ten_loai_sp); ?></td>
                                         <td><?php echo e($san_pham->ten_nha_cung_cap); ?></td>
                                         <td><?php echo e($san_pham->ten_nha_san_xuat); ?></td>
                                         <td><?php echo e($san_pham->noi_bat ? 1 : 0); ?></td>

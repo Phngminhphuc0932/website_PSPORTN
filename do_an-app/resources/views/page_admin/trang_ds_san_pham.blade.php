@@ -52,7 +52,7 @@
                                 @foreach ($ds_san_pham as $san_pham)
                                     <tr>
                                         <td>{{ $san_pham->ten_san_pham }}</td>
-                                        <td>{{ $san_pham->id_loai_sp }}</td>
+                                        <td>{{ $san_pham->ten_loai_sp }}</td>
                                         <td>{{ $san_pham->ten_nha_cung_cap }}</td>
                                         <td>{{ $san_pham->ten_nha_san_xuat }}</td>
                                         <td>{{ $san_pham->noi_bat ? 1 : 0 }}</td>
