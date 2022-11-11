@@ -36,9 +36,9 @@
                         data-id-sp="{{ $sp_s->ID }}">ADD TO CART</a>
                     <div class="clearfix"></div>
                 </div>
-                <h6>100 items in stock</h6>
+                {{-- <h6>100 items in stock</h6> --}}
                 <p>{{ $sp_s->gioi_thieu }}</p>
-                <div class="share">
+                {{-- <div class="share">
                     <h5>Share Product :</h5>
                     <ul class="share_nav">
                         <li><a href="#"><img src="images/facebook.png" title="facebook"></a></li>
@@ -46,7 +46,7 @@
                         <li><a href="#"><img src="images/rss.png" title="Rss"></a></li>
                         <li><a href="#"><img src="images/gpluse.png" title="Google+"></a></li>
                     </ul>
-                </div>
+                </div> --}}
 
 
             </div>
@@ -61,7 +61,7 @@
                     <li><img src="images/hinh_sp/{{ $sp->hinh }}" alt="" />
                         <div class="grid-flex">
 
-                            <a href="#">
+                            <a href="/single?id_sp={{ $sp->ID }}">
                                 <p class="in_one_line">
                                     {{ $sp->ten_san_pham }}
                                 </p>

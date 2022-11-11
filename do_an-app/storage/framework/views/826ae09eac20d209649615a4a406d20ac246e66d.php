@@ -75,11 +75,7 @@
             <?php if($allow_update_cart): ?>
                 <div class="shopping-cart-footer">
                     <div class="column">
-                        <form class="coupon-form" method="post">
-                            <input class="form-control form-control-sm" type="text" placeholder="MÃ GIẢM GIÁ"
-                                required="">
-                            <button class="btn btn-outline-primary btn-sm" type="submit">Nhập mã giảm giá</button>
-                        </form>
+                        
                     </div>
             <?php endif; ?>
             <div class="column text-lg text-right" id="tong_tien">Tổng tiền: <span
@@ -88,7 +84,7 @@
 </div>
 <?php if($allow_update_cart): ?>
     <div class="shopping-cart-footer">
-        <div class="column"><a class="btn btn-outline-secondary" href="#"><i
+        <div class="column"><a class="btn btn-outline-secondary" href="/"><i
                     class="icon-arrow-left"></i>&nbsp;Quay lại trang chủ</a></div>
         <div class="column"><a class="btn btn-primary" href="/thanh-toan" data-toast="" data-toast-type="success"
                 data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Your cart"

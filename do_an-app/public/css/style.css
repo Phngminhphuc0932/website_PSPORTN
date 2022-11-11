@@ -705,6 +705,8 @@ p.m_text {
 .product-grid h4 {
     font-size: 16px;
     margin-top: 5px;
+    line-height: 1.5em;
+    height: 3em;
 }
 .product-grid h4 a {
     text-transform: uppercase;

@@ -22,8 +22,8 @@
             </ul>
         </ul>
     </div>
-    <?php if(isset($list_mau_ao_moi)): ?>
-        <?php $__currentLoopData = $list_mau_ao_moi->splice(0, 1); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+    <?php if(isset($products)): ?>
+        <?php $__currentLoopData = $products->splice(0, 1); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <div class=" chain-grid menu-chain">
                 <a href="/single?id_sp=<?php echo e($sp->ID); ?>"><img class="img-responsive chain" src="images/hinh_sp/<?php echo e($sp->hinh); ?>" alt=" " /></a>
                 <div class="grid-chain-bottom chain-watch">
@@ -32,7 +32,7 @@
                     <h6><a href="/single?id_sp=<?php echo e($sp->ID); ?>"><?php echo e($sp->ten_san_pham); ?></a></h6>
                 </div>
             </div>
-            <a class="view-all all-product" href="/product">VIEW ALL PRODUCTS<span> </span></a>
+            <a class="view-all all-product" href="/product-type?id_loai_sp=*">VIEW ALL PRODUCTS<span> </span></a>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     <?php endif; ?>
 </div>

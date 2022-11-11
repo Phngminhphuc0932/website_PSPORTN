@@ -36,17 +36,9 @@
                         data-id-sp="<?php echo e($sp_s->ID); ?>">ADD TO CART</a>
                     <div class="clearfix"></div>
                 </div>
-                <h6>100 items in stock</h6>
+                
                 <p><?php echo e($sp_s->gioi_thieu); ?></p>
-                <div class="share">
-                    <h5>Share Product :</h5>
-                    <ul class="share_nav">
-                        <li><a href="#"><img src="images/facebook.png" title="facebook"></a></li>
-                        <li><a href="#"><img src="images/twitter.png" title="Twiiter"></a></li>
-                        <li><a href="#"><img src="images/rss.png" title="Rss"></a></li>
-                        <li><a href="#"><img src="images/gpluse.png" title="Google+"></a></li>
-                    </ul>
-                </div>
+                
 
 
             </div>
@@ -61,7 +53,7 @@
                     <li><img src="images/hinh_sp/<?php echo e($sp->hinh); ?>" alt="" />
                         <div class="grid-flex">
 
-                            <a href="#">
+                            <a href="/single?id_sp=<?php echo e($sp->ID); ?>">
                                 <p class="in_one_line">
                                     <?php echo e($sp->ten_san_pham); ?>
 
