@@ -27,6 +27,12 @@
                 <?php echo Form::open(['route' => 'saveCreateNewAccount', 'class' => 'register_form', 'files' => true]); ?>
 
 
+                <!-- name -->
+                <?php echo Form::label('name', 'Name'); ?>
+
+                <?php echo Form::text('name', null, ['class' => 'form-control']); ?>
+
+
                 <!-- username -->
                 <?php echo Form::label('username', 'Username'); ?>
 

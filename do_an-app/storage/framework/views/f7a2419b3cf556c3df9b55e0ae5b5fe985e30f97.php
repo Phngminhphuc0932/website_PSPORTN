@@ -5,21 +5,11 @@
                 <a href="#">
                     <?php if(isset($name_loai_sp)): ?>
                         <?php $__currentLoopData = $name_loai_sp; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $name): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <h4><?php echo e($name->ten_loai_sp); ?> - <span>4449 itemms</span> </h4>
+                            <h4><?php echo e($name->ten_loai_sp); ?></h4>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     <?php endif; ?>
                 </a>
-                <ul class="w_nav">
-                    <li>Sort : </li>
-                    <li><a class="active" href="#">popular</a></li>
-                    |
-                    <li><a href="#">new </a></li>
-                    |
-                    <li><a href="#">discount</a></li>
-                    |
-                    <li><a href="#">price: Low High </a></li>
-                    <div class="clearfix"> </div>
-                </ul>
+                
                 <div class="clearfix"> </div>
             </div>
         </div>

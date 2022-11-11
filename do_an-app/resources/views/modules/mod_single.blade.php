@@ -58,7 +58,7 @@
         <ul id="flexiselDemo1">
             @if (isset($list_mau_ao_moi))
                 @foreach ($list_mau_ao_moi as $sp)
-                    <li><img src="images/{{ $sp->hinh }}" alt="" />
+                    <li><img src="images/hinh_sp/{{ $sp->hinh }}" alt="" />
                         <div class="grid-flex">
 
                             <a href="#">

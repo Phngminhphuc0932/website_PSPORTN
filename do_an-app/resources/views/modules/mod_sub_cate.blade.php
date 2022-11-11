@@ -10,7 +10,8 @@
                         <ul class="cute">
                             @for ($j = 0; $j < count($ds_loai_sp[$i]->ds_loai_con); $j++)
                                 <li class="subitem1"><a
-                                        href="/product-type?id_loai_sp={{$ds_loai_sp[$i]->ds_loai_con[$j]->ID_loai_sp}}">{{ $ds_loai_sp[$i]->ds_loai_con[$j]->ten_loai_sp }}</a></li>
+                                        href="/product-type?id_loai_sp={{ $ds_loai_sp[$i]->ds_loai_con[$j]->ID_loai_sp }}">{{ $ds_loai_sp[$i]->ds_loai_con[$j]->ten_loai_sp }}</a>
+                                </li>
                             @endfor
                         </ul>
                     @endif
@@ -21,13 +22,17 @@
             </ul>
         </ul>
     </div>
-    <div class=" chain-grid menu-chain">
-        <a href="/single"><img class="img-responsive chain" src="images/sneaker_bag.jpg" alt=" " /></a>
-        <div class="grid-chain-bottom chain-watch">
-            <span class="actual dolor-left-grid">299,000 VND</span>
-            <span class="reducedfrom">500,000 VND</span>
-            <h6><a href="/single">Tee Nike Full Logo - Black</a></h6>
-        </div>
-    </div>
-    <a class="view-all all-product" href="/product">VIEW ALL PRODUCTS<span> </span></a>
+    @if (isset($list_mau_ao_moi))
+        @foreach ($list_mau_ao_moi->splice(0, 1) as $sp)
+            <div class=" chain-grid menu-chain">
+                <a href="/single?id_sp={{ $sp->ID }}"><img class="img-responsive chain" src="images/hinh_sp/{{ $sp->hinh }}" alt=" " /></a>
+                <div class="grid-chain-bottom chain-watch">
+                    <span class="actual dolor-left-grid">@VND_monney($sp->gia_giam) đ</span>
+                    <span class="reducedfrom">@VND_monney($sp->don_gia) đ</span>
+                    <h6><a href="/single?id_sp={{ $sp->ID }}">{{$sp->ten_san_pham}}</a></h6>
+                </div>
+            </div>
+            <a class="view-all all-product" href="/product">VIEW ALL PRODUCTS<span> </span></a>
+        @endforeach
+    @endif
 </div>

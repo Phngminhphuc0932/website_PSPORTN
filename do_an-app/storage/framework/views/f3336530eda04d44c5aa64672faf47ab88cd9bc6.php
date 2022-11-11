@@ -58,7 +58,7 @@
         <ul id="flexiselDemo1">
             <?php if(isset($list_mau_ao_moi)): ?>
                 <?php $__currentLoopData = $list_mau_ao_moi; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <li><img src="images/<?php echo e($sp->hinh); ?>" alt="" />
+                    <li><img src="images/hinh_sp/<?php echo e($sp->hinh); ?>" alt="" />
                         <div class="grid-flex">
 
                             <a href="#">

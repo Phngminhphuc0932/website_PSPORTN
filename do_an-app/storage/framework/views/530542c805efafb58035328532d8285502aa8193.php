@@ -10,7 +10,8 @@
                         <ul class="cute">
                             <?php for($j = 0; $j < count($ds_loai_sp[$i]->ds_loai_con); $j++): ?>
                                 <li class="subitem1"><a
-                                        href="/product-type?id_loai_sp=<?php echo e($ds_loai_sp[$i]->ds_loai_con[$j]->ID_loai_sp); ?>"><?php echo e($ds_loai_sp[$i]->ds_loai_con[$j]->ten_loai_sp); ?></a></li>
+                                        href="/product-type?id_loai_sp=<?php echo e($ds_loai_sp[$i]->ds_loai_con[$j]->ID_loai_sp); ?>"><?php echo e($ds_loai_sp[$i]->ds_loai_con[$j]->ten_loai_sp); ?></a>
+                                </li>
                             <?php endfor; ?>
                         </ul>
                     <?php endif; ?>
@@ -21,14 +22,18 @@
             </ul>
         </ul>
     </div>
-    <div class=" chain-grid menu-chain">
-        <a href="/single"><img class="img-responsive chain" src="images/sneaker_bag.jpg" alt=" " /></a>
-        <div class="grid-chain-bottom chain-watch">
-            <span class="actual dolor-left-grid">299,000 VND</span>
-            <span class="reducedfrom">500,000 VND</span>
-            <h6><a href="/single">Tee Nike Full Logo - Black</a></h6>
-        </div>
-    </div>
-    <a class="view-all all-product" href="/product">VIEW ALL PRODUCTS<span> </span></a>
+    <?php if(isset($list_mau_ao_moi)): ?>
+        <?php $__currentLoopData = $list_mau_ao_moi->splice(0, 1); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <div class=" chain-grid menu-chain">
+                <a href="/single?id_sp=<?php echo e($sp->ID); ?>"><img class="img-responsive chain" src="images/hinh_sp/<?php echo e($sp->hinh); ?>" alt=" " /></a>
+                <div class="grid-chain-bottom chain-watch">
+                    <span class="actual dolor-left-grid"><?php echo number_format($sp->gia_giam); ?> đ</span>
+                    <span class="reducedfrom"><?php echo number_format($sp->don_gia); ?> đ</span>
+                    <h6><a href="/single?id_sp=<?php echo e($sp->ID); ?>"><?php echo e($sp->ten_san_pham); ?></a></h6>
+                </div>
+            </div>
+            <a class="view-all all-product" href="/product">VIEW ALL PRODUCTS<span> </span></a>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+    <?php endif; ?>
 </div>
 <?php /**PATH C:\wamp64\www\website_PSPORTN\do_an-app\resources\views/modules/mod_sub_cate.blade.php ENDPATH**/ ?>

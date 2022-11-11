@@ -143,7 +143,7 @@ class SanPhamController extends Controller
         $tong_tien = 0;
         for ($i = 0; $i < count($gio_hang); $i++) {
             $tong_so_luong += $gio_hang[$i]->so_luong;
-            $tong_tien += $gio_hang[$i]->so_luong * $gio_hang[$i]->don_gia;
+            $tong_tien += $gio_hang[$i]->so_luong * $gio_hang[$i]->gia_giam;
         }
 
 
@@ -173,7 +173,7 @@ class SanPhamController extends Controller
                         $sp->so_luong = $so_luong;
                     }
                     $tong_so_luong += $sp->so_luong;
-                    $tong_tien += $sp->so_luong * $sp->don_gia;
+                    $tong_tien += $sp->so_luong * $sp->gia_giam;
                 }
 
                 Session::put('gio_hang', $gio_hang);
@@ -204,7 +204,7 @@ class SanPhamController extends Controller
             $tong_tien = 0;
             foreach ($gio_hang as $sp) {
                 $tong_so_luong += $sp->so_luong;
-                $tong_tien += $sp->so_luong * $sp->don_gia;
+                $tong_tien += $sp->so_luong * $sp->gia_giam;
             }
 
             Session::put('gio_hang', $gio_hang);
@@ -261,7 +261,8 @@ class SanPhamController extends Controller
                     ->get();
 
             } else {
-                $data = "";
+                $data = DB::table('users')
+                    ->get();
             }
 
             $total_row = $data->count();
@@ -273,9 +274,9 @@ class SanPhamController extends Controller
                     ';
                 }
             } else {
-                $output = '
-                    <p align="center" colspan="5">No Data Found</p>
-                ';
+                // $output = '
+                //     <p align="center" colspan="5">No Data Found</p>
+                // ';
             }
             $data = array(
                 'table_data'  => $output,
