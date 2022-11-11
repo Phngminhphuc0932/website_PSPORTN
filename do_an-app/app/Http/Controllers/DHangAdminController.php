@@ -15,14 +15,21 @@ class DHangAdminController extends Controller
      */
     public function index()
     {
+
+
         $cur_page = 0;
         if (isset($_GET['page'])) {
             $cur_page = $_GET['page'];
         }
 
         $index_lay_don_hang = $cur_page * 10;
-        $ds_don_hang = DB::table('sb_don_hang')->orderBy('ID', 'DESC')->skip($index_lay_don_hang)->limit(10)->get();
+        $ds_don_hang = DB::table('sb_don_hang')
+            ->select(DB::raw('sb_don_hang.*,sb_don_hang.ma_don_hang, ten_trang_thai'))
+            ->join('sb_trang_thai', 'sb_don_hang.ID', '=', 'sb_trang_thai.id_don_hang')
+            ->join('loai_trang_thai', 'loai_trang_thai.id', '=', 'sb_trang_thai.trang_thai_moi')
+            ->orderBy('ID', 'DESC')->skip($index_lay_don_hang)->limit(10)->get();
         $tong_so_luong = DB::table('sb_don_hang')->select(DB::raw('COUNT(*) as tong_so_luong'))->first();
+
         //echo '<pre>',print_r($tong_so_luong),'</pre>';
         $so_trang = ceil($tong_so_luong->tong_so_luong / 10);
         return view('page_admin.trang_ds_don_hang')
@@ -33,7 +40,9 @@ class DHangAdminController extends Controller
     function pagination($current_page)
     {
         $index_lay_don_hang = $current_page * 10;
-        $ds_don_hang = DB::table('sb_don_hang')->orderBy('ID', 'ASC')->skip($index_lay_don_hang)->limit(10)->get();
+        $ds_don_hang = DB::table('sb_don_hang')->select(DB::raw('sb_don_hang.*,sb_don_hang.ma_don_hang, ten_trang_thai'))
+            ->join('sb_trang_thai', 'sb_don_hang.ID', '=', 'sb_trang_thai.id_don_hang')
+            ->join('loai_trang_thai', 'loai_trang_thai.id', '=', 'sb_trang_thai.trang_thai_moi')->orderBy('ID', 'ASC')->skip($index_lay_don_hang)->limit(10)->get();
         $tong_so_luong = DB::table('sb_don_hang')->select(DB::raw('COUNT(*) as tong_so_luong'))->first();
 
         $so_trang = ceil($tong_so_luong->tong_so_luong / 10);
@@ -85,10 +94,10 @@ class DHangAdminController extends Controller
     public function edit($id)
     {
         $array_trang_thai = [
-            0 => 'Đã huỷ',
-            1 => 'Giao thành công',
-            2 => 'Đang chờ duyệt',
-            3 => 'Đã duyệt'
+            1 => 'Đã huỷ',
+            2 => 'Giao thành công',
+            3 => 'Đang chờ duyệt',
+            4 => 'Đã duyệt'
         ];
         $thong_tin_don_hang = DB::table('sb_don_hang')->where('ID', $id)->first();
         return view('page_admin.trang_cap_nhat_don_hang')
@@ -106,10 +115,10 @@ class DHangAdminController extends Controller
     public function update(Request $request, $id)
     {
         $array_trang_thai = [
-            0 => 'Đã huỷ',
-            1 => 'Giao thành công',
-            2 => 'Đang chờ duyệt',
-            3 => 'Đã duyệt'
+            1 => 'Đã huỷ',
+            2 => 'Giao thành công',
+            3 => 'Đang chờ duyệt',
+            4 => 'Đã duyệt'
         ];
 
         $thong_tin_don_hang_old = DB::table('sb_don_hang')->where('ID', $id)->first();
@@ -163,8 +172,9 @@ class DHangAdminController extends Controller
     public function destroy($id)
     {
         try {
-            DB::table('sb_don_hang')->where('id', $id)->delete();
-            return redirect($_SERVER['HTTP_REFERER'])->withErrors('Xoá thành công đơn hàng có ma: ' . $id, 'NoticeDelete');
+            DB::table('sb_trang_thai')->where('id_don_hang', $id)->delete();
+            DB::table('sb_don_hang')->where('ID', $id)->delete();
+            return redirect($_SERVER['HTTP_REFERER'])->withErrors('Xoá thành công ', 'NoticeDelete');
         } catch (Exception $e) {
             return redirect($_SERVER['HTTP_REFERER'])->withErrors('Bị lỗi trong quá trình xóa vui lòng thử lại: ' . $e, 'NoticeDelete');
         }
