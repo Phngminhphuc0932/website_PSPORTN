@@ -122,7 +122,7 @@ class SPAdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $id_loai_san_pham = $request->get('id_loai_san_pham');
+        $id_loai_san_pham = $request->get('id_loai_sp');
         $gioi_thieu = $request->get('editor1');
         $don_gia = $request->get('don_gia');
         $sku = $request->get('sku');
@@ -151,7 +151,7 @@ class SPAdminController extends Controller
         $result = DB::table('sb_san_pham')
             ->where('ID', $id)
             ->update([
-                'id_loai_san_pham' => $id_loai_san_pham,
+                'id_loai_sp' => $id_loai_san_pham,
                 'gioi_thieu' => $gioi_thieu,
                 'don_gia' => $don_gia,
                 'sku' => $sku,
@@ -162,7 +162,7 @@ class SPAdminController extends Controller
                 'hinh' => $hinh
             ]);
 
-        return redirect('/admin/ql-san-pham/edit/' . $id)->with('NoticeSuccess', 'Cập nhật sản phẩm thành công');
+        return redirect('/admin/ql-san-pham')->with('NoticeSuccess', 'Cập nhật sản phẩm thành công');
     }
 
     /**

@@ -34,7 +34,7 @@
                         <table id="ds_sach" class="table table-striped table-advance table-hover">
                             <thead>
                                 <tr>
-                                    <th><i class="icon_profile"></i> id đơn hàng </th>
+                                    <th><i class="icon_profile"></i> mã đơn hàng </th>
                                     <th><i class="icon_calendar"></i> Họ tên người mua</th>
                                     <th><i class="icon_mail_alt"></i> Tổng tiền </th>
                                     <th><i class="icon_cogs"></i> Action</th>
