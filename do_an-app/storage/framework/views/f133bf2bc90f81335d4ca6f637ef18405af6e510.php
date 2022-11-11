@@ -37,7 +37,7 @@
                                 <tr>
                                     <th><i class="icon_profile"></i> Tên sản phẩm</th>
                                     <th><i class="icon_calendar"></i> Loại sản phẩm</th>
-                                    <th><i class="icon_mail_alt"></i> nhà cung cấp</th>
+                                    <th><i class="icon_calendar"></i> Loại đơn giá</th>
                                     <th><i class="icon_pin_alt"></i> nhà sản xuất</th>
                                     <th><i class="icon_mobile"></i> Nổi bật</th>
                                     <th><i class="icon_cogs"></i> Action</th>
@@ -48,7 +48,7 @@
                                     <tr>
                                         <td><?php echo e($san_pham->ten_san_pham); ?></td>
                                         <td><?php echo e($san_pham->ten_loai_sp); ?></td>
-                                        <td><?php echo e($san_pham->ten_nha_cung_cap); ?></td>
+                                        <td><?php echo e($san_pham->don_gia); ?></td>
                                         <td><?php echo e($san_pham->ten_nha_san_xuat); ?></td>
                                         <td><?php echo e($san_pham->noi_bat ? 1 : 0); ?></td>
                                         <td>

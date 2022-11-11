@@ -82,6 +82,24 @@
             </div>
             <div class="form-group">
                 <div class="col-md-3">
+                    Nhà sản xuất
+                </div>
+                <div class="col-md-9">
+                    <select name="id_nha_san_xuat" id="id_nha_san_xuat" class="form-control" value=""
+                        required="required" name="" id="">
+                        @if (isset($ds_nsx))
+                            @foreach ($ds_nsx as $nsx)
+                                <option value="{{ $nsx->ID }}">{{ $nsx->ID }} -
+                                    <span>{{ $nsx->ten_nha_san_xuat }}</span></span>
+                                </option>
+                            @endforeach
+                        @endif
+                    </select>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3">
                     Nổi bật
                 </div>
                 <div class="col-md-9">

@@ -16,8 +16,7 @@ class SPAdminController extends Controller
     public function index()
     {
         $ds_san_pham = DB::table('sb_san_pham')
-            ->select(DB::raw('sb_san_pham.*,sb_san_pham.id,ten_nha_cung_cap,ten_nha_san_xuat,ten_loai_sp'))
-            ->join('sb_nha_cung_cap', 'sb_san_pham.id_nha_cung_cap', '=', 'sb_nha_cung_cap.id')
+            ->select(DB::raw('sb_san_pham.*,sb_san_pham.id,ten_nha_san_xuat,ten_loai_sp'))
             ->join('sb_nha_san_xuat', 'sb_san_pham.id_nha_san_xuat', '=', 'sb_nha_san_xuat.id')
             ->join('sb_loai_san_pham', 'sb_san_pham.id_loai_sp', '=', 'sb_loai_san_pham.ID_loai_sp')
             ->get();
@@ -127,7 +126,6 @@ class SPAdminController extends Controller
         $gioi_thieu = $request->get('editor1');
         $don_gia = $request->get('don_gia');
         $sku = $request->get('sku');
-        $id_nha_cung_cap = $request->get('id_nha_cung_cap');
         $id_nha_san_xuat = $request->get('id_nha_san_xuat');
         $ngay_san_xuat = $request->get('ngay_san_xuat');
         $trang_thai = $request->get('trang_thai');
@@ -156,7 +154,6 @@ class SPAdminController extends Controller
                 'gioi_thieu' => $gioi_thieu,
                 'don_gia' => $don_gia,
                 'sku' => $sku,
-                'id_nha_cung_cap' => $id_nha_cung_cap,
                 'id_nha_san_xuat' => $id_nha_san_xuat,
                 'ngay_san_xuat' => $ngay_san_xuat,
                 'trang_thai' => $trang_thai,
