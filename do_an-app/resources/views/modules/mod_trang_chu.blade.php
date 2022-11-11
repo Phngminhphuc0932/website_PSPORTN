@@ -47,7 +47,7 @@
                         <div class=" elit-grid">
                             <label>{{ $sp_noi_bat->ten_san_pham }}</label>
                             <p class="in_par">Trải nghiệm ngay những đôi giày tốt nhất tại cửa hàng chúng tôi!</p>
-                            <span class="on-get">MUA NGAY</span>
+                            <a href="/single?id_sp={{ $sp_noi_bat->ID }}"><span class="on-get">MUA NGAY</span></a>
                         </div>
                         <img class="img-responsive shoe-left" src="images/hinh_sp/{{ $sp_noi_bat->hinh }}"
                             alt=" " />
@@ -59,7 +59,7 @@
         </div>
         <div class="products">
             <h5 class="latest-product">MẪU ÁO MỚI NHẤT</h5>
-            <a class="view-all" href="/product">XEM TẤT CẢ<span> </span></a>
+            <a class="view-all" href="/product-type?id_loai_sp=ao">XEM TẤT CẢ<span> </span></a>
         </div>
 
         <div class="product-left">
@@ -113,7 +113,7 @@
 
         <div class="products">
             <h5 class="latest-product">MẪU GIÀY MỚI NHẤT</h5>
-            <a class="view-all" href="/product">XEM TẤT CẢ<span> </span></a>
+            <a class="view-all" href="/product-type?id_loai_sp=giay">XEM TẤT CẢ<span> </span></a>
         </div>
         <div class="product-left">
             @if (isset($list_mau_giay_moi))

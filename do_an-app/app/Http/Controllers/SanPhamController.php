@@ -239,8 +239,21 @@ class SanPhamController extends Controller
 
     function product_type(Request $request){
         $id_loai_sp = $request->get('id_loai_sp');
-        $list_sp = DB::table('sb_san_pham')->where('id_loai_sp', $id_loai_sp)->get();
+        if($id_loai_sp == "*"){
+            $list_sp = DB::table('sb_san_pham')->get();
+        }
+        else if($id_loai_sp == "ao"){
+            $list_sp = DB::table('sb_san_pham')->where('ID_loai_sp', 27)->get();
+        }
+        else if($id_loai_sp == "giay"){
+            $list_sp = DB::table('sb_san_pham')->where('ID_loai_sp', 24)->get();
+        }
+        else {
+            $list_sp = DB::table('sb_san_pham')->where('id_loai_sp', $id_loai_sp)->get();
+        }
         $name_loai_sp = DB::table('sb_loai_san_pham')->where('id_loai_sp', $id_loai_sp)->get();
+
+
         //  echo '<pre>',print_r($list_sp) ,'</pre>';
 
         return view('product')

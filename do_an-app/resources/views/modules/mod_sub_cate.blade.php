@@ -22,8 +22,8 @@
             </ul>
         </ul>
     </div>
-    @if (isset($list_mau_ao_moi))
-        @foreach ($list_mau_ao_moi->splice(0, 1) as $sp)
+    @if (isset($products))
+        @foreach ($products->splice(0, 1) as $sp)
             <div class=" chain-grid menu-chain">
                 <a href="/single?id_sp={{ $sp->ID }}"><img class="img-responsive chain" src="images/hinh_sp/{{ $sp->hinh }}" alt=" " /></a>
                 <div class="grid-chain-bottom chain-watch">
@@ -32,7 +32,7 @@
                     <h6><a href="/single?id_sp={{ $sp->ID }}">{{$sp->ten_san_pham}}</a></h6>
                 </div>
             </div>
-            <a class="view-all all-product" href="/product">VIEW ALL PRODUCTS<span> </span></a>
+            <a class="view-all all-product" href="/product-type?id_loai_sp=*">VIEW ALL PRODUCTS<span> </span></a>
         @endforeach
     @endif
 </div>
