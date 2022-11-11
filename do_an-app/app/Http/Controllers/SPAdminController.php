@@ -78,7 +78,7 @@ class SPAdminController extends Controller
                 'hinh' => $hinh
             ]);
 
-        return redirect('/admin/ql-san-pham/create')->with('NoticeSuccess', 'Thêm sản phẩm mới thành công');
+        return redirect('/admin/ql-san-pham/')->with('NoticeSuccess', 'Thêm sản phẩm mới thành công');
     }
 
     /**

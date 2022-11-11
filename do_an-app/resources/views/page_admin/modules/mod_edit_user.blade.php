@@ -1,3 +1,8 @@
+@if (isset($NoticeSuccess))
+    <script>
+        alert("{{ $NoticeSuccess }}");
+    </script>
+@endif
 <div class="container">
     <form action="" method="POST" class="form-horizontal" role="form" enctype="multipart/form-data">
         @csrf

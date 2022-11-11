@@ -92,7 +92,7 @@ class UserAdminController extends Controller
                 'dien_thoai' => $dien_thoai,
             ]);
 
-        return redirect('/admin/ql-khach-hang/edit/' . $id)->with('NoticeSuccess', 'Cập nhật thông tin thành công');
+        return redirect('/admin/ql-khach-hang')->with('NoticeSuccess', 'Cập nhật thông tin thành công');
     }
 
     /**

@@ -5,7 +5,7 @@
     </div>
 
     <!--logo start-->
-    <a href="index.html" class="logo">P- <span class="lite">SPORT</span>-N</a>
+    <a href="/admin" class="logo">P- <span class="lite">SPORT</span>-N</a>
     <!--logo end-->
 
     <div class="nav search-row" id="top_menu">
