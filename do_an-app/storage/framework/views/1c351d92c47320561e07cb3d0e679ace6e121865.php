@@ -2,6 +2,7 @@
 
 <?php $__env->startSection('main-content'); ?>
     <!--main content start-->
+
     <link rel="stylesheet" href="/css/data_table.min.css">
     <script src="/js/data_table.min.js"></script>
     <section id="main-content">
@@ -36,9 +37,11 @@
                                 <tr>
                                     <th><i class="icon_profile"></i> mã đơn hàng </th>
                                     <th><i class="icon_calendar"></i> Họ tên người mua</th>
+                                    <th><i class="icon_calendar"></i> Trạng thái</th>
                                     <th><i class="icon_mail_alt"></i> Tổng tiền </th>
                                     <th><i class="icon_cogs"></i> Action</th>
                                 </tr>
+
                             </thead>
                             <tbody class="ds_don_hang"></tbody>
 
@@ -96,6 +99,7 @@
                                 <tr>
                                     <td>${data.ds_don_hang[i].ma_don_hang}</td>
                                     <td>${data.ds_don_hang[i].ho_ten_nguoi_nhan}</td>
+                                    <td>${data.ds_don_hang[i].ten_trang_thai}</td>
                                     <td>${data.ds_don_hang[i].tong_tien}</td>
                                     <td>
                                         <div class="btn-group">

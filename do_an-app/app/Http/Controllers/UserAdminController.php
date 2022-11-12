@@ -51,7 +51,7 @@ class UserAdminController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
