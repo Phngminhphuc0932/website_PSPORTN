@@ -274,7 +274,7 @@ class SanPhamController extends Controller
                     ->get();
 
             } else {
-                $data = DB::table('users')
+                $data = DB::table('sb_search_null')
                     ->get();
             }
 
@@ -283,7 +283,7 @@ class SanPhamController extends Controller
                 foreach($data as $row)
                 {
                     $output .= '
-                    <p>'.$row->ten_san_pham.'</p>
+                    <a href="/single?id_sp='.$row->ID.'">'.$row->ten_san_pham.'</a></br>
                     ';
                 }
             } else {

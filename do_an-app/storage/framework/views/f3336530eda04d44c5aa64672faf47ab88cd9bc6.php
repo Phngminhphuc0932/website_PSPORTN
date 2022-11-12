@@ -22,7 +22,7 @@
                                 </li>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         <?php endif; ?>
-                    <?php endif; ?>
+
                 </ul>
                 <div class="clearfix"> </div>
             </div>
@@ -38,6 +38,7 @@
                 </div>
                 
                 <p><?php echo e($sp_s->gioi_thieu); ?></p>
+                <?php endif; ?>
                 
 
 

@@ -46,6 +46,7 @@
                     <input type="text" name="search" id="search" value="" onfocus="this.value = '';"
                         onblur="if (this.value == '') {this.value = '';}">
                     <input type="submit" value="SEARCH">
+                    <p href="#" id="load_product"></p>
                     <p href="#" id="search_product"></p>
                 </div>
                 <div class="clearfix"> </div>
@@ -99,7 +100,14 @@
             })
         }
 
+        $(document).on('keydown', '#search', function() {
+            document.getElementById("load_product").className = 'lds-dual-ring';
+            sleep(100000);
+        })
+
         $(document).on('keyup', '#search', function() {
+
+            document.getElementById("load_product").classList.remove("lds-dual-ring");;
             var query = $(this).val();
             fetch_product_data(query);
         });
