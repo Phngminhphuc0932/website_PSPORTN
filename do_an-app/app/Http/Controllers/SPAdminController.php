@@ -16,9 +16,10 @@ class SPAdminController extends Controller
     public function index()
     {
         $ds_san_pham = DB::table('sb_san_pham')
-            ->select(DB::raw('sb_san_pham.*,sb_san_pham.id,ten_nha_san_xuat,ten_loai_sp'))
+            ->select(DB::raw('sb_san_pham.*,sb_san_pham.id,ten_nha_san_xuat,ten_loai_sp,ten_hinh'))
             ->join('sb_nha_san_xuat', 'sb_san_pham.id_nha_san_xuat', '=', 'sb_nha_san_xuat.id')
             ->join('sb_loai_san_pham', 'sb_san_pham.id_loai_sp', '=', 'sb_loai_san_pham.ID_loai_sp')
+            ->join('sb_hinh_san_pham', 'sb_san_pham.ID', '=', 'sb_hinh_san_pham.id_sp')
             ->get();
         // echo '<pre>', print_r($ds_san_pham), '</pre>';
         return view('page_admin.trang_ds_san_pham')->with('ds_san_pham', $ds_san_pham);
@@ -50,6 +51,7 @@ class SPAdminController extends Controller
         $noi_bat = $request->get('noi_bat');
         $trang_thai = $request->get('trang_thai');
         $id_loai_sp = $request->get('id_loai_sp');
+        $id_nha_san_xuat = $request->get('id_nha_san_xuat');
 
         $hinh_sp = $request->file('hinh');
         //echo "<pre>",print_r($hinh_sach),"</pre>";
@@ -75,7 +77,8 @@ class SPAdminController extends Controller
                 'sku' => $sku,
                 'noi_bat' => $noi_bat,
                 'trang_thai' => $trang_thai,
-                'hinh' => $hinh
+                'hinh' => $hinh,
+                'id_nha_san_xuat' => $id_nha_san_xuat
             ]);
 
         return redirect('/admin/ql-san-pham/')->with('NoticeSuccess', 'Thêm sản phẩm mới thành công');
@@ -182,7 +185,9 @@ class SPAdminController extends Controller
 
     function create_sp()
     {
+        $ds_nsx = DB::table('sb_nha_san_xuat')->get();
+
         $list_loai_sp = DB::table('sb_loai_san_pham')->get();
-        return view('page_admin.trang_them_sp')->with('list_loai_sp', $list_loai_sp);
+        return view('page_admin.trang_them_sp')->with('list_loai_sp', $list_loai_sp)->with('ds_nsx', $ds_nsx);
     }
 }

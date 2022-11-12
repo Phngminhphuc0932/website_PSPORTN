@@ -133,12 +133,12 @@ class DHangAdminController extends Controller
                     'trang_thai' => $trang_thai
                 ]);
 
-            $check_notice = DB::table('sb_notice')
+            $check_notice = DB::table('sb_trang_thai')
                 ->where('id_don_hang', $thong_tin_don_hang_old->ID)
                 ->first();
 
             if ($check_notice) {
-                DB::table('sb_notice')
+                DB::table('sb_trang_thai')
                     ->where('id_don_hang', $thong_tin_don_hang_old->ID)
                     ->update([
                         'trang_thai_cu' => $check_notice->trang_thai_cu,

@@ -1,3 +1,8 @@
+<?php if(isset($NoticeSuccess)): ?>
+    <script>
+        alert("<?php echo e($NoticeSuccess); ?>");
+    </script>
+<?php endif; ?>
 <div class="container">
     <form action="" method="POST" class="form-horizontal" role="form" enctype="multipart/form-data">
         <?php echo csrf_field(); ?>
@@ -29,6 +34,24 @@
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         <?php endif; ?>
                     </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3">
+                    Nhà sản xuất
+                </div>
+                <div class="col-md-9">
+                    <select name="id_nha_san_xuat" id="id_nha_san_xuat" class="form-control" value=""
+                        required="required" name="" id="">
+                        <?php if(isset($ds_nsx)): ?>
+                            <?php $__currentLoopData = $ds_nsx; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $nsx): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <option value="<?php echo e($nsx->ID); ?>"><?php echo e($nsx->ID); ?> -
+                                    <span><?php echo e($nsx->ten_nha_san_xuat); ?></span></span>
+                                </option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        <?php endif; ?>
+                    </select>
+
                 </div>
             </div>
             <div class="form-group">

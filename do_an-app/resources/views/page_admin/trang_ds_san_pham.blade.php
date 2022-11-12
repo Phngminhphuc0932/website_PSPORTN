@@ -43,7 +43,8 @@
                                     <th><i class="icon_profile"></i> Tên sản phẩm</th>
                                     <th><i class="icon_calendar"></i> Loại sản phẩm</th>
                                     <th><i class="icon_calendar"></i> Loại đơn giá</th>
-                                    <th><i class="icon_pin_alt"></i> nhà sản xuất</th>
+                                    <th><i class="icon_calendar"></i> Hình Sản Phẩm</th>
+                                    <th><i class="icon_pin_alt"></i> Nhà sản xuất</th>
                                     <th><i class="icon_mobile"></i> Nổi bật</th>
                                     <th><i class="icon_cogs"></i> Action</th>
                                 </tr>
@@ -54,6 +55,7 @@
                                         <td>{{ $san_pham->ten_san_pham }}</td>
                                         <td>{{ $san_pham->ten_loai_sp }}</td>
                                         <td>{{ $san_pham->don_gia }}</td>
+                                        <td><img src="/images/hinh_sp/{{ $san_pham->hinh }}" alt=""></td>
                                         <td>{{ $san_pham->ten_nha_san_xuat }}</td>
                                         <td>{{ $san_pham->noi_bat ? 1 : 0 }}</td>
                                         <td>
