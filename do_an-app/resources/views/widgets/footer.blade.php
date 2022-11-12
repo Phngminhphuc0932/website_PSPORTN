@@ -12,7 +12,7 @@
                 </div>
                 <div class="clearfix"> </div>
             </div>
-            <div class="latter-right">
+            {{-- <div class="latter-right">
                 <p>FOLLOW US</p>
                 <ul class="face-in-to">
                     <li><a href="#"><span> </span></a></li>
@@ -20,7 +20,7 @@
                     <div class="clearfix"> </div>
                 </ul>
                 <div class="clearfix"> </div>
-            </div>
+            </div> --}}
             <div class="clearfix"> </div>
         </div>
     </div>

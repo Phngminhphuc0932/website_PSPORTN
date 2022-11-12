@@ -22,7 +22,7 @@
                                 </li>
                             @endforeach
                         @endif
-                    @endif
+
                 </ul>
                 <div class="clearfix"> </div>
             </div>
@@ -38,6 +38,7 @@
                 </div>
                 {{-- <h6>100 items in stock</h6> --}}
                 <p>{{ $sp_s->gioi_thieu }}</p>
+                @endif
                 {{-- <div class="share">
                     <h5>Share Product :</h5>
                     <ul class="share_nav">
