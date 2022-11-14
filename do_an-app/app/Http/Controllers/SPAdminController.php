@@ -16,10 +16,10 @@ class SPAdminController extends Controller
     public function index()
     {
         $ds_san_pham = DB::table('sb_san_pham')
-            ->select(DB::raw('sb_san_pham.*,sb_san_pham.id,ten_nha_san_xuat,ten_loai_sp,ten_hinh'))
+            ->select(DB::raw('sb_san_pham.*,sb_san_pham.id,ten_nha_san_xuat,ten_loai_sp'))
             ->join('sb_nha_san_xuat', 'sb_san_pham.id_nha_san_xuat', '=', 'sb_nha_san_xuat.id')
             ->join('sb_loai_san_pham', 'sb_san_pham.id_loai_sp', '=', 'sb_loai_san_pham.ID_loai_sp')
-            ->join('sb_hinh_san_pham', 'sb_san_pham.ID', '=', 'sb_hinh_san_pham.id_sp')
+            // ->join('sb_hinh_san_pham', 'sb_san_pham.ID', '=', 'sb_hinh_san_pham.id_sp')
             ->get();
         // echo '<pre>', print_r($ds_san_pham), '</pre>';
         return view('page_admin.trang_ds_san_pham')->with('ds_san_pham', $ds_san_pham);

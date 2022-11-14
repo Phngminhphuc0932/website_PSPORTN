@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1:3306
--- Thời gian đã tạo: Th10 10, 2022 lúc 12:04 PM
+-- Thời gian đã tạo: Th10 14, 2022 lúc 09:13 AM
 -- Phiên bản máy phục vụ: 5.7.36
 -- Phiên bản PHP: 7.4.26
 
@@ -18,8 +18,31 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `laravel_2`
+-- Cơ sở dữ liệu: `laravel_2(2)`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `loai_trang_thai`
+--
+
+DROP TABLE IF EXISTS `loai_trang_thai`;
+CREATE TABLE IF NOT EXISTS `loai_trang_thai` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ten_trang_thai` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `loai_trang_thai`
+--
+
+INSERT INTO `loai_trang_thai` (`id`, `ten_trang_thai`) VALUES
+(1, 'Đã hủy'),
+(2, 'Giao thành công'),
+(3, 'Đang chờ duyệt'),
+(4, 'Đã duyệt');
 
 -- --------------------------------------------------------
 
@@ -50,8 +73,9 @@ CREATE TABLE IF NOT EXISTS `sb_ct_don_hang` (
   `so_luong` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `id_sp` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`),
-  KEY `id_sp` (`id_sp`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  KEY `id_sp` (`id_sp`),
+  KEY `Fkey_id_don_hang` (`ID_don_hang`)
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `sb_ct_don_hang`
@@ -70,27 +94,35 @@ INSERT INTO `sb_ct_don_hang` (`ID`, `ID_don_hang`, `don_gia`, `thanh_tien`, `so_
 (10, 5, NULL, NULL, NULL, NULL),
 (11, 5, NULL, NULL, NULL, NULL),
 (12, 5, NULL, NULL, NULL, NULL),
-(14, 13, NULL, NULL, NULL, NULL),
-(15, 13, NULL, NULL, NULL, NULL),
-(16, 14, NULL, NULL, NULL, NULL),
-(17, 14, NULL, NULL, NULL, NULL),
-(18, 14, NULL, NULL, NULL, NULL),
-(31, 19, NULL, NULL, NULL, NULL),
-(32, 19, NULL, NULL, NULL, NULL),
-(33, 19, NULL, NULL, NULL, NULL),
-(34, 20, NULL, NULL, NULL, NULL),
-(35, 20, NULL, NULL, NULL, NULL),
-(36, 20, NULL, NULL, NULL, NULL),
-(37, 21, NULL, NULL, NULL, NULL),
-(38, 21, NULL, NULL, NULL, NULL),
-(39, 21, NULL, NULL, NULL, NULL),
-(40, 22, NULL, NULL, NULL, NULL),
-(41, 22, NULL, NULL, NULL, NULL),
-(42, 22, NULL, NULL, NULL, NULL),
-(43, 28, '6500000', '13000000', '2', 15),
-(44, 28, '4400000', '8800000', '2', 14),
-(45, 29, '6500000', '13000000', '2', 15),
-(46, 29, '4400000', '8800000', '2', 14);
+(14, 6, NULL, NULL, NULL, NULL),
+(15, 6, NULL, NULL, NULL, NULL),
+(16, 7, NULL, NULL, NULL, NULL),
+(17, 7, NULL, NULL, NULL, NULL),
+(18, 7, NULL, NULL, NULL, NULL),
+(31, 8, NULL, NULL, NULL, NULL),
+(32, 8, NULL, NULL, NULL, NULL),
+(33, 8, NULL, NULL, NULL, NULL),
+(34, 9, NULL, NULL, NULL, NULL),
+(35, 9, NULL, NULL, NULL, NULL),
+(36, 9, NULL, NULL, NULL, NULL),
+(37, 10, NULL, NULL, NULL, NULL),
+(38, 11, NULL, NULL, NULL, NULL),
+(39, 12, NULL, NULL, NULL, NULL),
+(40, 13, NULL, NULL, NULL, NULL),
+(41, 13, NULL, NULL, NULL, NULL),
+(42, 13, NULL, NULL, NULL, NULL),
+(43, 14, '6500000', '13000000', '2', 15),
+(44, 14, '4400000', '8800000', '2', 14),
+(45, 15, '6500000', '13000000', '2', 15),
+(46, 15, '4400000', '8800000', '2', 14),
+(47, 19, '850000', '1700000', '2', 42),
+(48, 19, '790000', '1580000', '2', 43),
+(49, 20, '850000', '850000', '1', 42),
+(50, 20, '790000', '790000', '1', 43),
+(51, 21, '850000', '850000', '1', 42),
+(52, 21, '790000', '790000', '1', 43),
+(53, 21, '850000', '850000', '1', 41),
+(54, 22, '890000', '890000', '1', 87);
 
 -- --------------------------------------------------------
 
@@ -104,37 +136,42 @@ CREATE TABLE IF NOT EXISTS `sb_don_hang` (
   `ma_don_hang` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `tong_tien` int(11) DEFAULT NULL,
   `ngay_dat` datetime DEFAULT NULL,
-  `id_nguoi_dung` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id_nguoi_dung` int(11) DEFAULT NULL,
   `ho_ten_nguoi_nhan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email_nguoi_nhan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `dia_chi_nguoi_nhan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `sdt_nguoi_nhan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `trang_thai` tinyint(4) DEFAULT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  PRIMARY KEY (`ID`),
+  KEY `Fkey_user_order` (`id_nguoi_dung`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `sb_don_hang`
 --
 
 INSERT INTO `sb_don_hang` (`ID`, `ma_don_hang`, `tong_tien`, `ngay_dat`, `id_nguoi_dung`, `ho_ten_nguoi_nhan`, `email_nguoi_nhan`, `dia_chi_nguoi_nhan`, `sdt_nguoi_nhan`, `trang_thai`) VALUES
-(2, 'S240220162', 85000, '2016-02-24 14:20:10', NULL, 'Nguyễn Thy Mỹ Linh', 'linhnguyenthymy136@gmail.com', NULL, '0980808080', 1),
+(1, 'S240220161', 92000, '2016-02-24 00:00:00', NULL, 'Phạm Hải Nam', 'hainam011201@gmail.com', 'Q Tân Bình, TP HCM', '0392345678', 0),
+(2, 'S240220162', 85000, '2016-02-24 14:20:10', NULL, 'Nguyễn Thy Mỹ Linh', 'linhnguyenthymy136@gmail.com', NULL, '0980808080', 3),
 (3, 'S240220163', 720000, '2016-02-24 13:57:59', NULL, 'Lê Văn Việt', 'lvviet@gmail.com', NULL, '0908236548', 1),
-(4, 'S250220164', 658000, '2016-02-25 02:04:35', NULL, 'Huỳnh Bảo', 'huynhbao@gmail.com', NULL, '0908848484', 1),
+(4, 'S250220164', 658000, '2016-02-25 02:04:35', NULL, 'Huỳnh Bảo', 'huynhbao@gmail.com', NULL, '0908848484', 2),
 (5, 'S250220165', 838000, '2016-02-25 14:10:40', NULL, 'Võ Thị Mỹ Dung', 'vothimydung@gmail.com', NULL, '0908084865', 1),
-(13, NULL, 95000, '2016-03-08 07:24:48', '2', 'Hùng Nguyễn', 'botautomail@gmail.com', '357 LHP P2 Q10', '0909090909', 0),
-(14, NULL, 410000, '2016-03-09 10:43:23', '3', 'Hùng Nguyễn Xuân', 'nxhung118@gmail.com', '357 LHP P2 Q10', '09090909', 2),
-(19, NULL, 1329000, '2016-03-15 09:35:43', '1', 'Hùng Nguyễn', 'hungnguyenxuan118@gmail.com', 'asd asdas asd asdas das', '0909090909', 2),
-(20, NULL, 1329000, '2016-03-15 09:38:52', '6', 'Nguyễn Thy Mỹ Linh', 'ntmlinh@gmail.com', '357 LHP P2 Q10', '0912345678', 2),
-(21, NULL, 529000, '2016-03-15 09:41:19', '1', 'Hùng Nguyễn', 'hungnguyenxuan118@gmail.com', 'asd asdas asd asdas das', '0909090909', 2),
-(22, NULL, 462000, '2016-03-15 09:42:32', '1', 'Hùng Nguyễn', 'hungnguyenxuan118@gmail.com', 'asd asdas asd asdas das', '0909090909', 2),
-(23, NULL, 560000, '2016-03-15 09:44:53', '1', 'Hùng Nguyễn', 'hungnguyenxuan118@gmail.com', 'asd asdas asd asdas das', '0909090909', 2),
-(24, NULL, 560000, '2016-03-15 10:00:16', '1', 'Hùng Nguyễn', 'hungnguyenxuan118@gmail.com', 'asd asdas asd asdas das', '0909090909', 2),
-(25, NULL, 1229000, '2016-03-15 10:17:05', '1', 'Hùng Nguyễn', 'hungnguyenxuan118@gmail.com', 'asd asdas asd asdas das', '0909090909', 2),
-(26, NULL, 208000, '2016-03-15 10:35:50', '3', 'Hùng Nguyễn Xuân', 'nxhung118@gmail.com', '357 LHP P2 Q10', '09090909', 2),
-(27, NULL, 21800000, '2022-09-23 06:07:29', NULL, 'Minh Phuc', 'tung35099@gmail.com', 'phphphph', '0898139808', 2),
-(28, NULL, 21800000, '2022-09-23 06:20:23', NULL, 'Minh Phuc', 'tung35099@gmail.com', 'phphphph', '0898139808', 2),
-(29, NULL, 21800000, '2022-09-23 06:43:59', NULL, 'Minh Phuc', 'tung35099@gmail.com', 'phphphph', '0898139808', 2);
+(6, 'S250220166', 95000, '2016-03-08 07:24:48', NULL, 'Hùng Nguyễn', 'botautomail@gmail.com', '357 LHP P2 Q10', '0909090909', 0),
+(7, 'S250220167', 410000, '2016-03-09 10:43:23', NULL, 'Hùng Nguyễn Xuân', 'nxhung118@gmail.com', '357 LHP P2 Q10', '09090909', 2),
+(8, 'S250220168', 1329000, '2016-03-15 09:35:43', NULL, 'Hùng Nguyễn', 'hungnguyenxuan118@gmail.com', 'asd asdas asd asdas das', '0909090909', 2),
+(9, 'S250220169', 1329000, '2016-03-15 09:38:52', NULL, 'Nguyễn Thy Mỹ Linh', 'ntmlinh@gmail.com', '357 LHP P2 Q10', '0912345678', 2),
+(11, 'S250220171', 462000, '2016-03-15 09:42:32', NULL, 'Hùng Nguyễn', 'hungnguyenxuan118@gmail.com', 'asd asdas asd asdas das', '0909090909', 2),
+(12, 'S250220172', 560000, '2016-03-15 09:44:53', NULL, 'Hùng Nguyễn', 'hungnguyenxuan118@gmail.com', 'asd asdas asd asdas das', '0909090909', 2),
+(13, 'S250220174', 560000, '2016-03-15 10:00:16', NULL, 'Hùng Nguyễn', 'hungnguyenxuan118@gmail.com', 'asd asdas asd asdas das', '0909090909', 2),
+(14, 'S250220175', 1229000, '2016-03-15 10:17:05', NULL, 'Hùng Nguyễn', 'hungnguyenxuan118@gmail.com', 'asd asdas asd asdas das', '0909090909', 2),
+(15, 'S250220176', 208000, '2016-03-15 10:35:50', NULL, 'Hùng Nguyễn Xuân', 'nxhung118@gmail.com', '357 LHP P2 Q10', '09090909', 2),
+(16, 'S250220177', 21800000, '2022-09-23 06:07:29', NULL, 'Minh Phuc', 'tung35099@gmail.com', 'phphphph', '0898139808', 2),
+(17, 'S250220178', 21800000, '2022-09-23 06:20:23', NULL, 'Minh Phuc', 'tung35099@gmail.com', 'phphphph', '0898139808', 2),
+(18, NULL, 11370000, '2022-11-12 00:04:14', NULL, 'Phạm Nguyễn Minh Phúc', 'phngminhphuc0932@gmail.com', '61 Hoài Thanh p14 q8', '0898139808', 2),
+(19, NULL, 3280000, '2022-11-12 04:25:02', NULL, 'Minh Phuc', 'phngminhphuc0932@gmail.com', '61 tphcm', '0898139808', 2),
+(20, NULL, 1640000, '2022-11-12 04:50:05', NULL, 'Phuc Pham', 'phngminhphuc0932@gmail.com', '61 TP', '0898139808', 2),
+(21, NULL, 2490000, '2022-11-12 06:27:33', NULL, 'Minh Phuc', 'phngminhphuc0932@gmail.com', '61 hoaiaiaiai', '0898', 2),
+(22, NULL, 890000, '2022-11-12 06:51:24', NULL, 'Minh Phuc', 'tung35099@gmail.com', '61 Hoài Thanh p14 q8', '0898139808', 2);
 
 -- --------------------------------------------------------
 
@@ -264,7 +301,14 @@ CREATE TABLE IF NOT EXISTS `sb_loai_tin_tuc` (
   `ten_loai_tin` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `alias` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `sb_loai_tin_tuc`
+--
+
+INSERT INTO `sb_loai_tin_tuc` (`ID`, `ten_loai_tin`, `alias`) VALUES
+(1, 'giảm giá', NULL);
 
 -- --------------------------------------------------------
 
@@ -277,19 +321,20 @@ CREATE TABLE IF NOT EXISTS `sb_loai_user` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `ten_loai_user` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `sb_loai_user`
 --
 
 INSERT INTO `sb_loai_user` (`ID`, `ten_loai_user`) VALUES
-(1, 'Thành Viên'),
-(2, 'Hạng Bạc'),
-(3, 'Hạng Vàng'),
-(4, 'Hạng Kim Cương'),
-(5, 'ADMIN'),
-(6, 'Quản trị bán hàng');
+(1, 'thành viên'),
+(2, 'VIP cấp bạc'),
+(3, 'VIP cấp vàng'),
+(4, 'VIP cấp kim cương'),
+(5, 'Quản trị bán hàng'),
+(6, 'Quản trị nội dung'),
+(7, 'Admin');
 
 -- --------------------------------------------------------
 
@@ -347,6 +392,30 @@ INSERT INTO `sb_nha_san_xuat` (`ID`, `ten_nha_san_xuat`, `dia_chi`, `email`, `sd
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `sb_notice`
+--
+
+DROP TABLE IF EXISTS `sb_notice`;
+CREATE TABLE IF NOT EXISTS `sb_notice` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `id_don_hang` int(11) DEFAULT NULL,
+  `trang_thai_moi` int(11) DEFAULT NULL,
+  `trang_thai_cu` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_trang_thai` (`id_don_hang`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `sb_notice`
+--
+
+INSERT INTO `sb_notice` (`id`, `email`, `id_don_hang`, `trang_thai_moi`, `trang_thai_cu`) VALUES
+(1, 'hainam011201@gmail.com', 1, 0, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `sb_san_pham`
 --
 
@@ -369,7 +438,7 @@ CREATE TABLE IF NOT EXISTS `sb_san_pham` (
   KEY `Fkey_id_nha_cung_cap` (`id_nha_cung_cap`),
   KEY `Fkey_id_nha_san_xuat` (`id_nha_san_xuat`),
   KEY `id_loai_sp` (`id_loai_sp`)
-) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `sb_san_pham`
@@ -383,36 +452,46 @@ INSERT INTO `sb_san_pham` (`ID`, `id_loai_sp`, `ten_san_pham`, `gioi_thieu`, `do
 (23, 24, 'NIKE KOBE 6 PROTRO ALL-STAR', 'NIKE KOBE 6 PROTRO \"ALL-STAR\" - COND: 9.8\r\nCode: DH9888-600\r\nPhối màu: Challenge Red/Black/White.\r\nCông nghệ: Đệm Air Zoom Turbo được đặt ở bàn chân trước, còn lai được bọc bằng đệm Phylon.\r\nFit: True to size hoặc lên 0.5 size.\r\nĐề xuất: Indoor.\r\nVị trí: PG, SG.\r\nGiày kí gửi; Cond: 9.8 (Full box).', '7000000', '6500000', 'DH9888-600', 1, 1, 1, 1, 'NIKE KOBE 6 PROTRO ALL-STAR 1.png', NULL),
 (24, 24, 'NIKE KYRIE 8 AK  SIREN RED', 'NIKE KYRIE 8 \"AK - SIREN RED\"\r\nCode: DM0856-600\r\nPhối màu: Siren Red/Light Blue/White.\r\nCông nghệ: Đệm Zoom Strobel ở bàn chân trước và túi Zoom ở phần gót.\r\nFit: True to size hoặc lên 0.5 size.\r\nĐề xuất: Indoor / Outdoor (mặt sân không quá xấu).\r\nVị trí: PG, SG, SF.', '3790000', '2350000', 'DM0856-600', 1, 1, 1, 1, 'NIKE KYRIE 8 AK SIREN RED 1.png', NULL),
 (25, 24, 'NIKE KYRIE LOW 5 CHAMPIONS', 'NIKE KYRIE LOW 5 \"CHAMPIONS\"\r\nCode: DJ6014-101\r\nPhối màu: White/Metallic Gold/Black.\r\nCông nghệ: Đệm Zoom Air được sử dụng ở phần bàn chân trước, còn lại được bọc bằng đệm Phylon.\r\nFit: True to size hoặc lên 0.5 size.\r\nĐề xuất: Indoor / Outdoor (Mặt sân không quá xấu).\r\nVị trí: PG, SG, SF.', '2700000', '2350000', 'DJ6014-101', 1, 1, 1, 1, 'NIKE KYRIE LOW 5 CHAMPIONS 1.png', NULL),
-(26, 29, 'QXL HOODIE \"HOME\"\r\nForm: Oversize', 'Form: Oversize', '420000', '150000', 'qxlhoodie', 0, 1, 1, 1, 'QXL HOODIE HOME 1.png\r\n', NULL),
-(27, 29, 'JORDAN JUMPMAN AIR FULL-ZIP', 'JORDAN JUMPMAN AIR FULL-ZIP\r\n\r\nMàu: Red.\r\nCode: AR2248-687.', '990000', '790000', 'AR2248-687', 0, 1, 1, 1, 'JORDAN JUMPMAN AIR FULL-ZIP 1.png', NULL),
-(28, 29, 'ÁO KHOÁC NIKE THERMA PULLOVER', 'ÁO KHOÁC NIKE THERMA PULLOVER\r\n\r\nCode: BV2740-681\r\nPhối màu: Red / Orange Camo.\r\nChất liệu: Thun, vải nỉ.\r\nChính hãng.', '950000', '760000', 'BV2740-681', 0, 1, 1, 1, 'ÁO KHOÁC NIKE THERMA PULLOVER 1', NULL),
-(29, 29, 'ÁO KHOÁC NIKE NSW TRACK SUIT BASIC', 'ÁO KHOÁC NIKE NSW TRACK SUIT BASIC\r\nCode: 861780-010\r\nPhối màu: Black.\r\nChất liệu: Nỉ thun.\r\nChính hãng.', '790000', '150000', '861780-010', 0, 1, 1, 1, 'ÁO KHOÁC NIKE NSW TRACK SUIT BASIC 1.png', NULL),
-(30, 29, 'ÁO KHOÁC NIKE BIG SWOOSH', 'ÁO KHOÁC NIKE \"BIG SWOOSH\"\r\nChất liệu: Vải dù (2 lớp).', '500000', '350000', 'nikebigswoosh', 0, 1, 1, 1, 'ÁO KHOÁC NIKE BIG SWOOSH 1.png', NULL),
-(31, 29, 'ADIDAS TECH CREWNECK SWEATSHIRT', 'ADIDAS TECH CREWNECK SWEATSHIRT\r\nCode: ED6121\r\nPhối màu: Black/White.', '800000', '650000', 'ED6121', 0, 1, 1, 1, 'ADIDAS TECH CREWNECK SWEATSHIRT 1.png', NULL),
-(32, 29, 'ADIDAS CAMO LINEAR HOODIE', 'ADIDAS CAMO LINEAR HOODIE\r\nCode: EI9728\r\nPhối màu: Grey/Black.\r\nChính hãng.', '950000', '650000', 'EI9728', 0, 1, 1, 1, 'ADIDAS CAMO LINEAR HOODIE 1.png', NULL),
-(33, 28, 'QUẦN SHORT CHAMPION', 'QUẦN SHORT CHAMPION \r\nPhối màu: Đỏ/Xanh.\r\nChính hãng.', '400000', '350000', 'quanchampion', 0, 1, 1, 1, 'QUẦN SHORT CHAMPION 1.png', NULL),
-(34, 28, 'QUẦN NIKE SPORTWEAR WOVEN FLOW', 'QUẦN NIKE SPORTWEAR WOVEN FLOW\r\nCode: DR5678-010 / DR5678-403 / DR5678-700 / DR5678-657\r\nPhối màu: Black / Blue / Yellow / Red.\r\nChính hãng.\r\nForm Âu.', '550000', '500000', 'DR5678-010 / DR5678-403 / DR5678-700 / DR5678-657', 0, 1, 1, 1, 'QUẦN NIKE SPORTWEAR WOVEN FLOW 1.png', NULL),
-(35, 28, 'QUẦN JORDAN FLIGHT', 'QUẦN JORDAN FLIGHT\r\nPhối màu: Black.', '350000', '300000', 'quanjordan', 0, 1, 1, 1, 'QUẦN JORDAN FLIGHT 1.png', NULL),
-(36, 28, 'QUẦN ĐẤU CHAMPION', 'QUẦN ĐẤU CHAMPION\r\nPhối màu: Xanh/Trắng.\r\nChính hãng.', '400000', '350000', 'quandauchampion', 0, 1, 1, 1, 'QUẦN ĐẤU CHAMPION 1.png', NULL),
-(37, 28, 'LAKERS KOBE BRYANT SHORT', 'LAKERS KOBE BRYANT SHORT\r\nPhối màu: Yellow/Purple.\r\nMặc chơi thể thao hoặc mặc hàng ngày.\r\nForm Âu.', '350000', '300000', 'lakersshort', 0, 1, 1, 1, 'LAKERS KOBE BRYANT SHORT 1.png', NULL),
-(38, 28, 'LAKERS ICON EDITION SHORT', 'LAKERS ICON EDITION SHORT\r\nPhối màu: Gold/White.\r\nMặc chơi thẻ thao hoặc mặc hàng ngày.\r\nForm Âu', '350000', '300000', 'quandaunba', 0, 1, 1, 1, 'LAKERS ICON EDITION SHORT 1.png', NULL),
-(39, 28, 'ALL STAR NBA SHORT', 'ALL STAR NBA SHORT\r\nPhối màu: Multi Color.\r\nQuần nằm trong đồng phục thi đấu cho sự kiện NBA All Star.\r\nMặc chơi thể thao hoặc mặc hàng ngày.', '350000', '300000', 'allstarshort', 0, 1, 1, 1, 'ALL STAR NBA SHORT 1.png', NULL),
-(40, 27, 'ÁO THUN NIKE NSW SWOOSH', 'ÁO THUN NIKE NSW SWOOSH\r\nCode: DJ1388-100\r\nPhối màu: White/Red/Black.\r\nChính hãng.', '650000', '550000', 'DJ1388-100', 0, 1, 1, 1, 'ÁO THUN NIKE NSW SWOOSH 1.png', NULL),
-(41, 27, 'ÁO THUN NIKE FC', 'ÁO THUN NIKE FC\r\nCode: DH7445-010\r\nPhối màu: Black.\r\nChính hãng.', '850000', '750000', 'DH7445-010', 0, 1, 1, 1, 'ÁO THUN NIKE FC 1.png', NULL),
-(42, 27, '', 'ÁO THUN JORDAN PSG LOGO\r\nCode: DJ0402-100\r\nPhối màu: White\r\nChính hãng.\r\n', '850000', '750000', '', 0, 1, 1, 1, 'ÁO THUN JORDAN PSG LOGO 1.png', NULL),
-(43, 27, 'ÁO THUN NIKE FARROW & BALL', 'ÁO THUN NIKE FARROW & BALL\r\nCode: DR1280-010 / DR1280-063\r\nPhối màu: Grey / Black.\r\nChính hãng.\r\n', '790000', '690000', 'DR1280-010 / DR1280-063', 0, 1, 1, 1, 'ÁO THUN NIKE FARROW & BALL 1.png', NULL),
-(44, 27, 'ÁO THUN NIKE ICON', 'ÁO THUN NIKE ICON\r\nCode: BV0629-382\r\nPhối màu: Mint/White.\r\nChính hãng.\r\n', '790000', '690000', 'BV0629-382', 0, 1, 1, 1, 'ÁO THUN NIKE ICON 1.png', NULL),
-(45, 27, 'ÁO THUN NIKE JUST DO IT - GRAPHIC', 'ÁO THUN NIKE \"JUST DO IT\" - GRAPHIC\r\nCode: DR1222-800\r\nPhối màu: Multi Color/Multi Color.\r\nChính hãng.\r\n', '850000', '550000', 'DR1222-800', 0, 1, 1, 1, 'ÁO THUN NIKE JUST DO IT - GRAPHIC 1.png', NULL),
-(86, 27, 'ÁO THUN DERRICK CLUB', 'ÁO THUN DERRICK CLUB', '480000', '218000', 'aothun', 0, 1, 1, 1, 'ÁO THUN DERRICK CLUB 1.png', NULL),
-(87, 27, 'SWEATER NIKE JUST DO IT', 'SWEATER NIKE \"JUST DO IT\"\r\nCode: DO2904-010\r\nPhối màu: Black/Multi Color.\r\nChất áo không quá dày nên có thể mặc hàng ngày.\r\nLưu ý: Áo sẽ đổ lông nhẹ thời gian đầu, nên giặt riêng cho đến khi hết tình trạng trên; không nên giặt mặt trái.\r\nChính hãng.', '890000', '790000', 'DO2904-010', 0, 1, 1, 1, 'SWEATER NIKE JUST DO IT.png', NULL),
-(88, 25, 'NIKE WMNS ZOOM WINFLO 8', 'NIKE WMNS ZOOM WINFLO 8\r\nCode: CW3421-100\r\nPhối màu: White/Bright Crimson/Total Orange/Black.\r\nCông nghệ: Zoom Air kết hợp cùng đệm Phylon.\r\nFit: True to size.\r\nĐề xuất: Mang chạy bộ hoặc đi hàng ngày.\r\n', '1850000', '1650000', 'CW3421-100', 0, 1, 1, 1, 'NIKE WMNS ZOOM WINFLO 8 1.png', NULL),
-(89, 25, 'NIKE AIR ZOOM PEGASUS 38', 'NIKE AIR ZOOM PEGASUS 38\r\nCode: CZ1815-002\r\nPhối màu: Black/Anthracite/Volt/White.\r\nCông nghệ: Air Zoom kết hợp cùng đệm Phylon.\r\nFit: True to size.\r\nĐề xuất: Mang chạy bộ hoặc đi lại hàng ngày.', '2450000', '1350000', 'CZ1815-002', 0, 1, 1, 1, 'NIKE AIR ZOOM PEGASUS 38 1.png', NULL),
-(90, 26, 'ADIDAS YEEZY BOOST 350 V2 BONE', 'ADIDAS YEEZY BOOST 350 V2 \"BONE\"\r\nCode: HQ6316\r\nPhối màu: Bone/Bone-Bone.\r\nCông nghệ: Đệm Boost.\r\nFit: True to size.\r\nĐề xuất: Mang hàng ngày, sưu tầm.', '7200000', '5200000', 'HQ6316', 0, 1, 1, 1, 'ADIDAS YEEZY BOOST 350 V2 BONE 1.png', NULL),
-(91, 26, 'ADIDAS SUPERSTAR ARIZONA', 'ADIDAS SUPERSTAR ARIZONA\r\nCode: GZ2871\r\nPhối màu: Chalk White / Chalk White / Chalk White.\r\nFit: True to size hoặc lên từ 0.5-1 size.\r\nĐề xuất: Sử dụng đi lại hằng ngày, đi chơi.', '2200000', '1780000', 'GZ2871', 0, 1, 1, 1, 'ADIDAS SUPERSTAR ARIZONA 1.png', NULL),
-(92, 26, 'ADIDAS STAN SMITH GREEN', 'ADIDAS STAN SMITH \"GREEN\"\r\nCode: M20324.\r\nPhối màu: Cloud White/Core White/Green.\r\nFit: True to size hoặc lên từ 0.5 - 1 size.\r\nĐề xuất: Sử dụng đi lại hằng ngày, đi chơi.\r\n', '1800000', '1350000', 'M20324', 0, 1, 1, 1, 'ADIDAS STAN SMITH GREEN 1.png', NULL),
-(93, 26, 'ADIDAS STAN SMITH DIAMOND', 'ADIDAS STAN SMITH \"DIAMOND\"\r\nCode: EE8483.\r\nPhối màu: Cloud White/Cloud White/Core Black.\r\nFit: True to size hoặc lên 0.5 - 1 size.\r\nĐề xuất: Sử dụng đi lại hằng ngày, đi chơi.\r\n', '1800000', '1350000', 'EE8483', 0, 1, 1, 1, 'ADIDAS STAN SMITH DIAMOND 1.png', NULL),
-(96, 26, 'ADIDAS CONTINENTAL VULC J', 'ADIDAS CONTINENTAL VULC J\r\nCode: EF9074\r\nPhối màu: Cream White / Cream White / Supplier Colour.\r\nFit: True to size.\r\nĐề xuất: Sử dụng đi lại hằng ngày, đi chơi.', '1800000', '1650000', 'EF9074', 0, 1, 1, 1, 'ADIDAS CONTINENTAL VULC J 1.png', NULL),
-(97, 26, 'ADIDAS ADIFOM Q OFF-WHITE', 'ADIDAS ADIFOM Q \"OFF-WHITE\"\r\nCode: FY4455\r\nPhối màu: Off-White/Aluminium/Wonder White.\r\nFit: True to size.\r\nĐề xuất: Mang hàng ngày.\r\nGiày gồm 2 phần, lớp vải bên trong có thể tách ra khỏi khung foam bên ngoài.', '3800000', '3500000', 'FY4455', 0, 1, 1, 1, 'ADIDAS ADIFOM Q OFF-WHITE 1.png', NULL);
+(26, 29, 'QXL HOODIE \"HOME\"\r\nForm: Oversize', 'Form: Oversize', '420000', '150000', 'qxlhoodie', 0, 1, 2, 4, 'QXL HOODIE HOME 1.png\r\n', NULL),
+(27, 29, 'JORDAN JUMPMAN AIR FULL-ZIP', 'JORDAN JUMPMAN AIR FULL-ZIP\r\n\r\nMàu: Red.\r\nCode: AR2248-687.', '990000', '790000', 'AR2248-687', 0, 1, 2, 4, 'JORDAN JUMPMAN AIR FULL-ZIP 1.png', NULL),
+(29, 29, 'ÁO KHOÁC NIKE NSW TRACK SUIT BASIC', 'ÁO KHOÁC NIKE NSW TRACK SUIT BASIC\r\nCode: 861780-010\r\nPhối màu: Black.\r\nChất liệu: Nỉ thun.\r\nChính hãng.', '790000', '150000', '861780-010', 0, 1, 2, 4, 'ÁO KHOÁC NIKE NSW TRACK SUIT BASIC 1.png', NULL),
+(30, 29, 'ÁO KHOÁC NIKE BIG SWOOSH', 'ÁO KHOÁC NIKE \"BIG SWOOSH\"\r\nChất liệu: Vải dù (2 lớp).', '500000', '350000', 'nikebigswoosh', 0, 1, 2, 4, 'ÁO KHOÁC NIKE BIG SWOOSH 1.png', NULL),
+(31, 29, 'ADIDAS TECH CREWNECK SWEATSHIRT', 'ADIDAS TECH CREWNECK SWEATSHIRT\r\nCode: ED6121\r\nPhối màu: Black/White.', '800000', '650000', 'ED6121', 0, 1, 2, 4, 'ADIDAS TECH CREWNECK SWEATSHIRT 1.png', NULL),
+(33, 28, 'QUẦN SHORT CHAMPION', 'QUẦN SHORT CHAMPION \r\nPhối màu: Đỏ/Xanh.\r\nChính hãng.', '400000', '350000', 'quanchampion', 0, 1, 3, 1, 'QUẦN SHORT CHAMPION 1.png', NULL),
+(34, 28, 'QUẦN NIKE SPORTWEAR WOVEN FLOW', 'QUẦN NIKE SPORTWEAR WOVEN FLOW\r\nCode: DR5678-010 / DR5678-403 / DR5678-700 / DR5678-657\r\nPhối màu: Black / Blue / Yellow / Red.\r\nChính hãng.\r\nForm Âu.', '550000', '500000', 'DR5678-010 / DR5678-403 / DR5678-700 / DR5678-657', 0, 1, 3, 1, 'QUẦN NIKE SPORTWEAR WOVEN FLOW 1.png', NULL),
+(35, 28, 'QUẦN JORDAN FLIGHT', 'QUẦN JORDAN FLIGHT\r\nPhối màu: Black.', '350000', '300000', 'quanjordan', 0, 1, 3, 1, 'QUẦN JORDAN FLIGHT 1.png', NULL),
+(36, 28, 'QUẦN ĐẤU CHAMPION', 'QUẦN ĐẤU CHAMPION\r\nPhối màu: Xanh/Trắng.\r\nChính hãng.', '400000', '350000', 'quandauchampion', 0, 1, 3, 1, 'QUẦN ĐẤU CHAMPION 1.png', NULL),
+(37, 28, 'LAKERS KOBE BRYANT SHORT', 'LAKERS KOBE BRYANT SHORT\r\nPhối màu: Yellow/Purple.\r\nMặc chơi thể thao hoặc mặc hàng ngày.\r\nForm Âu.', '350000', '300000', 'lakersshort', 0, 1, 3, 1, 'LAKERS KOBE BRYANT SHORT 1.png', NULL),
+(38, 28, 'LAKERS ICON EDITION SHORT', 'LAKERS ICON EDITION SHORT\r\nPhối màu: Gold/White.\r\nMặc chơi thẻ thao hoặc mặc hàng ngày.\r\nForm Âu', '350000', '300000', 'quandaunba', 0, 1, 3, 1, 'LAKERS ICON EDITION SHORT 1.png', NULL),
+(39, 28, 'ALL STAR NBA SHORT', 'ALL STAR NBA SHORT\r\nPhối màu: Multi Color.\r\nQuần nằm trong đồng phục thi đấu cho sự kiện NBA All Star.\r\nMặc chơi thể thao hoặc mặc hàng ngày.', '350000', '300000', 'allstarshort', 0, 1, 3, 1, 'ALL STAR NBA SHORT 1.png', NULL),
+(41, 27, 'ÁO THUN NIKE FC', 'ÁO THUN NIKE FC\r\nCode: DH7445-010\r\nPhối màu: Black.\r\nChính hãng.', '850000', '750000', 'DH7445-010', 0, 1, 2, 3, 'ÁO THUN NIKE FC 1.png', NULL),
+(42, 27, 'ÁO THUN JORDAN PSG LOGO', 'ÁO THUN JORDAN PSG LOGO\r\nCode: DJ0402-100\r\nPhối màu: White\r\nChính hãng.\r\n', '850000', '750000', 'DJ0402-100', 0, 1, 2, 3, 'ÁO THUN JORDAN PSG LOGO 1.png', NULL),
+(43, 27, 'ÁO THUN NIKE FARROW & BALL', 'ÁO THUN NIKE FARROW & BALL\r\nCode: DR1280-010 / DR1280-063\r\nPhối màu: Grey / Black.\r\nChính hãng.\r\n', '790000', '690000', 'DR1280-010 / DR1280-063', 0, 1, 2, 3, 'ÁO THUN NIKE FARROW & BALL 1.png', NULL),
+(44, 27, 'ÁO THUN NIKE ICON', 'ÁO THUN NIKE ICON\r\nCode: BV0629-382\r\nPhối màu: Mint/White.\r\nChính hãng.\r\n', '790000', '690000', 'BV0629-382', 0, 1, 2, 3, 'ÁO THUN NIKE ICON 1.png', NULL),
+(45, 27, 'ÁO THUN NIKE JUST DO IT - GRAPHIC', 'ÁO THUN NIKE \"JUST DO IT\" - GRAPHIC\r\nCode: DR1222-800\r\nPhối màu: Multi Color/Multi Color.\r\nChính hãng.\r\n', '850000', '550000', 'DR1222-800', 0, 1, 2, 3, 'ÁO THUN NIKE JUST DO IT - GRAPHIC 1.png', NULL),
+(86, 27, 'ÁO THUN DERRICK CLUB', 'ÁO THUN DERRICK CLUB', '480000', '218000', 'aothun', 0, 1, 2, 3, 'ÁO THUN DERRICK CLUB 1.png', NULL),
+(87, 20, 'SWEATER NIKE JUST DO IT', NULL, '890000', '790000', 'DO2904-010', 0, 1, 2, 1, NULL, NULL),
+(88, 25, 'NIKE WMNS ZOOM WINFLO 8', 'NIKE WMNS ZOOM WINFLO 8\r\nCode: CW3421-100\r\nPhối màu: White/Bright Crimson/Total Orange/Black.\r\nCông nghệ: Zoom Air kết hợp cùng đệm Phylon.\r\nFit: True to size.\r\nĐề xuất: Mang chạy bộ hoặc đi hàng ngày.\r\n', '1850000', '1650000', 'CW3421-100', 0, 1, 4, 2, 'NIKE WMNS ZOOM WINFLO 8 1.png', NULL),
+(89, 25, 'NIKE AIR ZOOM PEGASUS 38', 'NIKE AIR ZOOM PEGASUS 38\r\nCode: CZ1815-002\r\nPhối màu: Black/Anthracite/Volt/White.\r\nCông nghệ: Air Zoom kết hợp cùng đệm Phylon.\r\nFit: True to size.\r\nĐề xuất: Mang chạy bộ hoặc đi lại hàng ngày.', '2450000', '1350000', 'CZ1815-002', 0, 1, 4, 2, 'NIKE AIR ZOOM PEGASUS 38 1.png', NULL),
+(90, 26, 'ADIDAS YEEZY BOOST 350 V2 BONE', 'ADIDAS YEEZY BOOST 350 V2 \"BONE\"\r\nCode: HQ6316\r\nPhối màu: Bone/Bone-Bone.\r\nCông nghệ: Đệm Boost.\r\nFit: True to size.\r\nĐề xuất: Mang hàng ngày, sưu tầm.', '7200000', '5200000', 'HQ6316', 0, 1, 4, 4, 'ADIDAS YEEZY BOOST 350 V2 BONE 1.png', NULL),
+(91, 26, 'ADIDAS SUPERSTAR ARIZONA', 'ADIDAS SUPERSTAR ARIZONA\r\nCode: GZ2871\r\nPhối màu: Chalk White / Chalk White / Chalk White.\r\nFit: True to size hoặc lên từ 0.5-1 size.\r\nĐề xuất: Sử dụng đi lại hằng ngày, đi chơi.', '2200000', '1780000', 'GZ2871', 0, 1, 4, 4, 'ADIDAS SUPERSTAR ARIZONA 1.png', NULL),
+(92, 26, 'ADIDAS STAN SMITH GREEN', 'ADIDAS STAN SMITH \"GREEN\"\r\nCode: M20324.\r\nPhối màu: Cloud White/Core White/Green.\r\nFit: True to size hoặc lên từ 0.5 - 1 size.\r\nĐề xuất: Sử dụng đi lại hằng ngày, đi chơi.\r\n', '1800000', '1350000', 'M20324', 0, 1, 4, 4, 'ADIDAS STAN SMITH GREEN 1.png', NULL),
+(93, 20, 'ADIDAS STAN SMITH DIAMOND', NULL, '1800000', '1350000', 'EE8483', 0, 1, 4, 1, NULL, NULL),
+(96, 26, 'ADIDAS CONTINENTAL VULC J', 'ADIDAS CONTINENTAL VULC J\r\nCode: EF9074\r\nPhối màu: Cream White / Cream White / Supplier Colour.\r\nFit: True to size.\r\nĐề xuất: Sử dụng đi lại hằng ngày, đi chơi.', '1800000', '1650000', 'EF9074', 0, 1, 4, 4, 'ADIDAS CONTINENTAL VULC J 1.png', NULL),
+(97, 20, 'ADIDAS ADIFOM Q OFF-WHITE', NULL, '3800000', '3500000', 'FY4455', 0, 1, NULL, NULL, 'ADIDAS CONTINENTAL VULC J 1.png', NULL),
+(99, 27, 'test 2', 'test 2', '100000', '50000', '23235', 1, 1, 4, 3, 'ADIDAS ADIFOM Q OFF-WHITE 1_1668140087.png', NULL),
+(100, 22, 'test 123', 'mô tả test', '500000', '400000', '1236', 1, 1, NULL, 3, 'ADIDAS ADIFOM Q OFF-WHITE 2_1668234848.png', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `sb_search_null`
+--
+
+DROP TABLE IF EXISTS `sb_search_null`;
+CREATE TABLE IF NOT EXISTS `sb_search_null` (
+  `search` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -427,8 +506,18 @@ CREATE TABLE IF NOT EXISTS `sb_tin_tuc` (
   `tom_tat` text COLLATE utf8mb4_unicode_ci,
   `chi_tiet` text COLLATE utf8mb4_unicode_ci,
   `id_loai_tin_tuc` int(11) DEFAULT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `hinh` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ngay_dang` datetime DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `Fkey_id_loai_tt` (`id_loai_tin_tuc`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `sb_tin_tuc`
+--
+
+INSERT INTO `sb_tin_tuc` (`ID`, `tieu_de`, `tom_tat`, `chi_tiet`, `id_loai_tin_tuc`, `hinh`, `ngay_dang`) VALUES
+(2, 'sản phẩm giảm ', 'Most of my friends like to stay inside to play video games, read books or watch TV, but I have a good hobby of going outside and playing sports.', 'Most of my friends like to stay inside to play video games, read books or watch TV, but I have a good hobby of going outside and playing sports. I play many different sports in my free time; some of them are soccer, swimming, volleyball and basketball. Sometimes I also ride the bikes or do board skating with my cousin in the park. In my opinion, doing sport is one of the rare hobbies that actually have good impacts on me. I am taller than most of my classmates thanks to swimming and basketball lessons that I take during summer time. My muscles are even stronger than my older brother, and I can last longer than most other people in any sport competition. Sports bring me a lot of benefits, and they are also fun things to do at the same time. I love the feeling of the cool water run through my face when I am swimming, and it seems like I am flying whenever I take a dive underwater. When I play soccer, it is very exciting for me or my teammates to score a goal even though we do not take part in any tournament. Both of my physical and mental health become better after I play sports, so it can be considered as the best things to do in my free time. Sports are like a part of my life besides other activities, and I will continue to play sports till I am too weak for them.', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -438,20 +527,62 @@ CREATE TABLE IF NOT EXISTS `sb_tin_tuc` (
 
 DROP TABLE IF EXISTS `sb_ton_kho`;
 CREATE TABLE IF NOT EXISTS `sb_ton_kho` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `id_sp` int(11) NOT NULL,
   `size` int(11) NOT NULL,
   `so_luong` int(11) NOT NULL,
+  PRIMARY KEY (`ID`),
   KEY `id_sp` (`id_sp`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Đang đổ dữ liệu cho bảng `sb_ton_kho`
 --
 
-INSERT INTO `sb_ton_kho` (`id_sp`, `size`, `so_luong`) VALUES
-(19, 43, 12),
-(19, 42, 14),
-(19, 44, 2);
+INSERT INTO `sb_ton_kho` (`ID`, `id_sp`, `size`, `so_luong`) VALUES
+(1, 19, 43, 12),
+(2, 19, 42, 14),
+(3, 19, 44, 2),
+(4, 91, 44, 100);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `sb_trang_thai`
+--
+
+DROP TABLE IF EXISTS `sb_trang_thai`;
+CREATE TABLE IF NOT EXISTS `sb_trang_thai` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_don_hang` int(11) DEFAULT NULL,
+  `trang_thai_moi` int(11) DEFAULT NULL,
+  `trang_thai_cu` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_trang_thai` (`id_don_hang`),
+  KEY `fk_loai_trang_thai` (`trang_thai_moi`),
+  KEY `fk_trang_thai_cu` (`trang_thai_cu`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `sb_trang_thai`
+--
+
+INSERT INTO `sb_trang_thai` (`id`, `id_don_hang`, `trang_thai_moi`, `trang_thai_cu`) VALUES
+(2, 2, 3, NULL),
+(3, 3, 3, NULL),
+(4, 4, 2, NULL),
+(5, 5, 2, 4),
+(6, 6, 1, 1),
+(7, 7, 2, 4),
+(8, 8, 1, 1),
+(9, 9, 4, 3),
+(10, 11, 1, 4),
+(11, 12, 2, 4),
+(12, 13, 1, 3),
+(13, 14, 1, 3),
+(14, 15, 2, 4),
+(15, 16, 2, 4),
+(16, 17, 2, 4);
 
 -- --------------------------------------------------------
 
@@ -476,24 +607,24 @@ CREATE TABLE IF NOT EXISTS `sb_user` (
   `id_loai_user` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   KEY `id_loai_user` (`id_loai_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `sb_user`
 --
 
 INSERT INTO `sb_user` (`ID`, `ho`, `ten`, `tai_khoan`, `mat_khau`, `email`, `diem_tich_luy`, `ngay_dang_ky`, `active_code`, `thoi_gian_dang_nhap`, `dien_thoai`, `id_phan_quyen`, `id_loai_user`) VALUES
-(2, 'Phạm', 'Nam', 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'hainam011201@gmail.com', 100000, NULL, NULL, '2022-10-09 16:42:28', '0919999968', NULL, 7),
 (3, 'Nguyễn', 'Linh', 'linhnguyen', '670b14728ad9902aecba32e22fa4f6bd', 'linhnguyen@gmail.com', 50000, NULL, NULL, '2022-10-11 17:10:04', NULL, NULL, 1),
 (4, 'Nguyễn', 'Hà', 'hanguyen', '670b14728ad9902aecba32e22fa4f6bd', 'hanguyen@gmail.com', 50000, NULL, NULL, '2022-10-11 17:10:04', NULL, NULL, 1),
-(6, 'Phạm', 'Minh Phúc', 'minhphuc', '202cb962ac59075b964b07152d234b70', 'phucpham0000@gmail.com', 5000, NULL, NULL, NULL, '0988793979', NULL, 1),
-(7, 'Vương Đỗ', 'Anh Thy', 'anthea', 'e10adc3949ba59abbe56e057f20f883e', 'anthea03102000@gmail.com', 200000, '2016-03-09', NULL, NULL, '0907056235', NULL, 1),
-(8, NULL, NULL, 'MinhPhuc2', '123456789', 'phng@gmail.com', NULL, '2022-11-10', NULL, NULL, NULL, NULL, NULL),
-(9, NULL, NULL, 'coolheart78', 'fe417c9bf74775ba414ebdf7fa1d88e9', 'tung35099@gmail.com', NULL, '2022-11-10', NULL, NULL, NULL, NULL, NULL),
-(10, NULL, NULL, 'babarita', 'e0af19eb822d7a0e834f6d4b9cef596b', 'baba@gmail.com', NULL, '2022-11-10', NULL, NULL, NULL, NULL, NULL),
-(11, NULL, NULL, 'babahaha', '4cf1b1efa0d3634efdf8719c280db912', 'tung35099@gmail.com', NULL, '2022-11-10', NULL, NULL, NULL, NULL, NULL),
-(12, NULL, NULL, 'phucpham0000@gmail.com', '01f00836d59def3830c532bfe74aa63f', 'tung35099@gmail.com', NULL, '2022-11-10', NULL, NULL, NULL, NULL, NULL),
-(13, NULL, 'Alan Wong', 'phucpham0000@gmail.com', '25f9e794323b453885f5181f1b624d0b', 'tung35099@gmail.com', NULL, '2022-11-10', NULL, NULL, NULL, NULL, NULL);
+(6, 'Phạm', 'Minh Phúc', 'minhphuc', '670b14728ad9902aecba32e22fa4f6bd', 'phucpham0000@gmail.com', 5000, NULL, NULL, NULL, '0988793979', NULL, 1),
+(7, 'Vương Đỗ', 'Anh Thy', 'anthea', 'd41d8cd98f00b204e9800998ecf8427e', 'anthea03102000@gmail.com', 200000, '2016-03-09', NULL, NULL, '0907056235', NULL, 1),
+(8, NULL, 'MinhPhuc', 'MinhPhuc haha', '25f9e794323b453885f5181f1b624d0b', 'phngminhphuc0932@gmail.com', NULL, '2022-11-12', NULL, NULL, NULL, NULL, NULL),
+(9, NULL, 'PhucPham', 'MinhPhuc', '1596073950be69668bcec71cb60ce990', 'phngminhphuc0932@gmail.com', NULL, '2022-11-12', NULL, NULL, NULL, NULL, NULL),
+(10, NULL, 'Minh Phuc', 'MinhPhuc', 'fa86ee7e44999b9739477acf6b56b284', 'phngminhphuc0932@gmail.com', NULL, '2022-11-12', NULL, NULL, NULL, NULL, NULL),
+(11, NULL, 'Minh Phuc', 'MinhPhuc', '25d55ad283aa400af464c76d713c07ad', 'phngminhphuc0932@gmail.com', NULL, '2022-11-12', NULL, NULL, NULL, NULL, NULL),
+(12, NULL, 'Minh Phuc', 'minhphuc', '25d55ad283aa400af464c76d713c07ad', 'phngminhphuc0932@gmail.com', NULL, '2022-11-12', NULL, NULL, NULL, NULL, NULL),
+(13, NULL, 'Minh Phuc', 'Minhphuc', '25f9e794323b453885f5181f1b624d0b', 'phng@gmail.com', NULL, '2022-11-12', NULL, NULL, NULL, NULL, NULL),
+(14, NULL, 'Minh Phuc', 'MinhPhuc', '25f9e794323b453885f5181f1b624d0b', 'phng@gmail.com', NULL, '2022-11-12', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -519,22 +650,48 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 --
+-- Các ràng buộc cho bảng `sb_don_hang`
+--
+ALTER TABLE `sb_don_hang`
+  ADD CONSTRAINT `Fkey_user_order` FOREIGN KEY (`id_nguoi_dung`) REFERENCES `sb_user` (`ID`);
+
+--
 -- Các ràng buộc cho bảng `sb_hinh_san_pham`
 --
 ALTER TABLE `sb_hinh_san_pham`
   ADD CONSTRAINT `sb_hinh_san_pham_ibfk_1` FOREIGN KEY (`id_sp`) REFERENCES `sb_san_pham` (`ID`);
 
 --
+-- Các ràng buộc cho bảng `sb_notice`
+--
+ALTER TABLE `sb_notice`
+  ADD CONSTRAINT `fk_trang_thai` FOREIGN KEY (`id_don_hang`) REFERENCES `sb_don_hang` (`ID`);
+
+--
 -- Các ràng buộc cho bảng `sb_san_pham`
 --
 ALTER TABLE `sb_san_pham`
+  ADD CONSTRAINT `Fkey_id_ncc` FOREIGN KEY (`id_nha_cung_cap`) REFERENCES `sb_nha_cung_cap` (`ID`),
+  ADD CONSTRAINT `Fkey_id_nha_san_xuat` FOREIGN KEY (`id_nha_san_xuat`) REFERENCES `sb_nha_san_xuat` (`ID`),
   ADD CONSTRAINT `sb_san_pham_ibfk_1` FOREIGN KEY (`id_loai_sp`) REFERENCES `sb_loai_san_pham` (`ID_loai_sp`);
+
+--
+-- Các ràng buộc cho bảng `sb_tin_tuc`
+--
+ALTER TABLE `sb_tin_tuc`
+  ADD CONSTRAINT `Fkey_id_loai_tt` FOREIGN KEY (`id_loai_tin_tuc`) REFERENCES `sb_loai_tin_tuc` (`ID`);
 
 --
 -- Các ràng buộc cho bảng `sb_ton_kho`
 --
 ALTER TABLE `sb_ton_kho`
   ADD CONSTRAINT `sb_ton_kho_ibfk_1` FOREIGN KEY (`id_sp`) REFERENCES `sb_san_pham` (`ID`);
+
+--
+-- Các ràng buộc cho bảng `sb_user`
+--
+ALTER TABLE `sb_user`
+  ADD CONSTRAINT `Fkey_id_loai_user` FOREIGN KEY (`id_loai_user`) REFERENCES `sb_loai_user` (`ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

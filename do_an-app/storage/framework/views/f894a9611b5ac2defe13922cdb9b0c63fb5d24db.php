@@ -2,17 +2,14 @@
     <div class="footer-top">
         <div class="container">
             <div class="latter">
-                <h6>NEWS-LETTER</h6>
-                <div class="sub-left-right">
-                    <form>
-                        <input type="text" value="Enter email here" onfocus="this.value = '';"
-                            onblur="if (this.value == '') {this.value = 'Enter email here';}" />
-                        <input type="submit" value="SUBSCRIBE" />
-                    </form>
-                </div>
+                
                 <div class="clearfix"> </div>
             </div>
-            
+            <div class="latter-right">
+                
+                <div class="clearfix"> </div>
+            </div>
+            <hr>
             <div class="clearfix"> </div>
         </div>
     </div>

@@ -145,7 +145,7 @@ class DHangAdminController extends Controller
                         'trang_thai_moi' => $trang_thai
                     ]);
             } else {
-                DB::table('sb_notice')
+                DB::table('sb_trang_thai')
                     ->insert([
                         'id_don_hang' => $thong_tin_don_hang_old->id,
                         'trang_thai_cu' => $thong_tin_don_hang_old->trang_thai,

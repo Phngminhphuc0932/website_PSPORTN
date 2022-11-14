@@ -36,7 +36,7 @@
                                     <div class="info">Quick View</div>
                                 </div>
                             </div>
-                            <h4><a href="#">{{ $sp->ten_san_pham }}</a></h4>
+                            <h4><a href="/single?id_sp={{ $sp->ID }}">{{ $sp->ten_san_pham }}</a></h4>
                             <p>It is a long established fact that a reader</p>
                             <span class="actual">@VND_monney($sp->gia_giam) ₫</span><br>
                             <span class="reducedfrom">@VND_monney($sp->don_gia) ₫</span>
