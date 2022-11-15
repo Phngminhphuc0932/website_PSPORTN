@@ -105,6 +105,7 @@
                                         <div class="btn-group">
                                             <a class="btn btn-primary" href="/admin/ql-don-hang/edit/${data.ds_don_hang[i].ID}"><i class="icon_pencil"></i></a>
                                             <a class="btn btn-danger" onclick="return confirm_delete();" href="/admin/ql-don-hang/delete/${data.ds_don_hang[i].ID}"><i class="icon_trash"></i></a>
+                                            <a class="btn btn-success" href="/admin/ql-don-hang/info/${data.ds_don_hang[i].ID}"><i class="icon_plus"></i></a>
                                         </div>
                                     </td>
                                 </tr>

@@ -53,5 +53,4 @@
             </div>
         </div>
     </form>
-</div>
-<?php /**PATH C:\wamp64\www\website_PSPORTN\do_an-app\resources\views/modules/mod_trang_thanh_toan.blade.php ENDPATH**/ ?>
+</div><?php /**PATH C:\wamp64\www\website_PSPORTN\do_an-app\resources\views/modules/mod_trang_thanh_toan.blade.php ENDPATH**/ ?>

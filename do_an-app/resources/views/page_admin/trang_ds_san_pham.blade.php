@@ -55,7 +55,8 @@
                                         <td>{{ $san_pham->ten_san_pham }}</td>
                                         <td>{{ $san_pham->ten_loai_sp }}</td>
                                         <td>{{ $san_pham->don_gia }}</td>
-                                        <td><img src="/images/hinh_sp/{{ $san_pham->hinh }}" alt=""></td>
+                                        <td><img src="/images/hinh_sp/{{ $san_pham->hinh }}" style="height:70px;"
+                                                alt=""></td>
                                         <td>{{ $san_pham->ten_nha_san_xuat }}</td>
                                         <td>{{ $san_pham->noi_bat ? 1 : 0 }}</td>
                                         <td>

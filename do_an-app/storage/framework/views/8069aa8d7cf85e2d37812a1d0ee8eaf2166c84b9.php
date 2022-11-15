@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('main-content'); ?>
     <!--main content start-->
     <link rel="stylesheet" href="css/data_table.min.css">
@@ -57,7 +55,7 @@
                                                     href="/admin/ql-khach-hang/edit/<?php echo e($khach_hang->id); ?>"><i
                                                         class="icon_pencil"></i></a>
                                                 <a class="btn btn-danger" onclick="return confirm_delete();"
-                                                    href="/admin/ql-khach-hang/delete/<?php echo e($khach_hang->id); ?>"><i
+                                                    href="/admin/ql-khach-hang/delete/<?php echo e($khach_hang->id); ?> "><i
                                                         class="icon_trash"></i></a>
                                             </div>
                                         </td>
@@ -78,6 +76,10 @@
             $('#ds_san_pham').DataTable();
         });
     </script>
+    <?php
+        
+    ?>
+    
     <!--main content end-->
 <?php $__env->stopSection(); ?>
 

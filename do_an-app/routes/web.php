@@ -100,3 +100,4 @@ Route::get('/admin/ql-don-hang/pagination/{current_page}', 'App\Http\Controllers
 Route::get('/admin/ql-don-hang/edit/{id_don_hang}', 'App\Http\Controllers\DHangAdminController@edit')->middleware(EnsureAdminRole::class);
 Route::post('/admin/ql-don-hang/edit/{id_don_hang}', 'App\Http\Controllers\DHangAdminController@update')->middleware(EnsureAdminRole::class);
 Route::get('/admin/ql-don-hang/delete/{id_don_hang}', 'App\Http\Controllers\DHangAdminController@destroy')->middleware(EnsureAdminRole::class);
+Route::get('/admin/ql-don-hang/info/{id_don_hang}', 'App\Http\Controllers\DHangAdminController@chi_tiet_don_hang')->middleware(EnsureAdminRole::class);

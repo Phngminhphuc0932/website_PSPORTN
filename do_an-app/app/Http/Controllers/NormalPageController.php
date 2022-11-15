@@ -118,6 +118,7 @@ class NormalPageController extends Controller
             $gio_hang = Session::get('gio_hang');
         }
 
+
         if (count($gio_hang) > 0) {
             $ho_ten = $request->get('ho_ten');
             $email = $request->get('email');
@@ -126,13 +127,14 @@ class NormalPageController extends Controller
             $trang_thai = 2;
             $tong_tien = 0;
             $ngay_dat = date("Y-m-d H:i:s");
-
+            $ma_don_hang = random_int(200000000, 999999999);
+            $trang_thai = 3;
             $tong_tien = 0;
             foreach ($gio_hang as $sp) {
                 $tong_tien += $sp->so_luong * $sp->don_gia;
             }
 
-            DB::transaction(function () use ($ho_ten, $email, $dien_thoai, $dia_chi, $trang_thai, $tong_tien, $ngay_dat, $gio_hang ) {
+            DB::transaction(function () use ($ho_ten, $email, $dien_thoai, $dia_chi, $trang_thai, $tong_tien, $ngay_dat, $gio_hang, $ma_don_hang) {
                 $id_don_hang = DB::table('sb_don_hang')
                     ->insertGetId(
                         [
@@ -142,7 +144,9 @@ class NormalPageController extends Controller
                             "dia_chi_nguoi_nhan" => $dia_chi,
                             "trang_thai" => $trang_thai,
                             "tong_tien" => $tong_tien,
+                            "ma_don_hang" => $ma_don_hang,
                             "ngay_dat" => $ngay_dat,
+                            "trang_thai" => $trang_thai,
                         ]
                     );
 
@@ -160,6 +164,10 @@ class NormalPageController extends Controller
                             ]
                         );
                 }
+                DB::table('sb_trang_thai')->insert([
+                    "id_don_hang" => $id_don_hang,
+                    "trang_thai_moi" => $trang_thai,
+                ]);
             });
 
             Session::forget('gio_hang');
@@ -167,7 +175,6 @@ class NormalPageController extends Controller
             Session::forget('tong_tien');
 
             return redirect('/')->withErrors(['Đặt hàng thành công!'], 'noticeOrder');
-
         } else {
             return redirect('/', 302);
         }

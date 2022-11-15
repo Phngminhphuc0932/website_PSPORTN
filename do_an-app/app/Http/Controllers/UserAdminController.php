@@ -51,7 +51,6 @@ class UserAdminController extends Controller
      */
     public function show($id)
     {
-        
     }
 
     /**
@@ -101,10 +100,11 @@ class UserAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
+
         try {
-            DB::table('sb_user')->where('id', $id)->delete();
+            DB::table('sb_user')->where('ID', $id)->delete();
             return redirect($_SERVER['HTTP_REFERER'])->withErrors('Xoá thành công ', 'NoticeDelete');
         } catch (Exception $e) {
             return redirect($_SERVER['HTTP_REFERER'])->withErrors('Bị lỗi trong quá trình xóa vui lòng thử lại: ' . $e, 'NoticeDelete');
