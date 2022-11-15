@@ -26,7 +26,7 @@
                                     <div class="info">Quick View</div>
                                 </div>
                             </div>
-                            <h4><a href="#"><?php echo e($sp->ten_san_pham); ?></a></h4>
+                            <h4><a href="/single?id_sp=<?php echo e($sp->ID); ?>"><?php echo e($sp->ten_san_pham); ?></a></h4>
                             <p>It is a long established fact that a reader</p>
                             <span class="actual"><?php echo number_format($sp->gia_giam); ?> ₫</span><br>
                             <span class="reducedfrom"><?php echo number_format($sp->don_gia); ?> ₫</span>

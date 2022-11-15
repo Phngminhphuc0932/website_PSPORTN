@@ -30,6 +30,7 @@ class SanPhamController extends Controller
 
 
         $user_info = Session::get('user_info');
+        $admin_info = Session::get('admin_info');
 
 
         return view('trang_chu')

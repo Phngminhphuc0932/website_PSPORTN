@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('main-content'); ?>
     <!--main content start-->
     <link rel="stylesheet" href="css/data_table.min.css">
@@ -50,8 +48,12 @@
                                         <td><?php echo e($san_pham->ten_san_pham); ?></td>
                                         <td><?php echo e($san_pham->ten_loai_sp); ?></td>
                                         <td><?php echo e($san_pham->don_gia); ?></td>
+<<<<<<< HEAD
                                         <td><img src="/images/hinh_sp/<?php echo e($san_pham->hinh); ?>" style="height:70px;"
                                                 alt=""></td>
+=======
+                                        <td><img height="90px" src="/images/hinh_sp/<?php echo e($san_pham->hinh); ?>" alt=""></td>
+>>>>>>> 7fda53a7df84a7a9757e897e86b08834a1f95941
                                         <td><?php echo e($san_pham->ten_nha_san_xuat); ?></td>
                                         <td><?php echo e($san_pham->noi_bat ? 1 : 0); ?></td>
                                         <td>
