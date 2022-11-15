@@ -10,7 +10,7 @@
                     @csrf
                     <div class="col-md-4 col-lg-4 form_thanh_toan">
                         <div class="form-group">
-                            <legend>Thông tin người mua hàng</legend>
+                            <legend>Thông tin đơn mua hàng</legend>
                         </div>
                         @foreach ($chi_tiet_don_hang_2 as $don_hang_2)
                             <div class="form-group">
@@ -45,8 +45,7 @@
                                     Địa chỉ:
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="text" name="dia_chi" id="dia_chi" class="form-control"
-                                        value="{{ $don_hang_2->dia_chi_nguoi_nhan }}" readonly title="">
+                                    <textarea type="text" name="dia_chi" id="dia_chi" class="form-control" rows="10" cols="50" readonly>{{ $don_hang_2->dia_chi_nguoi_nhan }}</textarea>
                                 </div>
                             </div>
                         @endforeach
@@ -57,6 +56,7 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
+                                            <th></th>
                                             <th>Tên sản phẩm</th>
                                             <th class="text-center">Số lượng</th>
                                             <th class="text-center">Đơn giá</th>
@@ -67,11 +67,12 @@
                                     <tbody>
                                         @foreach ($tt_don_hang as $tt_dh)
                                             <tr id="san_pham_{{ $tt_dh->ID }}">
+                                                <td><a class="product-thumb" href="#"><img
+                                                            src="/images/hinh_sp/{{ $tt_dh->hinh }}" alt="Product"
+                                                            height="120px" width="120px"></a></td>
                                                 <td>
                                                     <div class="product-item">
-                                                        <a class="product-thumb" href="#"><img
-                                                                src="/images/hinh_sp/{{ $tt_dh->hinh }}" alt="Product"
-                                                                height="200px"></a>
+
                                                         <div class="product-info">
                                                             <h4 class="product-title"><a
                                                                     href="/single?id_sp={{ $tt_dh->ID }}">{{ $tt_dh->ten_san_pham }}</a>
