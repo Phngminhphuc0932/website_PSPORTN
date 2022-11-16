@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('main-content'); ?>
     <!--main content start-->
     <section id="main-content">
@@ -18,7 +16,11 @@
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                     <div class="info-box brown-bg">
                         <i class="fa fa-user"></i>
-                        <div class="count">7.538</div>
+                        <?php if(isset($khach_hang)): ?>
+                            <?php $__currentLoopData = $khach_hang; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <div class="count"><?php echo e($user->so_luong_khach_hang); ?></div>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        <?php endif; ?>
                         <div class="title">Thành viên</div>
                     </div>
                     <!--/.info-box-->
@@ -28,7 +30,11 @@
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                     <div class="info-box dark-bg">
                         <i class="fa fa-shopping-cart"></i>
-                        <div class="count">4.362</div>
+                        <?php if(isset($tong_so_luong)): ?>
+                            <?php $__currentLoopData = $tong_so_luong; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tsl): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <div class="count"><?php echo e($tsl->tong_so_luong); ?></div>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        <?php endif; ?>
                         <div class="title">Đơn hàng</div>
                     </div>
                     <!--/.info-box-->

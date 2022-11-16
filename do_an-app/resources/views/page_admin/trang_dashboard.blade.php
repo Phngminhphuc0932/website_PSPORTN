@@ -18,7 +18,11 @@
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                     <div class="info-box brown-bg">
                         <i class="fa fa-user"></i>
-                        <div class="count">7.538</div>
+                        @if (isset($khach_hang))
+                            @foreach ($khach_hang as $user)
+                                <div class="count">{{ $user->so_luong_khach_hang }}</div>
+                            @endforeach
+                        @endif
                         <div class="title">Thành viên</div>
                     </div>
                     <!--/.info-box-->
@@ -28,7 +32,11 @@
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                     <div class="info-box dark-bg">
                         <i class="fa fa-shopping-cart"></i>
-                        <div class="count">4.362</div>
+                        @if (isset($tong_so_luong))
+                            @foreach ($tong_so_luong as $tsl)
+                                <div class="count">{{ $tsl->tong_so_luong }}</div>
+                            @endforeach
+                        @endif
                         <div class="title">Đơn hàng</div>
                     </div>
                     <!--/.info-box-->

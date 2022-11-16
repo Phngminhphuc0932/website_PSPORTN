@@ -76,6 +76,7 @@ Route::get('/action', "App\Http\Controllers\SanPhamController@action")->name('ac
 
 /*ADMIN*/
 Route::get('/admin', 'App\Http\Controllers\AdminController@index')->middleware(EnsureAdminRole::class);
+Route::get('/admin', 'App\Http\Controllers\AdminController@du_lieu_dashboard');
 Route::get('/login-admin', 'App\Http\Controllers\AdminController@login_admin');
 
 Route::post('/dang-nhap-admin', [

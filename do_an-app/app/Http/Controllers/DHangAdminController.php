@@ -204,4 +204,5 @@ class DHangAdminController extends Controller
             ->with('chi_tiet_don_hang_2', $chi_tiet_don_hang_2)
             ->with('tt_don_hang', $tt_don_hang);
     }
+    
 }

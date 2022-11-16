@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -16,6 +15,7 @@ class AdminController extends Controller
      */
     public function index()
     {
+
         return view('page_admin.trang_dashboard');
     }
 
@@ -97,5 +97,20 @@ class AdminController extends Controller
         }
 
         return view('page_admin.trang_login_admin');
+    }
+    function du_lieu_dashboard()
+    {
+
+        $khach_hang = DB::table('sb_user')
+            ->select(DB::raw('COUNT(*) as so_luong_khach_hang'))
+            ->where('id_loai_user', '<', '5')
+            ->get();
+        $tong_so_luong = DB::table('sb_don_hang')
+            ->select(DB::raw('COUNT(*) as tong_so_luong'))
+
+            ->get();
+        return view('page_admin.trang_dashboard')
+            ->with('tong_so_luong', $tong_so_luong)
+            ->with('khach_hang', $khach_hang);
     }
 }
