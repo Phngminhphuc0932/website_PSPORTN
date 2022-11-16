@@ -62,6 +62,7 @@
                                                     href="/admin/ql-khach-hang/edit/{{ $khach_hang->id }}"><i
                                                         class="icon_pencil"></i></a>
                                                 <a class="btn btn-danger" onclick="return confirm_delete();"
+                                                    id="{{ $khach_hang->id }}"
                                                     href="/admin/ql-khach-hang/delete/{{ $khach_hang->id }} "><i
                                                         class="icon_trash"></i></a>
                                             </div>
@@ -77,15 +78,17 @@
             <!-- page end-->
         </section>
     </section>
-
+    <script>
+        document.getElementById('2').style.visibility = "hidden";
+    </script>
     <script>
         $(document).ready(function() {
             $('#ds_san_pham').DataTable();
         });
     </script>
     <?php
-        
-    ?>
     
+    ?>
+
     <!--main content end-->
 @endsection

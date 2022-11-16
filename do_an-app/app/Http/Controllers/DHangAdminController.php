@@ -191,7 +191,7 @@ class DHangAdminController extends Controller
     {
         $chi_tiet_don_hang_2 = DB::table('sb_don_hang')
             ->where('ID', $id)->get();
-       
+
         $tt_don_hang = DB::table('sb_ct_don_hang')
             ->select(DB::raw('hinh,sb_ct_don_hang.ID,sb_san_pham.ID,ten_san_pham,sb_san_pham.don_gia,gia_giam, so_luong,thanh_tien,tong_tien'))
             ->join('sb_san_pham', 'sb_san_pham.ID', '=', 'sb_ct_don_hang.id_sp')

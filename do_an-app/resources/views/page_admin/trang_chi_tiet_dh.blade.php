@@ -9,10 +9,11 @@
                 <form action="" method="POST" class="form-horizontal" role="form" enctype="multipart/form-data">
                     @csrf
                     <div class="col-md-4 col-lg-4 form_thanh_toan">
-                        <div class="form-group">
-                            <legend>Thông tin đơn mua hàng</legend>
-                        </div>
                         @foreach ($chi_tiet_don_hang_2 as $don_hang_2)
+                            <div class="form-group">
+                                <legend>Thông tin đơn hàng mã #{{ $don_hang_2->ma_don_hang }} </legend>
+                            </div>
+
                             <div class="form-group">
                                 <div class="col-md-3">
                                     Họ tên:
