@@ -57,8 +57,8 @@
                                         <td>{{ $khach_hang->dien_thoai }}</td>
                                         <td>{{ $khach_hang->ten_loai_user }}</td>
                                         <td>
-                                            <div class="btn-group">
-                                                <a class="btn btn-primary"
+                                            <div class="btn-group" id="btn">
+                                                <a class="btn btn-primary" id="edit_{{ $khach_hang->id }}"
                                                     href="/admin/ql-khach-hang/edit/{{ $khach_hang->id }}"><i
                                                         class="icon_pencil"></i></a>
                                                 <a class="btn btn-danger" onclick="return confirm_delete();"
@@ -79,7 +79,12 @@
         </section>
     </section>
     <script>
-        document.getElementById('2').style.visibility = "hidden";
+        // document.getElementById('2').style.visibility = "hidden";
+        // xóa btn delete
+        var child = document.getElementById('2');
+        child.parentNode.removeChild(child);
+
+        document.getElementById("edit_2").style.width = "80px"
     </script>
     <script>
         $(document).ready(function() {
