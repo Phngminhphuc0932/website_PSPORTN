@@ -31,10 +31,7 @@ Route::get('/product', function () {
 Route::get('/product-nike', 'App\Http\Controllers\NIKEController@index');
 Route::get('/product-jordan', 'App\Http\Controllers\SP_JordanController@index');
 
-Route::post('/register', [
-    "as" => "saveCreateNewAccount",
-    "uses" => "App\Http\Controllers\UserController@store"
-]);
+
 
 Route::get('/register', 'App\Http\Controllers\UserController@createNewAccount');
 

@@ -70,7 +70,6 @@ class SanPhamController extends Controller
      */
     public function show($id)
     {
-
     }
 
     /**
@@ -233,23 +232,21 @@ class SanPhamController extends Controller
         $list_mau_ao_moi = DB::table('sb_san_pham')->where('ID_loai_sp', 27)->get();
 
         return view('single')
-        ->with('list_mau_ao_moi', $list_mau_ao_moi)
-        ->with('sp_single', $sp_single)
-        ->with('img_more', $img_more);
+            ->with('list_mau_ao_moi', $list_mau_ao_moi)
+            ->with('sp_single', $sp_single)
+            ->with('img_more', $img_more);
     }
 
-    function product_type(Request $request){
+    function product_type(Request $request)
+    {
         $id_loai_sp = $request->get('id_loai_sp');
-        if($id_loai_sp == "*"){
+        if ($id_loai_sp == "*") {
             $list_sp = DB::table('sb_san_pham')->get();
-        }
-        else if($id_loai_sp == "ao"){
+        } else if ($id_loai_sp == "ao") {
             $list_sp = DB::table('sb_san_pham')->where('ID_loai_sp', 27)->get();
-        }
-        else if($id_loai_sp == "giay"){
+        } else if ($id_loai_sp == "giay") {
             $list_sp = DB::table('sb_san_pham')->where('ID_loai_sp', 24)->get();
-        }
-        else {
+        } else {
             $list_sp = DB::table('sb_san_pham')->where('id_loai_sp', $id_loai_sp)->get();
         }
         $name_loai_sp = DB::table('sb_loai_san_pham')->where('id_loai_sp', $id_loai_sp)->get();
@@ -258,33 +255,30 @@ class SanPhamController extends Controller
         //  echo '<pre>',print_r($list_sp) ,'</pre>';
 
         return view('product')
-        ->with('name_loai_sp', $name_loai_sp)
-        ->with('list_sp', $list_sp)
-        ->with('id_loai_sp',$id_loai_sp);
+            ->with('name_loai_sp', $name_loai_sp)
+            ->with('list_sp', $list_sp)
+            ->with('id_loai_sp', $id_loai_sp);
     }
 
     function action(Request $request)
     {
-        if($request->ajax())
-        {
+        if ($request->ajax()) {
             $output = '';
             $query = $request->get('query');
-            if($query != '') {
+            if ($query != '') {
                 $data = DB::table('sb_san_pham')
-                    ->where('ten_san_pham', 'like', '%'.$query.'%')
+                    ->where('ten_san_pham', 'like', '%' . $query . '%')
                     ->get();
-
             } else {
                 $data = DB::table('sb_search_null')
                     ->get();
             }
 
             $total_row = $data->count();
-            if($total_row > 0){
-                foreach($data as $row)
-                {
+            if ($total_row > 0) {
+                foreach ($data as $row) {
                     $output .= '
-                    <a href="/single?id_sp='.$row->ID.'">'.$row->ten_san_pham.'</a></br>
+                    <a href="/single?id_sp=' . $row->ID . '">' . $row->ten_san_pham . '</a></br>
                     ';
                 }
             } else {
